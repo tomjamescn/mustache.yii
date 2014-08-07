@@ -1,18 +1,5 @@
-* text=auto
-
-.gitattributes text
-.gitignore text
-
-*.cmd text
-*.css text
-*.html text diff=html
-*.js text
-*.json text
-*.md text
-*.php text diff=php
-*.txt text
-
-*.gif binary
-*.ico binary
-*.jpg binary
-*.png binary
+/*.komodoproject
+/composer.lock
+/doc/api/
+/node_modules/
+/npm-debug.log
