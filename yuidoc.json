@@ -1,0 +1,11 @@
+{
+  "logo": "http://dev.belin.io/mustache.yii/favicon.ico",
+  "name": "Mustache.yii",
+  "url": "https://packagist.org/packages/cedx/yii-mustache",
+  "options": {
+    "linkNatives": false,
+    "outdir": "doc/api",
+    "paths": "lib",
+    "tabtospace": 2
+  }
+}
