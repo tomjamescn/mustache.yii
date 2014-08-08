@@ -1,0 +1,26 @@
+{
+  "description": "Mustache templating for Yii Framework.",
+  "homepage": "https://github.com/cedx/mustache.yii",
+  "license": "MIT",
+  "name": "cedx/yii-mustache",
+  "type": "library",
+  "authors": [{
+    "email": "cedric@belin.io",
+    "name": "Cédric Belin"
+  }],
+  "autoload": {
+    "psr-0": { "": "lib/" }
+  },
+  "keywords": [
+    "mustache",
+    "templating",
+    "yii"
+  ],
+  "require": {
+    "php": ">=5.5.9",
+    "mustache/mustache": "~2.6.1"
+  },
+  "support": {
+    "issues": "https://github.com/cedx/mustache.yii/issues"
+  }
+}
