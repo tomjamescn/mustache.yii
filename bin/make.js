@@ -41,7 +41,7 @@ target.all=function() {
  */
 target.doc=function() {
   echo('Build the documentation...');
-  exec('yuidoc --no-code --no-color');
+  exec('yuidoc --extension ".php" --no-code --no-color');
 };
 
 /**
@@ -55,7 +55,7 @@ target.lint=function() {
   exec('jshint --verbose bin');
 
   echo('Static analysis of documentation comments...');
-  exec('yuidoc --lint --no-color');
+  exec('yuidoc --extension ".php" --lint --no-color');
 
   config.fatal=true;
 };
