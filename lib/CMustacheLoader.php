@@ -21,10 +21,11 @@ class CMustacheLoader extends CComponent implements Mustache_Loader {
    * The extension name of the views.
    * @property fileExtension
    * @type string
+   * @final
    * @default ".mustache"
-   * @private
    */
   private $fileExtension;
+  public function getFileExtension() { return $this->fileExtension; }
 
   /**
    * The loaded views.
