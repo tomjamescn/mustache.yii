@@ -46,12 +46,7 @@ class CMustacheLogger extends Mustache_Logger_AbstractLogger {
    * @param {array} [$context] The log context.
    */
   public function log($level, $message, array $context=array()) {
-    if(!isset(self::$levels[$level])) throw new CException(Yii::t(
-      'yii',
-      'Invalid enumerable value "{value}". Please make sure it is among ({enum}).',
-      [ '{enum}'=>'Mustache_Logger', '{value}'=>$level ]
-    ));
-
-    Yii::log($message, self::$levels[$level], static::CATEGORY);
+    $value=CPropertyValue::ensureEnum($level, 'Mustache_Logger');
+    Yii::log($message, self::$levels[$value], static::CATEGORY);
   }
 }
