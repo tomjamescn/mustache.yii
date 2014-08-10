@@ -4,9 +4,9 @@
  * @module CMustacheViewRenderer
  */
 Yii::import('mustache.CMustacheCache');
-Yii::import('mustache.CMustacheHtmlHelper');
 Yii::import('mustache.CMustacheLoader');
 Yii::import('mustache.CMustacheLogger');
+Yii::import('mustache.helpers.CMustacheHtmlHelper');
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
