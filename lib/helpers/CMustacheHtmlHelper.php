@@ -13,19 +13,6 @@
 class CMustacheHtmlHelper extends CComponent {
 
   /**
-   * Creates an absolute URL for the specified route.
-	 * @property absoluteUrl
-	 * @type Closure
-	 * @final
-	 */
-  public function getAbsoluteUrl() {
-    return function($route, Mustache_LambdaHelper $helper) {
-      $value=$helper->render($route);
-      return ($controller=Yii::app()->controller) ? $controller->createAbsoluteUrl($value) : Yii::app()->createAbsoluteUrl($value);
-    };
-  }
-
-  /**
    * Generates the URL for the published assets.
    * @property asset
    * @type Closure
@@ -38,19 +25,33 @@ class CMustacheHtmlHelper extends CComponent {
 	}
 
   /**
-   * Encloses the given string within a CDATA tag.
-   * @property cdata
-   * @type Closure
-   * @final
+   * Creates an absolute URL for the specified route.
+	 * @property createAbsoluteUrl
+	 * @type Closure
+	 * @final
 	 */
-	public function getCdata() {
-    return function($text, Mustache_LambdaHelper $helper) {
-      return CHtml::cdata($helper->render($text));
+  public function getCreateAbsoluteUrl() {
+    return function($route, Mustache_LambdaHelper $helper) {
+      $value=$helper->render($route);
+      return ($controller=Yii::app()->controller) ? $controller->createAbsoluteUrl($value) : Yii::app()->createAbsoluteUrl($value);
     };
-	}
+  }
 
   /**
    * Creates a relative URL for the specified route.
+   * @property createUrl
+   * @type Closure
+   * @final
+   */
+  public function getCreateUrl() {
+    return function($route, Mustache_LambdaHelper $helper) {
+      $value=$helper->render($route);
+      return ($controller=Yii::app()->controller) ? $controller->createUrl($value) : Yii::app()->createUrl($value);
+    };
+  }
+
+  /**
+   * Generates a hidden field for storing the token used to perform CSRF validation.
    * @property csrfTokenField
    * @type string
    * @final
@@ -61,28 +62,28 @@ class CMustacheHtmlHelper extends CComponent {
   }
 
   /**
-   * Encloses the given CSS content with a CSS tag.
-   * @property css
-   * @type Closure
-   * @final
-	 */
-	public function getCss() {
-    return function($text, Mustache_LambdaHelper $helper) {
-      return CHtml::css($helper->render($text));
-    };
-	}
-
-  /**
    * Formats a number using the decimal format defined in the locale.
-   * @property decimal
+   * @property formatDecimal
    * @type Closure
    * @final
    */
-  public function getDecimal() {
+  public function getFormatDecimal() {
     return function($value, Mustache_LambdaHelper $helper) {
       return Yii::app()->numberFormatter->formatDecimal($helper->render($value));
     };
   }
+
+  /**
+   * Formats a number using the percentage format defined in the locale.
+   * @property formatPercentage
+   * @type Closure
+   * @final
+	 */
+	public function getFormatPercentage($url, Mustache_LambdaHelper $helper) {
+    return function($value, Mustache_LambdaHelper $helper) {
+      return Yii::app()->numberFormatter->formatPercentage($helper->render($value));
+    };
+	}
 
   /**
    * Generates a valid HTML identifier based on name.
@@ -92,44 +93,34 @@ class CMustacheHtmlHelper extends CComponent {
 	 */
   public function getIdByName() {
     return function($name, Mustache_LambdaHelper $helper) {
-      return CHtml::encode($helper->render($name));
+      return CHtml::idByName($helper->render($name));
     };
   }
 
   /**
-   * Formats a number using the percentage format defined in the locale.
-   * @property percentage
+   * Generates a hidden field for storing persistent page states.
+   * @property pageStateField
    * @type Closure
    * @final
 	 */
-	public function getPercentage($url, Mustache_LambdaHelper $helper) {
+  public function getPageStateField() {
     return function($value, Mustache_LambdaHelper $helper) {
-      return Yii::app()->numberFormatter->formatPercentage($helper->render($value));
+      return CHtml::pageStateField($helper->render($value));
     };
-	}
+  }
 
   /**
-   * Encloses the given JavaScript within a script tag.
-   * @property script
+   * Registers a `refresh` meta tag.
+   * @property refresh
    * @type Closure
    * @final
 	 */
-	public function getScript() {
-    return function($text, Mustache_LambdaHelper $helper) {
-      return CHtml::script($helper->render($text));
+	public function getRefresh() {
+    return function($value, Mustache_LambdaHelper $helper) {
+      $parts=explode(';', $helper->render($value), 2);
+      $seconds=$parts[0];
+      $url=(count($parts)>1 ? $parts[1] : '');
+      return CHtml::refresh($seconds, $url);
     };
 	}
-
-  /**
-   * Creates a relative URL for the specified route.
-   * @property url
-   * @type Closure
-   * @final
-   */
-  public function getUrl() {
-    return function($route, Mustache_LambdaHelper $helper) {
-      $value=$helper->render($route);
-      return ($controller=Yii::app()->controller) ? $controller->createUrl($value) : Yii::app()->createUrl($value);
-    };
-  }
 }
