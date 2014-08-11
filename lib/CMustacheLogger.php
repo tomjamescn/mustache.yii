@@ -5,7 +5,7 @@
  */
 
 /**
- * Component used to log messages to the application logger.
+ * Component used to log messages from the view engine to the application logger.
  * @class CMustacheLogger
  * @extends Mustache_Logger_AbstractLogger
  * @constructor
@@ -46,7 +46,12 @@ class CMustacheLogger extends Mustache_Logger_AbstractLogger {
    * @param {array} [$context] The log context.
    */
   public function log($level, $message, array $context=array()) {
-    $value=CPropertyValue::ensureEnum($level, 'Mustache_Logger');
-    Yii::log($message, self::$levels[$value], static::CATEGORY);
+    if(!isset(self::$levels[$level])) throw new CException(Yii::t(
+      'yii',
+      'Invalid enumerable value "{value}". Please make sure it is among ({enum}).',
+      [ '{enum}'=>implode(', ', (new ReflectionClass('Mustache_Logger'))->getConstants()), '{value}'=>$value ]
+    ));
+
+    Yii::log($message, self::$levels[$level], static::CATEGORY);
   }
 }
