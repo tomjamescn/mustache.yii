@@ -143,11 +143,11 @@ class CMustacheFormatterHelper extends CMustacheHelper {
    * @type Closure
    * @final
    */
-	public function getPercentage($url, Mustache_LambdaHelper $helper) {
+  public function getPercentage($url, Mustache_LambdaHelper $helper) {
     return function($value, Mustache_LambdaHelper $helper) {
       return CHtml::encode(Yii::app()->numberFormatter->formatPercentage($helper->render($value)));
     };
-	}
+  }
 
   /**
    * Formats a timestamp using the short date format defined in the locale.

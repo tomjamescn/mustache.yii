@@ -40,12 +40,12 @@ class CMustacheHtmlHelper extends CMustacheHelper {
    * @type Closure
    * @final
    */
-	public function getAsset() {
+  public function getAsset() {
     return function($value, Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'path', [ 'hashByName'=>false ]);
       return CHtml::asset($args['path'], $args['hashByName']);
     };
-	}
+  }
 
   /**
    * Generates a hidden field for storing the token used to perform CSRF validation.
@@ -103,12 +103,12 @@ class CMustacheHtmlHelper extends CMustacheHelper {
    * @type Closure
    * @final
    */
-	public function getRefresh() {
+  public function getRefresh() {
     return function($value, Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'seconds', [ 'url'=>'' ]);
       return CHtml::refresh($args['seconds'], $args['url']);
     };
-	}
+  }
 
   /**
    * Translates a message to the specified language.
