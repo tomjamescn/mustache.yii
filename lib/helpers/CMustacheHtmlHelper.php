@@ -15,11 +15,11 @@ class CMustacheHtmlHelper extends CMustacheHelper {
 
   /**
    * Creates an absolute URL for the specified route.
-	 * See: `CController->createAbsoluteUrl()`
-	 * @property absoluteUrl
-	 * @type Closure
-	 * @final
-	 */
+   * See: `CController->createAbsoluteUrl()`
+   * @property absoluteUrl
+   * @type Closure
+   * @final
+   */
   public function getAbsoluteUrl() {
     return function($value, Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'route', [
@@ -35,11 +35,11 @@ class CMustacheHtmlHelper extends CMustacheHelper {
 
   /**
    * Generates the URL for the published assets.
-	 * See: `CHtml::asset()`
+   * See: `CHtml::asset()`
    * @property asset
    * @type Closure
    * @final
-	 */
+   */
 	public function getAsset() {
     return function($value, Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'path', [ 'hashByName'=>false ]);
@@ -61,11 +61,11 @@ class CMustacheHtmlHelper extends CMustacheHelper {
 
   /**
    * Generates a valid HTML identifier based on name.
-	 * See: `CHtml::idByName()`
+   * See: `CHtml::idByName()`
    * @property idByName
    * @type Closure
    * @final
-	 */
+   */
   public function getIdByName() {
     return function($value, Mustache_LambdaHelper $helper) {
       return CHtml::idByName($helper->render($value));
@@ -74,11 +74,11 @@ class CMustacheHtmlHelper extends CMustacheHelper {
 
   /**
    * Generates a hidden field for storing persistent page states.
-	 * See: `CHtml::pageStateField()`
+   * See: `CHtml::pageStateField()`
    * @property pageStateField
    * @type Closure
    * @final
-	 */
+   */
   public function getPageStateField() {
     return function($value, Mustache_LambdaHelper $helper) {
       return CHtml::pageStateField($helper->render($value));
@@ -87,22 +87,22 @@ class CMustacheHtmlHelper extends CMustacheHelper {
 
   /**
    * Returns a string that can be displayed on your Web page showing Powered-by-Yii information.
-	 * See: `Yii::powered()`
+   * See: `Yii::powered()`
    * @property powered
    * @type string
    * @final
-	 */
+   */
   public function getPowered() {
     return Yii::powered();
   }
 
   /**
-   * Registers a `refresh()` meta tag.
-	 * See: `CHtml::refresh`
+   * Registers a `refresh` meta tag.
+   * See: `CHtml::refresh()`
    * @property refresh
    * @type Closure
    * @final
-	 */
+   */
 	public function getRefresh() {
     return function($value, Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'seconds', [ 'url'=>'' ]);
@@ -112,7 +112,7 @@ class CMustacheHtmlHelper extends CMustacheHelper {
 
   /**
    * Translates a message to the specified language.
-	 * See: `Yii::t()`
+   * See: `Yii::t()`
    * @property translate
    * @type Closure
    * @final
@@ -132,7 +132,7 @@ class CMustacheHtmlHelper extends CMustacheHelper {
 
   /**
    * Creates a relative URL for the specified route.
-	 * See: `CController->createUrl()`
+   * See: `CController->createUrl()`
    * @property url
    * @type Closure
    * @final

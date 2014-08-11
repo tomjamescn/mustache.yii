@@ -122,14 +122,14 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
   }
 
   /**
-	 * Renders a view file.
-	 * @method renderFile
-	 * @param {CBaseController} $context The controller or widget who is rendering the view file.
-	 * @param {string} $sourceFile The view file path.
-	 * @param {array} $data The data to be passed to the view.
-	 * @param {bool} $return Whether the rendering result should be returned.
-	 * @return {string} The rendering result, or `null` if the rendering result is not needed.
-	 */
+   * Renders a view file.
+   * @method renderFile
+   * @param {CBaseController} $context The controller or widget who is rendering the view file.
+   * @param {string} $sourceFile The view file path.
+   * @param {array} $data The data to be passed to the view.
+   * @param {bool} $return Whether the rendering result should be returned.
+   * @return {string} The rendering result, or `null` if the rendering result is not needed.
+   */
   public function renderFile($context, $sourceFile, $data, $return) {
     if(!is_file($sourceFile)) throw new CException(Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$sourceFile ]));
 
