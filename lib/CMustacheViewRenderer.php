@@ -6,7 +6,7 @@
 Yii::import('mustache.CMustacheCache');
 Yii::import('mustache.CMustacheLoader');
 Yii::import('mustache.CMustacheLogger');
-Yii::import('mustache.helpers.CMustacheFormatterHelper');
+Yii::import('mustache.helpers.CMustacheFormatHelper');
 Yii::import('mustache.helpers.CMustacheHtmlHelper');
 Yii::import('mustache.helpers.CMustacheWidgetHelper');
 
@@ -88,7 +88,7 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
 
     $helpers=[
       'app'=>Yii::app(),
-      'format'=>new CMustacheFormatterHelper,
+      'format'=>new CMustacheFormatHelper,
       'html'=>new CMustacheHtmlHelper,
       'widget'=>new CMustacheWidgetHelper
     ];

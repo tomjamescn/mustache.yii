@@ -1,17 +1,17 @@
 <?php
 /**
- * Implementation of the `CMustacheFormatterHelper` class.
- * @module CMustacheFormatterHelper
+ * Implementation of the `CMustacheFormatHelper` class.
+ * @module CMustacheFormatHelper
  */
 Yii::import('mustache.CMustacheHelper');
 
 /**
  * Provides a collection of helper methods for formatting dates and numbers.
- * @class CMustacheFormatterHelper
+ * @class CMustacheFormatHelper
  * @extends CMustacheHelper
  * @constructor
  */
-class CMustacheFormatterHelper extends CMustacheHelper {
+class CMustacheFormatHelper extends CMustacheHelper {
 
   /**
    * Formats a number using the currency format defined in the locale.
