@@ -25,9 +25,9 @@ abstract class CMustacheHelper extends CComponent {
     $args=$defaultValues;
 
     $json=CJSON::decode($text);
-    if(!is_array($json)) $args[$defaultArgument]=$text;
-    else $args=CMap::mergeArray($args, $json);
+    if(is_array($json)) return CMap::mergeArray($args, $json);
 
+    $args[$defaultArgument]=$text;
     return $args;
   }
 }
