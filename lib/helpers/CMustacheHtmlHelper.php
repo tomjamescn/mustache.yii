@@ -1,14 +1,14 @@
 <?php
 /**
  * Implementation of the `CMustacheHtmlHelper` class.
- * @module CMustacheHtmlHelper
+ * @module helpers/CMustacheHtmlHelper
  */
 Yii::import('mustache.CMustacheHelper');
 
 /**
  * Provides a collection of helper methods for creating views.
- * @class CMustacheHtmlHelper
- * @extends CMustacheHelper
+ * @class mustache.helpers.CMustacheHtmlHelper
+ * @extends mustache.CMustacheHelper
  * @constructor
  */
 class CMustacheHtmlHelper extends CMustacheHelper {

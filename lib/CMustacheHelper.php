@@ -6,8 +6,8 @@
 
 /**
  * Provides the abstract base class for a view helper.
- * @class CMustacheHelper
- * @extends CComponent
+ * @class mustache.CMustacheHelper
+ * @extends system.base.CComponent
  * @constructor
  */
 abstract class CMustacheHelper extends CComponent {

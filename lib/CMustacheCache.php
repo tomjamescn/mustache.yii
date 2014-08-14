@@ -6,10 +6,10 @@
 
 /**
  * Component used to store compiled views to a cache application component.
- * @class CMustacheCache
+ * @class mustache.CMustacheCache
  * @extends Mustache_Cache_AbstractCache
  * @constructor
- * @param {ICache} $cache The cache application component that is used to store the compiled views.
+ * @param {system.caching.ICache} $cache The cache application component that is used to store the compiled views.
  */
 class CMustacheCache extends Mustache_Cache_AbstractCache {
 
@@ -28,7 +28,7 @@ class CMustacheCache extends Mustache_Cache_AbstractCache {
   /**
    * The underlying cache application component that is used to cache the compiled views.
    * @property cache
-   * @type ICache
+   * @type system.caching.ICache
    * @private
    */
   private $cache;

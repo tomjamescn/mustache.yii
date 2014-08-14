@@ -1,14 +1,14 @@
 <?php
 /**
  * Implementation of the `CMustacheFormatHelper` class.
- * @module CMustacheFormatHelper
+ * @module helpers/CMustacheFormatHelper
  */
 Yii::import('mustache.CMustacheHelper');
 
 /**
  * Provides a collection of helper methods for formatting dates and numbers.
- * @class CMustacheFormatHelper
- * @extends CMustacheHelper
+ * @class mustache.helpers.CMustacheFormatHelper
+ * @extends mustache.CMustacheHelper
  * @constructor
  */
 class CMustacheFormatHelper extends CMustacheHelper {

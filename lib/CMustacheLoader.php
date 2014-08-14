@@ -6,8 +6,8 @@
 
 /**
  * Component used to load views from the file system.
- * @class CMustacheLoader
- * @extends CComponent
+ * @class mustache.CMustacheLoader
+ * @extends system.base.CComponent
  * @constructor
  * @param {string} [$fileExtension] The extension name of the views.
  */

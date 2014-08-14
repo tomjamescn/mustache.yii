@@ -12,8 +12,8 @@ Yii::import('mustache.helpers.CMustacheWidgetHelper');
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
- * @class CMustacheViewRenderer
- * @extends CApplicationComponent
+ * @class mustache.CMustacheViewRenderer
+ * @extends system.base.CApplicationComponent
  * @constructor
  */
 class CMustacheViewRenderer extends CApplicationComponent implements IViewRenderer {
@@ -126,7 +126,7 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
   /**
    * Renders a view file.
    * @method renderFile
-   * @param {CBaseController} $context The controller or widget who is rendering the view file.
+   * @param {system.web.CBaseController} $context The controller or widget who is rendering the view file.
    * @param {string} $sourceFile The view file path.
    * @param {array} $data The data to be passed to the view.
    * @param {bool} $return Whether the rendering result should be returned.
