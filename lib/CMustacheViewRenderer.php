@@ -120,7 +120,7 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
 
     $this->engine=new Mustache_Engine($options);
     parent::init();
-    $this->helpers=null;
+    $this->helpers=[];
   }
 
   /**

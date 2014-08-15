@@ -3,7 +3,7 @@
  * Implementation of the `CMustacheFormatHelper` class.
  * @module helpers/CMustacheFormatHelper
  */
-Yii::import('mustache.CMustacheHelper');
+Yii::import('mustache.helpers.CMustacheHelper');
 
 /**
  * Provides a collection of helper methods for formatting dates and numbers.

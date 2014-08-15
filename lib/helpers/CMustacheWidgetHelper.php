@@ -3,7 +3,7 @@
  * Implementation of the `CMustacheWidgetHelper` class.
  * @module helpers/CMustacheWidgetHelper
  */
-Yii::import('mustache.CMustacheHelper');
+Yii::import('mustache.helpers.CMustacheHelper');
 
 /**
  * Provides a collection of helper methods for creating view widgets.

@@ -1,12 +1,12 @@
 <?php
 /**
  * Implementation of the `CMustacheHelper` class.
- * @module CMustacheHelper
+ * @module helpers/CMustacheHelper
  */
 
 /**
  * Provides the abstract base class for a view helper.
- * @class mustache.CMustacheHelper
+ * @class mustache.helpers.CMustacheHelper
  * @extends system.base.CComponent
  * @constructor
  */
