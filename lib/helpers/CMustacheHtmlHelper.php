@@ -3,7 +3,7 @@
  * Implementation of the `CMustacheHtmlHelper` class.
  * @module helpers/CMustacheHtmlHelper
  */
-Yii::import('mustache.CMustacheHelper');
+Yii::import('mustache.helpers.CMustacheHelper');
 
 /**
  * Provides a collection of helper methods for creating views.
@@ -12,26 +12,6 @@ Yii::import('mustache.CMustacheHelper');
  * @constructor
  */
 class CMustacheHtmlHelper extends CMustacheHelper {
-
-  /**
-   * Creates an absolute URL for the specified route.
-   * See: `CController->createAbsoluteUrl()`
-   * @property absoluteUrl
-   * @type Closure
-   * @final
-   */
-  public function getAbsoluteUrl() {
-    return function($value, Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'route', [
-        'ampersand'=>'&',
-        'params'=>[]
-      ]);
-
-      $controller=Yii::app()->controller;
-      $callback=($controller ? [ $controller, 'createAbsoluteUrl' ] : [ Yii::app(), 'createAbsoluteUrl' ]);
-      return call_user_func($callback, $args['route'], $args['params'], $args['ampersand']);
-    };
-  }
 
   /**
    * Generates the JavaScript that initiates an AJAX request.
@@ -67,25 +47,6 @@ class CMustacheHtmlHelper extends CMustacheHelper {
   }
 
   /**
-   * Generates a push button that can submit the current form in POST method.
-   * See: `CHtml::ajaxSubmitButton()`
-   * @property ajaxSubmitButton
-   * @type Closure
-   * @final
-   */
-  public function getAjaxSubmitButton() {
-    return function($value, Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'label', [
-        'ajaxOptions'=>[],
-        'htmlOptions'=>[],
-        'url'=>''
-      ]);
-
-      return CHtml::ajaxSubmitButton($args['label'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
-    };
-  }
-
-  /**
    * Generates a link that can initiate AJAX requests.
    * See: `CHtml::ajaxLink()`
    * @property ajaxLink
@@ -101,6 +62,25 @@ class CMustacheHtmlHelper extends CMustacheHelper {
       ]);
 
       return CHtml::ajaxLink($args['text'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
+    };
+  }
+
+  /**
+   * Generates a push button that can submit the current form in POST method.
+   * See: `CHtml::ajaxSubmitButton()`
+   * @property ajaxSubmitButton
+   * @type Closure
+   * @final
+   */
+  public function getAjaxSubmitButton() {
+    return function($value, Mustache_LambdaHelper $helper) {
+      $args=$this->parseArguments($helper->render($value), 'label', [
+        'ajaxOptions'=>[],
+        'htmlOptions'=>[],
+        'url'=>''
+      ]);
+
+      return CHtml::ajaxSubmitButton($args['label'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
     };
   }
 
@@ -178,6 +158,46 @@ class CMustacheHtmlHelper extends CMustacheHelper {
       ]);
 
       return CHtml::checkBox($args['name'], $args['checked'], $args['htmlOptions']);
+    };
+  }
+
+  /**
+   * Creates an absolute URL for the specified route.
+   * See: `CController->createAbsoluteUrl()`
+   * @property createAbsoluteUrl
+   * @type Closure
+   * @final
+   */
+  public function getCreateAbsoluteUrl() {
+    return function($value, Mustache_LambdaHelper $helper) {
+      $args=$this->parseArguments($helper->render($value), 'route', [
+        'ampersand'=>'&',
+        'params'=>[]
+      ]);
+
+      $controller=Yii::app()->controller;
+      $callback=($controller ? [ $controller, 'createAbsoluteUrl' ] : [ Yii::app(), 'createAbsoluteUrl' ]);
+      return call_user_func($callback, $args['route'], $args['params'], $args['ampersand']);
+    };
+  }
+
+  /**
+   * Creates a relative URL for the specified route.
+   * See: `CController->createUrl()`
+   * @property createUrl
+   * @type Closure
+   * @final
+   */
+  public function getCreateUrl() {
+    return function($value, Mustache_LambdaHelper $helper) {
+      $args=$this->parseArguments($helper->render($value), 'route', [
+        'ampersand'=>'&',
+        'params'=>[]
+      ]);
+
+      $controller=Yii::app()->controller;
+      $callback=($controller ? [ $controller, 'createUrl' ] : [ Yii::app(), 'createUrl' ]);
+      return call_user_func($callback, $args['route'], $args['params'], $args['ampersand']);
     };
   }
 
@@ -677,26 +697,6 @@ class CMustacheHtmlHelper extends CMustacheHelper {
       ]);
 
       return CHtml::encode(Yii::t($args['category'], $args['message'], $args['params'], $args['source'], $args['language']));
-    };
-  }
-
-  /**
-   * Creates a relative URL for the specified route.
-   * See: `CController->createUrl()`
-   * @property url
-   * @type Closure
-   * @final
-   */
-  public function getUrl() {
-    return function($value, Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'route', [
-        'ampersand'=>'&',
-        'params'=>[]
-      ]);
-
-      $controller=Yii::app()->controller;
-      $callback=($controller ? [ $controller, 'createUrl' ] : [ Yii::app(), 'createUrl' ]);
-      return call_user_func($callback, $args['route'], $args['params'], $args['ampersand']);
     };
   }
 
