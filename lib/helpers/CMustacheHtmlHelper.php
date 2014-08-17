@@ -420,6 +420,19 @@ class CMustacheHtmlHelper extends CMustacheHelper {
   }
 
   /**
+   * Inserts HTML line breaks before all newlines in a string.
+   * See: `nl2br()`
+   * @property nl2br
+   * @type Closure
+   * @final
+   */
+  public function getNl2br() {
+    return function($value, Mustache_LambdaHelper $helper) {
+      return nl2br($helper->render($value), CHtml::$closeSingleTags);
+    };
+  }
+
+  /**
    * Generates a number field input.
    * See: `CHtml::numberField()`
    * @property numberField
