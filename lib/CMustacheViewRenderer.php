@@ -106,6 +106,7 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
     if($this->enableCaching) {
       $cache=Yii::createComponent([
         'class'=>'system.caching.CFileCache',
+        'cacheFileSuffix'=>'.php',
         'cachePath'=>Yii::app()->runtimePath.'/views/mustache'
       ]);
 
