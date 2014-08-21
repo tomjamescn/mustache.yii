@@ -2,7 +2,7 @@
 [Mustache](http://mustache.github.io) templating for [Yii Framework](http://www.yiiframework.com).
 
 ## Documentation
-- [API Reference](http://dev.belin.io/mustache.yii/api)
+- [API Reference](http://cedx.github.io/mustache.yii/api)
 
 ## License
-[Mustache.yii](https://packagist.org/packages/cedx/yii-mustache) is distributed under the MIT License.
+[Mustache.yii](https://packagist.org/packages/cedx/mustache-yii) is distributed under the MIT License.
