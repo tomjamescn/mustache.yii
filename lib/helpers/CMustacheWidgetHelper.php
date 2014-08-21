@@ -12,4 +12,5 @@ Yii::import('mustache.helpers.CMustacheHelper');
  * @constructor
  */
 class CMustacheWidgetHelper extends CMustacheHelper {
+  // TODO Implement this class.
 }
