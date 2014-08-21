@@ -8,7 +8,7 @@ Yii::import('mustache.helpers.CMustacheHelper');
 /**
  * Provides a collection of helper methods for creating views.
  * @class mustache.helpers.CMustacheHtmlHelper
- * @extends mustache.CMustacheHelper
+ * @extends mustache.helpers.CMustacheHelper
  * @constructor
  */
 class CMustacheHtmlHelper extends CMustacheHelper {

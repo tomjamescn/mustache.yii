@@ -13,7 +13,7 @@
 abstract class CMustacheHelper extends CComponent {
 
   /**
-   * Parses the helper arguments.
+   * Parses the arguments of a parametized helper.
    * Arguments can be specified as a single value, or as a string in JSON format.
    * @method parseArguments
    * @param {string} $text The section content specifying the helper arguments.

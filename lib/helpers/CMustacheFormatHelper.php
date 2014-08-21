@@ -8,7 +8,7 @@ Yii::import('mustache.helpers.CMustacheHelper');
 /**
  * Provides a collection of helper methods for formatting dates and numbers.
  * @class mustache.helpers.CMustacheFormatHelper
- * @extends mustache.CMustacheHelper
+ * @extends mustache.helpers.CMustacheHelper
  * @constructor
  */
 class CMustacheFormatHelper extends CMustacheHelper {

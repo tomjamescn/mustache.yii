@@ -30,7 +30,7 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
   /**
    * Value indicating whether to enable the caching of compiled views.
    * @property enableCaching
-   * @type bool
+   * @type boolean
    * @default true
    */
   public $enableCaching=true;
@@ -130,7 +130,7 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
    * @param {system.web.CBaseController} $context The controller or widget who is rendering the view file.
    * @param {string} $sourceFile The view file path.
    * @param {array} $data The data to be passed to the view.
-   * @param {bool} $return Whether the rendering result should be returned.
+   * @param {boolean} $return Whether the rendering result should be returned.
    * @return {string} The rendering result, or `null` if the rendering result is not needed.
    */
   public function renderFile($context, $sourceFile, $data, $return) {

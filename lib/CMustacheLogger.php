@@ -6,7 +6,7 @@
 
 /**
  * Component used to log messages from the view engine to the application logger.
- * @class CMustacheLogger
+ * @class mustache.CMustacheLogger
  * @extends Mustache_Logger_AbstractLogger
  * @constructor
  */
@@ -16,6 +16,7 @@ class CMustacheLogger extends Mustache_Logger_AbstractLogger {
    * The category used when logging messages.
    * @property CATEGORY
    * @type string
+   * @static
    * @final
    */
   const CATEGORY='mustache';

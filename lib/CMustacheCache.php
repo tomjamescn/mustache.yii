@@ -21,6 +21,7 @@ class CMustacheCache extends Mustache_Cache_AbstractCache {
    * The string prefixed to every cache key in order to avoid name collisions.
    * @property KEY_PREFIX
    * @type string
+   * @static
    * @final
    */
   const KEY_PREFIX='mustache:';
@@ -48,7 +49,7 @@ class CMustacheCache extends Mustache_Cache_AbstractCache {
    * Loads a compiled view from cache.
    * @method load
    * @param {string} $key The key identifying the view to be loaded.
-   * @return {bool} `true` if the view was successfully loaded, otherwise `false`.
+   * @return {boolean} `true` if the view was successfully loaded, otherwise `false`.
    */
   public function load($key) {
     $value=$this->cache->get(static::KEY_PREFIX.$key);
