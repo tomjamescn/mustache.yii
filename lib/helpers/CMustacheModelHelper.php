@@ -8,7 +8,7 @@ Yii::import('mustache.helpers.CMustacheHelper');
 /**
  * Provides a collection of helper methods for creating views based on a data model.
  * @class mustache.helpers.CMustacheModelHelper
- * @extends mustache.CMustacheHelper
+ * @extends mustache.helpers.CMustacheHelper
  * @constructor
  * @param {system.base.CModel} $model The data model.
  */
@@ -53,7 +53,7 @@ class CMustacheModelHelper extends CMustacheHelper {
    * Checks if a property value is `null`.
    * @method __isset
    * @param {string} $name The property name or event name.
-   * @return {bool} `true` if the property value is `null`, otherwise `false`.
+   * @return {boolean} `true` if the property value is `null`, otherwise `false`.
    */
   public function __isset($name) {
     return parent::__isset($name) ? true : isset($this->model->$name);
@@ -346,8 +346,8 @@ class CMustacheModelHelper extends CMustacheHelper {
 	}
 
   /**
-   * TODO Creates an absolute URL for the specified route.
-   * The resulting URL contains the model primary key as query parameters.
+   * Creates an absolute URL for the specified route.
+   * If the model is an instance of `CActiveRecord`, the resulting URL contains the model primary key as query parameters.
    * See: `CController->createAbsoluteUrl()`
    * @property createAbsoluteUrl
    * @type Closure
@@ -357,7 +357,7 @@ class CMustacheModelHelper extends CMustacheHelper {
     return function($value, Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'route', [
         'ampersand'=>'&',
-        'params'=>$this->getUrlParams()
+        'params'=>static::getQueryParams($this->model)
       ]);
 
       $controller=Yii::app()->controller;
@@ -367,8 +367,8 @@ class CMustacheModelHelper extends CMustacheHelper {
   }
 
   /**
-   * TODO Creates a relative URL for the specified route.
-   * The resulting URL contains the model primary key as query parameters.
+   * Creates a relative URL for the specified route.
+   * If the model is an instance of `CActiveRecord`, the resulting URL contains the model primary key as query parameters.
    * See: `CController->createUrl()`
    * @property createUrl
    * @type Closure
@@ -378,7 +378,7 @@ class CMustacheModelHelper extends CMustacheHelper {
     return function($value, Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'route', [
         'ampersand'=>'&',
-        'params'=>$this->getUrlParams()
+        'params'=>static::getQueryParams($this->model)
       ]);
 
       $controller=Yii::app()->controller;
@@ -458,15 +458,19 @@ class CMustacheModelHelper extends CMustacheHelper {
   }
 
   /**
-   * TODO
-   * @method getUrlParams
-   * @return {array}
+   * Gets the URL query parameters corresponding to the primary key of the specified model.
+   * This methods returns an empty array if the model is not an instance of `CActiveRecord`.
+   * @method getQueryParams
+   * @param {system.base.CModel}
+   * @return {array} The query parameters corresponding to the model primary key, or an empty array if model has no primary key.
    */
-  private function getUrlParams() {
-    $keys=$this->model->tableSchema->primaryKey;
+  private static function getQueryParams(CModel $model) {
+    if(!$model instanceof CActiveRecord) return [];
+
+    $keys=$model->tableSchema->primaryKey;
     if(!is_array($keys)) $keys=[ $keys ];
 
-    $values=$this->model->primaryKey;
+    $values=$model->primaryKey;
     if(!is_array($values)) $values=[ $values ];
 
     return array_combine($keys, $values);
