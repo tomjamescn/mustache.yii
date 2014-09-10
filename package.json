@@ -5,7 +5,7 @@
   "dependencies": {
     "jshint": "^2.5.2",
     "shelljs": "^0.3.0",
-    "yuidocjs": "^0.3.50"
+    "yuidoc-bs": "^0.1.0"
   },
   "engines": {
     "node": ">=0.10.30"
@@ -29,7 +29,7 @@
     "make": "node bin/make.js"
   },
   "yuidoc": {
-    "logo": "http://dev.belin.io/mustache.yii/api/favicon.ico",
+    "logo": "http://dev.belin.io/mustache.yii/favicon.ico",
     "name": "Mustache.yii",
     "url": "https://packagist.org/packages/cedx/mustache-yii",
     "options": {

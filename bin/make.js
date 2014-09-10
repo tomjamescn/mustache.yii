@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-/* global cd, config, echo, exec, target */
+/* global cd, cp, config, echo, exec, target */
 
 /**
  * Build system.
- * @module bin/make
+ * @module bin.make
  */
 'use strict';
 
@@ -41,7 +41,8 @@ target.all=function() {
  */
 target.doc=function() {
   echo('Build the documentation...');
-  exec('yuidoc --extension ".php" --no-code --no-color');
+  exec('yuidoc-bs --extension ".php" --theme spacelab');
+  cp('-f', [ 'www/apple-touch-icon.png', 'www/favicon.ico' ], 'doc/api/assets');
 };
 
 /**
@@ -55,7 +56,7 @@ target.lint=function() {
   exec('jshint --verbose bin');
 
   echo('Static analysis of documentation comments...');
-  exec('yuidoc --extension ".php" --lint --no-color');
+  exec('yuidoc-bs --extension ".php" --lint');
 
   config.fatal=true;
 };
