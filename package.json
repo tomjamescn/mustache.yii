@@ -1,4 +1,5 @@
 {
+  "name": "mustache-yii",
   "private": true,
   "version": "0.1.0",
   "dependencies": {
@@ -26,5 +27,16 @@
   },
   "scripts": {
     "make": "node bin/make.js"
+  },
+  "yuidoc": {
+    "logo": "http://dev.belin.io/mustache.yii/api/favicon.ico",
+    "name": "Mustache.yii",
+    "url": "https://packagist.org/packages/cedx/mustache-yii",
+    "options": {
+      "linkNatives": false,
+      "outdir": "doc/api",
+      "paths": "lib",
+      "tabtospace": 2
+    }
   }
 }
