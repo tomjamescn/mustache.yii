@@ -1,7 +1,7 @@
 <?php
 /**
  * Implementation of the `CMustacheWidgetHelper` class.
- * @module helpers/CMustacheWidgetHelper
+ * @module helpers.CMustacheWidgetHelper
  */
 Yii::import('mustache.helpers.CMustacheHelper');
 

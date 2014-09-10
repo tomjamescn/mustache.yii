@@ -1,7 +1,7 @@
 <?php
 /**
  * Implementation of the `CMustacheModelHelper` class.
- * @module helpers/CMustacheModelHelper
+ * @module helpers.CMustacheModelHelper
  */
 Yii::import('mustache.helpers.CMustacheHelper');
 
@@ -461,7 +461,7 @@ class CMustacheModelHelper extends CMustacheHelper {
    * Gets the URL query parameters corresponding to the primary key of the specified model.
    * This methods returns an empty array if the model is not an instance of `CActiveRecord`.
    * @method getQueryParams
-   * @param {system.base.CModel}
+   * @param {system.base.CModel} $model The model providing the primary key.
    * @return {array} The query parameters corresponding to the model primary key, or an empty array if model has no primary key.
    */
   private static function getQueryParams(CModel $model) {
