@@ -1,4 +1,9 @@
 {
+  "author": "Cédric Belin <cedric@belin.io>",
+  "bugs": "https://github.com/cedx/mustache.yii/issues",
+  "description": "Mustache templating for Yii Framework.",
+  "homepage": "https://packagist.org/packages/cedx/mustache-yii",
+  "license": "MIT",
   "name": "mustache-yii",
   "private": true,
   "version": "0.1.0",
@@ -8,7 +13,7 @@
     "shelljs": "^0.3.0"
   },
   "engines": {
-    "node": ">=0.10.30"
+    "node": ">=0.10.0"
   },
   "jshintConfig": {
     "camelcase": true,
