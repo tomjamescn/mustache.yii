@@ -7,7 +7,7 @@
   "name": "mustache-yii",
   "private": true,
   "version": "0.1.0",
-  "dependencies": {
+  "devDependencies": {
     "archiver": "^0.11.0",
     "docgen-js": "^0.1.0",
     "jshint": "^2.5.2",
