@@ -1,4 +1,6 @@
 # Mustache.yii
+![Version](http://img.shields.io/packagist/v/cedx/mustache-yii.svg?style=flat-square) ![Downloads](http://img.shields.io/packagist/dt/cedx/mustache-yii.svg?style=flat-square) ![License](http://img.shields.io/packagist/l/cedx/mustache-yii.svg?style=flat-square)
+
 [Mustache](http://mustache.github.io) templating for [Yii Framework](http://www.yiiframework.com).
 
 ## Documentation
