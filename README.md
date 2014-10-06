@@ -1,7 +1,7 @@
 # Mustache.yii
 [![Version](http://img.shields.io/packagist/v/cedx/mustache-yii.svg?style=flat)](https://packagist.org/packages/cedx/mustache-yii) [![Downloads](http://img.shields.io/packagist/dt/cedx/mustache-yii.svg?style=flat)](https://packagist.org/packages/cedx/mustache-yii) [![License](http://img.shields.io/packagist/l/cedx/mustache-yii.svg?style=flat)](https://github.com/cedx/mustache.yii/blob/master/LICENSE.txt)
 
-[Mustache](http://mustache.github.io) templating for [Yii Framework](http://www.yiiframework.com).
+[Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), a high-performance [PHP](https://php.net) framework.
 
 ## Documentation
 - [API Reference](http://dev.belin.io/mustache.yii/api)
