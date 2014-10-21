@@ -24,7 +24,7 @@ class CMustacheCache extends Mustache_Cache_AbstractCache {
    * @static
    * @final
    */
-  const KEY_PREFIX='mustache:';
+  const KEY_PREFIX='Yii.CMustacheCache.';
 
   /**
    * The underlying cache application component that is used to cache the compiled views.

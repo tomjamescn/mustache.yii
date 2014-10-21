@@ -31,12 +31,12 @@ Now in your application configuration file, you can use the following view rende
 
 ```php
 return [
-  'aliases'=>[
-    'mustache'=>'ext.cedx.mustache-yii.lib',
+  'aliases' => [
+    'mustache' => 'ext.cedx.mustache-yii.lib',
   ],
-  'components'=>[
-    'viewRenderer'=>[
-      'class'=>'mustache.CMustacheViewRenderer'
+  'components' => [
+    'viewRenderer' => [
+      'class' => 'mustache.CMustacheViewRenderer'
     ]
   ]
 ];
