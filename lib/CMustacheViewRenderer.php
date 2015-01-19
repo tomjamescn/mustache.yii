@@ -8,7 +8,6 @@ Yii::import('mustache.CMustacheLoader');
 Yii::import('mustache.CMustacheLogger');
 Yii::import('mustache.helpers.CMustacheFormatHelper');
 Yii::import('mustache.helpers.CMustacheHtmlHelper');
-Yii::import('mustache.helpers.CMustacheWidgetHelper');
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
@@ -83,14 +82,13 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
   public function init() {
     if(!class_exists('Mustache_Autoloader', false)) {
       require_once Yii::getPathOfAlias($this->enginePathAlias).'/Autoloader.php';
-      Yii::registerAutoloader([ new Mustache_Autoloader, 'autoload' ]);
+      Yii::registerAutoloader([ new Mustache_Autoloader(), 'autoload' ]);
     }
 
     $helpers=[
       'app'=>Yii::app(),
-      'format'=>new CMustacheFormatHelper,
-      'html'=>new CMustacheHtmlHelper,
-      'widget'=>new CMustacheWidgetHelper
+      'format'=>new CMustacheFormatHelper(),
+      'html'=>new CMustacheHtmlHelper()
     ];
 
     $options=[
@@ -98,7 +96,7 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
       'entity_flags'=>ENT_QUOTES,
       'escape'=>function($value) { return CHtml::encode($value); },
       'helpers'=>CMap::mergeArray($helpers, $this->helpers),
-      'logger'=>new CMustacheLogger,
+      'logger'=>new CMustacheLogger(),
       'partials_loader'=>new CMustacheLoader($this->fileExtension),
       'strict_callables'=>true
     ];
