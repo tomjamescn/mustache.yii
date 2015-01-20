@@ -7,26 +7,12 @@
 - [API Reference](http://dev.belin.io/mustache.yii/api)
 
 ## Installing via [Composer](https://getcomposer.org)
-
-#### 1. Depend on it
-Add this to your project's `composer.json` file:
-
-```json
-{
-  "require": {
-    "cedx/mustache-yii": "*"
-  }
-}
-```
-
-#### 2. Install it
-From the command line, run:
+From a command prompt, run:
 
 ```shell
-$ php composer.phar install
+$ composer require cedx/mustache-yii
 ```
 
-#### 3. Import it
 Now in your application configuration file, you can use the following view renderer:
 
 ```php
@@ -43,6 +29,7 @@ return [
 ```
 
 Adjust the values as needed. Here, it's supposed that [`CApplication->extensionPath`](http://www.yiiframework.com/doc/api/1.1/CApplication#extensionPath-detail), that is the [`ext`](http://www.yiiframework.com/doc/guide/1.1/en/basics.namespace) root alias, has been set to Composer's `vendor` directory.
+The `mustache` alias must be defined prior to use the view renderer. The library classes rely on this alias to function properly.
 
 ## License
 [Mustache.yii](https://packagist.org/packages/cedx/mustache-yii) is distributed under the MIT License.
