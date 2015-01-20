@@ -1,6 +1,6 @@
 <?php
 /**
- * Implementation of the `CMustacheLoader` class.
+ * Implementation of the `mustache.CMustacheLoader` class.
  * @module CMustacheLoader
  */
 
@@ -54,6 +54,7 @@ class CMustacheLoader extends CComponent implements Mustache_Loader {
    * @method load
    * @param {string} $name The view name.
    * @return {string} The view contents.
+   * @throws {system.base.CException} The view file does not exist.
    */
   public function load($name) {
     if(!isset($this->views[$name])) {

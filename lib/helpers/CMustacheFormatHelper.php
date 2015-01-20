@@ -1,6 +1,6 @@
 <?php
 /**
- * Implementation of the `CMustacheFormatHelper` class.
+ * Implementation of the `mustache.helpers.CMustacheFormatHelper` class.
  * @module helpers.CMustacheFormatHelper
  */
 Yii::import('mustache.helpers.CMustacheHelper');

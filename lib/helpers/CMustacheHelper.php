@@ -1,6 +1,6 @@
 <?php
 /**
- * Implementation of the `CMustacheHelper` class.
+ * Implementation of the `mustache.helpers.CMustacheHelper` class.
  * @module helpers.CMustacheHelper
  */
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Implementation of the `CMustacheCache` class.
+ * Implementation of the `mustache.CMustacheCache` class.
  * @module CMustacheCache
  */
 

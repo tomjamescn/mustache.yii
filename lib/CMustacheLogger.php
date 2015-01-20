@@ -1,6 +1,6 @@
 <?php
 /**
- * Implementation of the `CMustacheLogger` class.
+ * Implementation of the `mustache.CMustacheLogger` class.
  * @module CMustacheLogger
  */
 
