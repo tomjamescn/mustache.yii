@@ -1,5 +1,5 @@
 # Mustache.yii
-[![Release](http://img.shields.io/packagist/v/cedx/mustache-yii.svg?style=flat)](https://packagist.org/packages/cedx/mustache-yii) [![License](http://img.shields.io/packagist/l/cedx/mustache-yii.svg?style=flat)](https://github.com/cedx/mustache.yii/blob/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/mustache-yii.svg?style=flat)](https://packagist.org/packages/cedx/mustache-yii)
+[![Release](http://img.shields.io/packagist/v/cedx/mustache-yii.svg?style=flat)](https://packagist.org/packages/cedx/mustache-yii) [![License](http://img.shields.io/packagist/l/cedx/mustache-yii.svg?style=flat)](https://github.com/cedx/mustache.yii/blob/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/mustache-yii.svg?style=flat)](https://packagist.org/packages/cedx/mustache-yii) [![Build](http://img.shields.io/travis/cedx/mustache.yii.svg?style=flat)](https://travis-ci.org/cedx/mustache.yii)
 
 [Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), high-performance [PHP](https://php.net) framework.
 
