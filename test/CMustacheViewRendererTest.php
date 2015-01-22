@@ -16,7 +16,7 @@ class CMustacheViewRendererTest extends CTestCase {
   /**
    * The data context of the tests.
    * @property model
-   * @type CMustacheViewRenderer
+   * @type mustache.CMustacheViewRenderer
    * @private
    */
   private $model;
