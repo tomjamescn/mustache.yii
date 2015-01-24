@@ -402,16 +402,14 @@ class CMustacheModelHelper extends CMustacheHelper {
   }
 
   /**
-   * TODO ??? Returns the first validation error of all model attributes.
+   * Returns the first validation error of all model attributes.
    * See: `CModel->getErrors()`
    * @property errors
    * @type array
    * @final
    */
-  private $errors;
-  public function getErrors(/* TODO $refresh=false OR $enableCaching=true */) {
-    if(!isset($this->errors)) $this->errors=array_map(function($errors) { return $errors[0]; }, $this->model->errors);
-    return $this->errors;
+  public function getErrors() {
+    return array_map(function($errors) { return $errors[0]; }, $this->model->errors);
   }
 
   /**
