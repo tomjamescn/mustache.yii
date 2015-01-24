@@ -428,7 +428,7 @@ class CMustacheHtmlHelper extends CMustacheHelper {
    */
   public function getNl2br() {
     return function($value, Mustache_LambdaHelper $helper) {
-      return nl2br($helper->render($value), CHtml::$closeSingleTags);
+      return preg_replace('/\r?\n/', CHtml::$closeSingleTags ? '<br />' : '<br>', $helper->render($value));
     };
   }
 
@@ -572,7 +572,7 @@ class CMustacheHtmlHelper extends CMustacheHelper {
 
   /**
    * Generates a search field input.
-   * See: `CHtml::inputField()`
+   * See: `CHtml::searchField()`
    * @property searchField
    * @type Closure
    * @final
