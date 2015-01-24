@@ -32,18 +32,6 @@ class CMustacheFormatHelperTest extends CTestCase {
   }
 
   /**
-   * Tests the `dateTime` property.
-   * @method testDateTime
-   */
-  public function testDateTime() {
-    $closure=(new CMustacheFormatHelper())->dateTime;
-    $this->assertEquals('Jan 1, 2015, 12:00:00 AM', $closure('1420066800', $this->helper));
-
-    $data='{ "timestamp": "1420066800", "dateWidth": "short", "timeWidth": "short" }';
-    $this->assertEquals('1/1/15, 12:00 AM', $closure($data, $this->helper));
-  }
-
-  /**
    * Tests the `decimal` property.
    * @method testDecimal
    */
