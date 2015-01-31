@@ -1,5 +1,5 @@
 # Mustache.yii
-[![Release](http://img.shields.io/packagist/v/cedx/mustache-yii.svg?style=flat)](https://packagist.org/packages/cedx/mustache-yii) [![License](http://img.shields.io/packagist/l/cedx/mustache-yii.svg?style=flat)](https://github.com/cedx/mustache.yii/blob/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/mustache-yii.svg?style=flat)](https://packagist.org/packages/cedx/mustache-yii) [![Build](http://img.shields.io/travis/cedx/mustache.yii.svg?style=flat)](https://travis-ci.org/cedx/mustache.yii)
+[![Release](http://img.shields.io/packagist/v/cedx/yii-mustache.svg?style=flat)](https://packagist.org/packages/cedx/yii-mustache) [![License](http://img.shields.io/packagist/l/cedx/yii-mustache.svg?style=flat)](https://github.com/cedx/mustache.yii/blob/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/yii-mustache.svg?style=flat)](https://packagist.org/packages/cedx/yii-mustache) [![Build](http://img.shields.io/travis/cedx/mustache.yii.svg?style=flat)](https://travis-ci.org/cedx/mustache.yii)
 
 [Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), high-performance [PHP](https://php.net) framework.
 
@@ -10,7 +10,7 @@
 From a command prompt, run:
 
 ```shell
-$ composer require cedx/mustache-yii
+$ composer require cedx/yii-mustache
 ```
 
 Now in your application configuration file, you can use the following view renderer:
@@ -18,7 +18,7 @@ Now in your application configuration file, you can use the following view rende
 ```php
 return [
   'aliases' => [
-    'mustache' => 'ext.cedx.mustache-yii.lib',
+    'mustache' => 'ext.cedx.yii-mustache.lib',
   ],
   'components' => [
     'viewRenderer' => [
@@ -32,4 +32,4 @@ Adjust the values as needed. Here, it's supposed that [`CApplication->extensionP
 The `mustache` alias must be defined prior to use the view renderer. The library classes rely on this alias to function properly.
 
 ## License
-[Mustache.yii](https://packagist.org/packages/cedx/mustache-yii) is distributed under the MIT License.
+[Mustache.yii](https://packagist.org/packages/cedx/yii-mustache) is distributed under the MIT License.

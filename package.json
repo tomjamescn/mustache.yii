@@ -2,16 +2,16 @@
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/mustache.yii/issues",
   "description": "Mustache templating for Yii Framework.",
-  "homepage": "https://packagist.org/packages/cedx/mustache-yii",
+  "homepage": "https://packagist.org/packages/cedx/yii-mustache",
   "license": "MIT",
-  "name": "mustache-yii",
+  "name": "yii-mustache",
   "private": true,
   "version": "0.1.0",
   "devDependencies": {
-    "david": "^6.1.1",
     "del": "^1.1.1",
     "docgen-js": "^0.0.1",
     "gulp": "^3.8.10",
+    "gulp-david": "^0.1.0",
     "gulp-jshint": "^1.9.0",
     "gulp-load-plugins": "^0.8.0",
     "gulp-zip": "^2.0.2"
@@ -40,7 +40,7 @@
   "yuidoc": {
     "logo": "http://dev.belin.io/mustache.yii/favicon.ico",
     "name": "Mustache.yii",
-    "url": "https://packagist.org/packages/cedx/mustache-yii",
+    "url": "https://packagist.org/packages/cedx/yii-mustache",
     "options": {
       "extension": ".php",
       "outdir": "doc/api",

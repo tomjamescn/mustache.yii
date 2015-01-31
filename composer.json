@@ -2,7 +2,7 @@
   "description": "Mustache templating for Yii Framework.",
   "homepage": "https://github.com/cedx/mustache.yii",
   "license": "MIT",
-  "name": "cedx/mustache-yii",
+  "name": "cedx/yii-mustache",
   "type": "library",
   "authors": [{
     "email": "cedric@belin.io",
