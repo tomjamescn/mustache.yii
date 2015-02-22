@@ -133,7 +133,7 @@ class ViewRenderer extends \CApplicationComponent implements \IViewRenderer {
    * @throws {system.base.CException} The specified view file is not found.
    */
   public function renderFile($context, $sourceFile, $data, $return) {
-    if(!is_file($sourceFile)) throw new \CException(Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$sourceFile ]));
+    if(!is_file($sourceFile)) throw new \CException(\Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$sourceFile ]));
 
     $input=file_get_contents($sourceFile);
     $values=\CMap::mergeArray([ 'this'=>$context ], is_array($data) ? $data : []);

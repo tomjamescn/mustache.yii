@@ -56,14 +56,14 @@ class I18nHelper extends Helper {
       if($isJson) $args=$this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
         $parts=explode(static::CATEGORY_SEPARATOR, $output, 2);
-        if(count($parts)!=2) throw new \CException(Yii::t('yii', 'Invalid translation format.'));
+        if(count($parts)!=2) throw new \CException(\Yii::t('yii', 'Invalid translation format.'));
         $args=\CMap::mergeArray($defaultArgs, [
           'category'=>$parts[0],
           'message'=>$parts[1]
         ]);
       }
 
-      return \CHtml::encode(Yii::t($args['category'], $args['message'], $args['params'], $args['source'], $args['language']));
+      return \CHtml::encode(\Yii::t($args['category'], $args['message'], $args['params'], $args['source'], $args['language']));
     };
   }
 }
