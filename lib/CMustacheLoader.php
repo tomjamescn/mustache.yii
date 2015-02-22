@@ -58,7 +58,7 @@ class CMustacheLoader extends CComponent implements Mustache_Loader {
    */
   public function load($name) {
     if(!isset($this->views[$name])) {
-      $fileName=$this->viewPath.'/'.$name;
+      $fileName=(mb_substr($name, 0, 2)=='//' ? Yii::app()->viewPath.'/'.mb_substr($name, 2) : $this->viewPath.'/'.$name);
       if(mb_substr($fileName, 0-mb_strlen($this->fileExtension))!=$this->fileExtension) $fileName.=$this->fileExtension;
 
       if(!is_file($fileName)) throw new CException(Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$fileName ]));
