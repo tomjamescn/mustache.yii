@@ -1,16 +1,17 @@
 <?php
 /**
- * Implementation of the `mustache.helpers.CMustacheHelper` class.
- * @module helpers.CMustacheHelper
+ * Implementation of the `belin\mustache\helpers\Helper` class.
+ * @module mustache.helpers.Helper
  */
+namespace belin\mustache\helpers;
 
 /**
  * Provides the abstract base class for a view helper.
- * @class mustache.helpers.CMustacheHelper
+ * @class belin.mustache.helpers.Helper
  * @extends system.base.CComponent
  * @constructor
  */
-abstract class CMustacheHelper extends CComponent {
+abstract class Helper extends \CComponent {
 
   /**
    * Parses the arguments of a parametized helper.
@@ -24,8 +25,8 @@ abstract class CMustacheHelper extends CComponent {
   protected function parseArguments($text, $defaultArgument, array $defaultValues=[]) {
     $args=$defaultValues;
 
-    $json=CJSON::decode($text);
-    if(is_array($json)) return CMap::mergeArray($args, $json);
+    $json=\CJSON::decode($text);
+    if(is_array($json)) return \CMap::mergeArray($args, $json);
 
     $args[$defaultArgument]=$text;
     return $args;

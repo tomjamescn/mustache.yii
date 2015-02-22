@@ -1,17 +1,18 @@
 <?php
 /**
- * Implementation of the `mustache.tests.CMustacheHtmlHelperTest` class.
- * @module test.helpers.CMustacheHtmlHelperTest
+ * Implementation of the `belin\test\mustache\HtmlHelperTest` class.
+ * @module mustache.test.helpers.HtmlHelperTest
  */
-Yii::import('mustache.helpers.CMustacheHtmlHelper');
+namespace belin\test\mustache\helpers;
+use \belin\mustache\helpers\HtmlHelper;
 
 /**
- * Tests the features of the `mustache.helpers.CMustacheHtmlHelper` class.
- * @class mustache.tests.helpers.CMustacheHtmlHelperTest
+ * Tests the features of the `belin\mustache\helpers\HtmlHelper` class.
+ * @class belin.test.mustache.helpers.HtmlHelperTest
  * @extends system.test.CTestCase
  * @constructor
  */
-class CMustacheHtmlHelperTest extends CTestCase {
+class HtmlHelperTest extends \CTestCase {
 
   /**
    * The engine used to render strings.
@@ -26,7 +27,7 @@ class CMustacheHtmlHelperTest extends CTestCase {
    * @method testCdata
    */
   public function testCdata() {
-    $closure=(new CMustacheHtmlHelper())->cdata;
+    $closure=(new HtmlHelper())->cdata;
     $this->assertEquals('<![CDATA[FooBar]]>', $closure('FooBar', $this->helper));
   }
 
@@ -35,12 +36,12 @@ class CMustacheHtmlHelperTest extends CTestCase {
    * @method testNl2br
    */
   public function testNl2br() {
-    $closure=(new CMustacheHtmlHelper())->nl2br;
+    $closure=(new HtmlHelper())->nl2br;
 
-    CHtml::$closeSingleTags=false;
+    \CHtml::$closeSingleTags=false;
     $this->assertEquals('Foo<br>Bar', $closure("Foo\r\nBar", $this->helper));
 
-    CHtml::$closeSingleTags=true;
+    \CHtml::$closeSingleTags=true;
     $this->assertEquals('Foo<br />Bar', $closure("Foo\r\nBar", $this->helper));
   }
 
@@ -50,6 +51,6 @@ class CMustacheHtmlHelperTest extends CTestCase {
    * @protected
    */
   protected function setUp() {
-    $this->helper=new Mustache_LambdaHelper(new Mustache_Engine(), new Mustache_Context());
+    $this->helper=new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());
   }
 }

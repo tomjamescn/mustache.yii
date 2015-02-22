@@ -1,19 +1,20 @@
 <?php
 /**
- * Implementation of the `mustache.CMustacheCache` class.
- * @module CMustacheCache
+ * Implementation of the `belin\mustache\Cache` class.
+ * @module mustache.Cache
  */
+namespace belin\mustache;
 
 /**
  * Component used to store compiled views to a cache application component.
- * @class mustache.CMustacheCache
- * @extends Mustache_Cache_AbstractCache
+ * @class belin.mustache.Cache
+ * @extends mustache.Mustache_Cache_AbstractCache
  * @constructor
  * @param {system.caching.ICache} $cache The cache application component that is used to store the compiled views.
  */
-class CMustacheCache extends Mustache_Cache_AbstractCache {
+class Cache extends \Mustache_Cache_AbstractCache {
 
-  public function __construct(ICache $cache) {
+  public function __construct(\ICache $cache) {
     $this->cache=$cache;
   }
 
@@ -24,7 +25,7 @@ class CMustacheCache extends Mustache_Cache_AbstractCache {
    * @static
    * @final
    */
-  const KEY_PREFIX='Yii.CMustacheCache.';
+  const KEY_PREFIX='belin.mustache.Cache:';
 
   /**
    * The underlying cache application component that is used to cache the compiled views.

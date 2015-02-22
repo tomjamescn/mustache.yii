@@ -16,8 +16,8 @@ Mustache_Autoloader::register();
 spl_autoload_register([ 'YiiBase','autoload' ]);
 
 // Initialize the test application.
+Yii::setPathOfAlias('belin', $rootPath.'/lib');
 Yii::createWebApplication([
-  'aliases'=>[ 'mustache'=>'application' ],
   'basePath'=>$rootPath.'/lib',
   'extensionPath'=>$rootPath.'/vendor'
 ]);

@@ -1,17 +1,18 @@
 <?php
 /**
- * Implementation of the `mustache.CMustacheLoader` class.
- * @module CMustacheLoader
+ * Implementation of the `belin\mustache\Loader` class.
+ * @module mustache.Loader
  */
+namespace belin\mustache;
 
 /**
  * Component used to load views from the file system.
- * @class mustache.CMustacheLoader
+ * @class belin.mustache.Loader
  * @extends system.base.CComponent
  * @constructor
  * @param {string} [$fileExtension] The extension name of the views.
  */
-class CMustacheLoader extends CComponent implements Mustache_Loader {
+class Loader extends \CComponent implements \Mustache_Loader {
 
   public function __construct($fileExtension='.mustache') {
     $this->fileExtension=$fileExtension;
@@ -42,10 +43,10 @@ class CMustacheLoader extends CComponent implements Mustache_Loader {
    * @final
    */
   public function getViewPath() {
-    $controller=Yii::app()->controller;
-    if(!$controller) return Yii::app()->viewPath;
+    $controller=\Yii::app()->controller;
+    if(!$controller) return \Yii::app()->viewPath;
 
-    $viewPath=($theme=Yii::app()->theme ? $theme->viewPath : $controller->viewPath);
+    $viewPath=($theme=\Yii::app()->theme ? $theme->viewPath : $controller->viewPath);
     return ($module=$controller->module) ? $viewPath.'/'.$module->id : $viewPath;
   }
 
@@ -58,10 +59,10 @@ class CMustacheLoader extends CComponent implements Mustache_Loader {
    */
   public function load($name) {
     if(!isset($this->views[$name])) {
-      $fileName=(mb_substr($name, 0, 2)=='//' ? Yii::app()->viewPath.'/'.mb_substr($name, 2) : $this->viewPath.'/'.$name);
+      $fileName=(mb_substr($name, 0, 2)=='//' ? \Yii::app()->viewPath.'/'.mb_substr($name, 2) : $this->viewPath.'/'.$name);
       if(mb_substr($fileName, 0-mb_strlen($this->fileExtension))!=$this->fileExtension) $fileName.=$this->fileExtension;
 
-      if(!is_file($fileName)) throw new CException(Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$fileName ]));
+      if(!is_file($fileName)) throw new \CException(\Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$fileName ]));
       $this->views[$name]=file_get_contents($fileName);
     }
 

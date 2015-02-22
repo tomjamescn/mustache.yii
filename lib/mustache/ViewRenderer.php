@@ -1,22 +1,21 @@
 <?php
 /**
- * Implementation of the `mustache.CMustacheViewRenderer` class.
- * @module CMustacheViewRenderer
+ * Implementation of the `belin\mustache\ViewRenderer` class.
+ * @module mustache.ViewRenderer
  */
-Yii::import('mustache.CMustacheCache');
-Yii::import('mustache.CMustacheLoader');
-Yii::import('mustache.CMustacheLogger');
-Yii::import('mustache.helpers.CMustacheFormatHelper');
-Yii::import('mustache.helpers.CMustacheHtmlHelper');
-Yii::import('mustache.helpers.CMustacheI18nHelper');
+namespace belin\mustache;
+
+use \belin\mustache\helpers\FormatHelper;
+use \belin\mustache\helpers\HtmlHelper;
+use \belin\mustache\helpers\I18nHelper;
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
- * @class mustache.CMustacheViewRenderer
+ * @class belin.mustache.ViewRenderer
  * @extends system.base.CApplicationComponent
  * @constructor
  */
-class CMustacheViewRenderer extends CApplicationComponent implements IViewRenderer {
+class ViewRenderer extends \CApplicationComponent implements \IViewRenderer {
 
   /**
    * The identifier of the cache application component that is used to cache the compiled views.
@@ -38,7 +37,7 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
   /**
    * The underlying Mustache template engine.
    * @property engine
-   * @type Mustache_Engine
+   * @type mustache.Mustache_Engine
    * @private
    */
   private $engine;
@@ -63,7 +62,7 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
    * Values prepended to the context stack, so they will be available in any view loaded by this instance.
    * Always `null` until the component is fully initialized.
    * @property helpers
-   * @type Mustache_HelperCollection
+   * @type mustache.Mustache_HelperCollection
    */
   private $helpers=[];
 
@@ -81,44 +80,44 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
    * @method init
    */
   public function init() {
-    if(!class_exists('Mustache_Autoloader', false)) {
-      require_once Yii::getPathOfAlias($this->enginePathAlias).'/Autoloader.php';
-      Yii::registerAutoloader([ new Mustache_Autoloader(), 'autoload' ]);
+    if(!class_exists('\Mustache_Autoloader', false)) {
+      require_once \Yii::getPathOfAlias($this->enginePathAlias).'/Autoloader.php';
+      \Yii::registerAutoloader([ new \Mustache_Autoloader(), 'autoload' ]);
     }
 
     $helpers=[
-      'app'=>Yii::app(),
-      'format'=>new CMustacheFormatHelper(),
-      'html'=>new CMustacheHtmlHelper(),
-      'i18n'=>new CMustacheI18nHelper()
+      'app'=>\Yii::app(),
+      'format'=>new FormatHelper(),
+      'html'=>new HtmlHelper(),
+      'i18n'=>new I18nHelper()
     ];
 
     $options=[
-      'charset'=>Yii::app()->charset,
+      'charset'=>\Yii::app()->charset,
       'entity_flags'=>ENT_QUOTES,
-      'escape'=>function($value) { return CHtml::encode($value); },
-      'helpers'=>CMap::mergeArray($helpers, $this->helpers),
-      'logger'=>new CMustacheLogger(),
-      'partials_loader'=>new CMustacheLoader($this->fileExtension),
+      'escape'=>function($value) { return \CHtml::encode($value); },
+      'helpers'=>\CMap::mergeArray($helpers, $this->helpers),
+      'logger'=>new Logger(),
+      'partials_loader'=>new Loader($this->fileExtension),
       'strict_callables'=>true
     ];
 
     if($this->enableCaching) {
-      $cache=Yii::createComponent([
+      $cache=\Yii::createComponent([
         'class'=>'system.caching.CFileCache',
-        'cachePath'=>Yii::app()->runtimePath.'/views/mustache'
+        'cachePath'=>\Yii::app()->runtimePath.'/views/mustache'
       ]);
 
       if($this->cacheID) {
-        $component=Yii::app()->getComponent($this->cacheID);
-        if($component instanceof ICache) $cache=$component;
+        $component=\Yii::app()->getComponent($this->cacheID);
+        if($component instanceof \ICache) $cache=$component;
       }
 
-      if($cache instanceof CFileCache && !is_dir($cache->cachePath)) @mkdir($cache->cachePath, 0777, true);
-      $options['cache']=new CMustacheCache($cache);
+      if($cache instanceof \CFileCache && !is_dir($cache->cachePath)) @mkdir($cache->cachePath, 0777, true);
+      $options['cache']=new Cache($cache);
     }
 
-    $this->engine=new Mustache_Engine($options);
+    $this->engine=new \Mustache_Engine($options);
     parent::init();
     $this->helpers=[];
   }
@@ -131,12 +130,13 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
    * @param {array} $data The data to be passed to the view.
    * @param {boolean} $return Whether the rendering result should be returned.
    * @return {string} The rendering result, or `null` if the rendering result is not needed.
+   * @throws {system.base.CException} The specified view file is not found.
    */
   public function renderFile($context, $sourceFile, $data, $return) {
-    if(!is_file($sourceFile)) throw new CException(Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$sourceFile ]));
+    if(!is_file($sourceFile)) throw new \CException(Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$sourceFile ]));
 
     $input=file_get_contents($sourceFile);
-    $values=CMap::mergeArray([ 'this'=>$context ], is_array($data) ? $data : []);
+    $values=\CMap::mergeArray([ 'this'=>$context ], is_array($data) ? $data : []);
     $output=$this->engine->render($input, $values);
 
     if($return) return $output;

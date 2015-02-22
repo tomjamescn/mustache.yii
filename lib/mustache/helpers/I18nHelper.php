@@ -1,25 +1,26 @@
 <?php
 /**
- * Implementation of the `CMustacheI18nHelper` class.
- * @module helpers.CMustacheI18nHelper
+ * Implementation of the `belin\mustache\helpers\I18nHelper` class.
+ * @module mustache.helpers.I18nHelper
  */
-Yii::import('mustache.helpers.CMustacheHelper');
+namespace belin\mustache\helpers;
 
 /**
  * Provides a collection of helper methods for internationalization.
- * @class mustache.helpers.CMustacheI18nHelper
- * @extends mustache.helpers.CMustacheHelper
+ * @class belin.mustache.helpers.I18nHelper
+ * @extends mustache.helpers.Helper
  * @constructor
  */
-class CMustacheI18nHelper extends CMustacheHelper {
+class I18nHelper extends Helper {
 
   /**
    * String used to separate the category from the message in a translation.
    * @property categorySeparator
    * @type string
-   * @default ":"
+   * @static
+   * @final
    */
-  public $categorySeparator=':';
+  const CATEGORY_SEPARATOR=':';
 
   /**
    * Translates a message.
@@ -41,7 +42,7 @@ class CMustacheI18nHelper extends CMustacheHelper {
    * @throws {system.CException} The specified message has an invalid format.
    */
   public function getTranslate() {
-    return function($value, Mustache_LambdaHelper $helper) {
+    return function($value, \Mustache_LambdaHelper $helper) {
       $output=trim($value);
       $isJson=(mb_substr($output, 0, 1)=='{' && mb_substr($output, mb_strlen($output)-1)=='}');
 
@@ -54,15 +55,15 @@ class CMustacheI18nHelper extends CMustacheHelper {
 
       if($isJson) $args=$this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
-        $parts=explode($this->categorySeparator, $output, 2);
-        if(count($parts)!=2) throw new CException(Yii::t('yii', 'Invalid translation format.'));
-        $args=CMap::mergeArray($defaultArgs, [
+        $parts=explode(static::CATEGORY_SEPARATOR, $output, 2);
+        if(count($parts)!=2) throw new \CException(Yii::t('yii', 'Invalid translation format.'));
+        $args=\CMap::mergeArray($defaultArgs, [
           'category'=>$parts[0],
           'message'=>$parts[1]
         ]);
       }
 
-      return CHtml::encode(Yii::t($args['category'], $args['message'], $args['params'], $args['source'], $args['language']));
+      return \CHtml::encode(Yii::t($args['category'], $args['message'], $args['params'], $args['source'], $args['language']));
     };
   }
 }

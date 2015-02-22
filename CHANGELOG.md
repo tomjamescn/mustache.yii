@@ -1,6 +1,9 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache.yii](https://packagist.org/packages/cedx/yii-mustache) library.
 
+#### Version 0.2.0
+- Breaking change: ported the library API to [namespaces](http://php.net/manual/en/language.namespaces.php).
+
 #### Version 0.1.1
 - Added `CMustacheI18nHelper` helper for internationalization.
 - Breaking change: moved `CMustacheHtmlHelper::getTranslate()` method to `CMustacheI18nHelper` class.

@@ -1,36 +1,37 @@
 <?php
 /**
- * Implementation of the `mustache.tests.CMustacheHelperTest` class.
- * @module test.helpers.CMustacheHelperTest
+ * Implementation of the `belin\test\mustache\HelperTest` class.
+ * @module mustache.test.helpers.HelperTest
  */
-Yii::import('mustache.helpers.CMustacheHelper');
+namespace belin\test\mustache\helpers;
+use \belin\mustache\helpers\Helper;
 
 /**
- * Publicly exposes the features of the `CMustacheHelper` class.
- * @class tests.CMustacheHelperStub
- * @extends CMustacheHelper
+ * Publicly exposes the features of the `Helper` class.
+ * @class belin.test.mustache.helpers.HelperStub
+ * @extends belin.mustache.helpers.Helper
  * @constructor
  */
-class CMustacheHelperStub extends CMustacheHelper {
+class HelperStub extends Helper {
   public function parseArguments($text, $defaultArgument, array $defaultValues=[]) {
     return parent::parseArguments($text, $defaultArgument, $defaultValues);
   }
 }
 
 /**
- * Tests the features of the `mustache.helpers.CMustacheHelper` class.
- * @class mustache.tests.helpers.CMustacheHelperTest
+ * Tests the features of the `belin\mustache\helpers\Helper` class.
+ * @class belin.test.mustache.helpers.HelperTest
  * @extends system.test.CTestCase
  * @constructor
  */
-class CMustacheHelperTest extends CTestCase {
+class HelperTest extends \CTestCase {
 
   /**
    * Tests the `parseArguments` method.
    * @method testParseArguments
    */
   public function testParseArguments() {
-    $model=new CMustacheHelperStub();
+    $model=new HelperStub();
 
     $expected=[ 'foo'=>'FooBar' ];
     $this->assertEquals($expected, $model->parseArguments('FooBar', 'foo'));

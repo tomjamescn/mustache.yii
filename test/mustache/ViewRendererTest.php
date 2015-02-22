@@ -1,22 +1,23 @@
 <?php
 /**
- * Implementation of the `mustache.tests.CMustacheViewRendererTest` class.
- * @module test.CMustacheViewRendererTest
+ * Implementation of the `belin\test\mustache\ViewRendererTest` class.
+ * @module mustache.test.ViewRendererTest
  */
-Yii::import('mustache.CMustacheViewRenderer');
+namespace belin\test\mustache;
+use \belin\mustache\ViewRenderer;
 
 /**
- * Tests the features of the `mustache.CMustacheViewRenderer` class.
- * @class mustache.tests.CMustacheViewRendererTest
+ * Tests the features of the `belin\mustache\ViewRenderer` class.
+ * @class belin.mustache.test.ViewRendererTest
  * @extends system.test.CTestCase
  * @constructor
  */
-class CMustacheViewRendererTest extends CTestCase {
+class ViewRendererTest extends \CTestCase {
 
   /**
    * The data context of the tests.
    * @property model
-   * @type mustache.CMustacheViewRenderer
+   * @type mustache.ViewRenderer
    * @private
    */
   private $model;
@@ -49,7 +50,7 @@ class CMustacheViewRendererTest extends CTestCase {
    * @protected
    */
   protected function setUp() {
-    $this->model=new CMustacheViewRenderer();
+    $this->model=new ViewRenderer();
     $this->model->enableCaching=false;
     $this->model->init();
   }
