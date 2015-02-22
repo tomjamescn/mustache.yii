@@ -8,6 +8,7 @@ Yii::import('mustache.CMustacheLoader');
 Yii::import('mustache.CMustacheLogger');
 Yii::import('mustache.helpers.CMustacheFormatHelper');
 Yii::import('mustache.helpers.CMustacheHtmlHelper');
+Yii::import('mustache.helpers.CMustacheI18nHelper');
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
@@ -88,7 +89,8 @@ class CMustacheViewRenderer extends CApplicationComponent implements IViewRender
     $helpers=[
       'app'=>Yii::app(),
       'format'=>new CMustacheFormatHelper(),
-      'html'=>new CMustacheHtmlHelper()
+      'html'=>new CMustacheHtmlHelper(),
+      'i18n'=>new CMustacheI18nHelper()
     ];
 
     $options=[

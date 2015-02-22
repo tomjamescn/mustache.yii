@@ -694,26 +694,6 @@ class CMustacheHtmlHelper extends CMustacheHelper {
   }
 
   /**
-   * Translates a message to the specified language.
-   * See: `Yii::t()`
-   * @property translate
-   * @type Closure
-   * @final
-   */
-  public function getTranslate() {
-    return function($value, Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'message', [
-        'category'=>'application',
-        'language'=>null,
-        'params'=>[],
-        'source'=>null
-      ]);
-
-      return CHtml::encode(Yii::t($args['category'], $args['message'], $args['params'], $args['source'], $args['language']));
-    };
-  }
-
-  /**
    * Generates a URL field input.
    * See: `CHtml::urlField()`
    * @property urlField
