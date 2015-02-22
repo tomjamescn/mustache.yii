@@ -46,7 +46,7 @@ class CMustacheLoader extends CComponent implements Mustache_Loader {
     if(!$controller) return Yii::app()->viewPath;
 
     $viewPath=($theme=Yii::app()->theme ? $theme->viewPath : $controller->viewPath);
-    return $module=$controller->module ? $viewPath.'/'.$module->id : $viewPath;
+    return ($module=$controller->module) ? $viewPath.'/'.$module->id : $viewPath;
   }
 
   /**
