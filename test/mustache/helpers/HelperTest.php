@@ -4,7 +4,7 @@
  * @module mustache.test.helpers.HelperTest
  */
 namespace belin\test\mustache\helpers;
-use \belin\mustache\helpers\Helper;
+use belin\mustache\helpers\Helper;
 
 /**
  * Publicly exposes the features of the `Helper` class.

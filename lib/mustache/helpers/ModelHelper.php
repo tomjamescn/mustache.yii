@@ -360,8 +360,8 @@ class ModelHelper extends Helper {
         'params'=>static::getQueryParams($this->model)
       ]);
 
-      $controller=\Yii::app()->controller;
-      $callback=($controller ? [ $controller, 'createAbsoluteUrl' ] : [ \Yii::app(), 'createAbsoluteUrl' ]);
+      $controller=\Yii::$app->controller;
+      $callback=($controller ? [ $controller, 'createAbsoluteUrl' ] : [ \Yii::$app, 'createAbsoluteUrl' ]);
       return call_user_func($callback, $args['route'], $args['params'], $args['ampersand']);
     };
   }
@@ -381,8 +381,8 @@ class ModelHelper extends Helper {
         'params'=>static::getQueryParams($this->model)
       ]);
 
-      $controller=\Yii::app()->controller;
-      $callback=($controller ? [ $controller, 'createUrl' ] : [ \Yii::app(), 'createUrl' ]);
+      $controller=\Yii::$app->controller;
+      $callback=($controller ? [ $controller, 'createUrl' ] : [ \Yii::$app, 'createUrl' ]);
       return call_user_func($callback, $args['route'], $args['params'], $args['ampersand']);
     };
   }

@@ -4,7 +4,7 @@
  * @module mustache.test.helpers.FormatHelperTest
  */
 namespace belin\test\mustache\helpers;
-use \belin\mustache\helpers\FormatHelper;
+use belin\mustache\helpers\FormatHelper;
 
 /**
  * Tests the features of the `belin\mustache\helpers\FormatHelper` class.

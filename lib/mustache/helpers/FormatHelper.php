@@ -23,7 +23,7 @@ class FormatHelper extends Helper {
   public function getCurrency() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'value', [ 'currency'=>'USD' ]);
-      return \CHtml::encode(\Yii::app()->numberFormatter->formatCurrency($args['value'], $args['currency']));
+      return \CHtml::encode(\Yii::$app->numberFormatter->formatCurrency($args['value'], $args['currency']));
     };
   }
 
@@ -41,7 +41,7 @@ class FormatHelper extends Helper {
         'timeWidth'=>'medium'
       ]);
 
-      return \CHtml::encode(\Yii::app()->dateFormatter->formatDateTime($args['timestamp'], $args['dateWidth'] , $args['timeWidth']));
+      return \CHtml::encode(\Yii::$app->dateFormatter->formatDateTime($args['timestamp'], $args['dateWidth'] , $args['timeWidth']));
     };
   }
 
@@ -54,7 +54,7 @@ class FormatHelper extends Helper {
    */
   public function getDecimal() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->numberFormatter->formatDecimal($helper->render($value)));
+      return \CHtml::encode(\Yii::$app->numberFormatter->formatDecimal($helper->render($value)));
     };
   }
 
@@ -67,7 +67,7 @@ class FormatHelper extends Helper {
    */
   public function getFullDate() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->dateFormatter->formatDateTime($helper->render($value), 'full', null));
+      return \CHtml::encode(\Yii::$app->dateFormatter->formatDateTime($helper->render($value), 'full', null));
     };
   }
 
@@ -80,7 +80,7 @@ class FormatHelper extends Helper {
    */
   public function getFullTime() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->dateFormatter->formatDateTime($helper->render($value), null, 'full'));
+      return \CHtml::encode(\Yii::$app->dateFormatter->formatDateTime($helper->render($value), null, 'full'));
     };
   }
 
@@ -93,7 +93,7 @@ class FormatHelper extends Helper {
    */
   public function getLongDate() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->dateFormatter->formatDateTime($helper->render($value), 'long', null));
+      return \CHtml::encode(\Yii::$app->dateFormatter->formatDateTime($helper->render($value), 'long', null));
     };
   }
 
@@ -106,7 +106,7 @@ class FormatHelper extends Helper {
    */
   public function getLongTime() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->dateFormatter->formatDateTime($helper->render($value), null, 'long'));
+      return \CHtml::encode(\Yii::$app->dateFormatter->formatDateTime($helper->render($value), null, 'long'));
     };
   }
 
@@ -119,7 +119,7 @@ class FormatHelper extends Helper {
    */
   public function getMediumDate() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->dateFormatter->formatDateTime($helper->render($value), 'medium', null));
+      return \CHtml::encode(\Yii::$app->dateFormatter->formatDateTime($helper->render($value), 'medium', null));
     };
   }
 
@@ -132,7 +132,7 @@ class FormatHelper extends Helper {
    */
   public function getMediumTime() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->dateFormatter->formatDateTime($helper->render($value), null, 'medium'));
+      return \CHtml::encode(\Yii::$app->dateFormatter->formatDateTime($helper->render($value), null, 'medium'));
     };
   }
 
@@ -145,7 +145,7 @@ class FormatHelper extends Helper {
    */
   public function getPercentage() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->numberFormatter->formatPercentage($helper->render($value)));
+      return \CHtml::encode(\Yii::$app->numberFormatter->formatPercentage($helper->render($value)));
     };
   }
 
@@ -158,7 +158,7 @@ class FormatHelper extends Helper {
    */
   public function getShortDate() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->dateFormatter->formatDateTime($helper->render($value), 'short', null));
+      return \CHtml::encode(\Yii::$app->dateFormatter->formatDateTime($helper->render($value), 'short', null));
     };
   }
 
@@ -171,7 +171,7 @@ class FormatHelper extends Helper {
    */
   public function getShortTime() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode(\Yii::app()->dateFormatter->formatDateTime($helper->render($value), null, 'short'));
+      return \CHtml::encode(\Yii::$app->dateFormatter->formatDateTime($helper->render($value), null, 'short'));
     };
   }
 }

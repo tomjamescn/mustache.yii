@@ -4,7 +4,7 @@
  * @module mustache.test.ViewRendererTest
  */
 namespace belin\test\mustache;
-use \belin\mustache\ViewRenderer;
+use belin\mustache\ViewRenderer;
 
 /**
  * Tests the features of the `belin\mustache\ViewRenderer` class.

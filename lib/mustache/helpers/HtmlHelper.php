@@ -175,8 +175,8 @@ class HtmlHelper extends Helper {
         'params'=>[]
       ]);
 
-      $controller=\Yii::app()->controller;
-      $callback=($controller ? [ $controller, 'createAbsoluteUrl' ] : [ \Yii::app(), 'createAbsoluteUrl' ]);
+      $controller=\Yii::$app->controller;
+      $callback=($controller ? [ $controller, 'createAbsoluteUrl' ] : [ \Yii::$app, 'createAbsoluteUrl' ]);
       return call_user_func($callback, $args['route'], $args['params'], $args['ampersand']);
     };
   }
@@ -195,8 +195,8 @@ class HtmlHelper extends Helper {
         'params'=>[]
       ]);
 
-      $controller=\Yii::app()->controller;
-      $callback=($controller ? [ $controller, 'createUrl' ] : [ \Yii::app(), 'createUrl' ]);
+      $controller=\Yii::$app->controller;
+      $callback=($controller ? [ $controller, 'createUrl' ] : [ \Yii::$app, 'createUrl' ]);
       return call_user_func($callback, $args['route'], $args['params'], $args['ampersand']);
     };
   }
@@ -209,7 +209,7 @@ class HtmlHelper extends Helper {
    * @final
    */
   public function getCsrfTokenField() {
-    $request=\Yii::app()->request;
+    $request=\Yii::$app->request;
     return !$request->enableCsrfValidation ? '' : \CHtml::hiddenField($request->csrfTokenName, $request->csrfToken, [ 'id'=>false ]);
   }
 

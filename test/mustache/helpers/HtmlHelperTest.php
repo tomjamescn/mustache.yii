@@ -4,7 +4,7 @@
  * @module mustache.test.helpers.HtmlHelperTest
  */
 namespace belin\test\mustache\helpers;
-use \belin\mustache\helpers\HtmlHelper;
+use belin\mustache\helpers\HtmlHelper;
 
 /**
  * Tests the features of the `belin\mustache\helpers\HtmlHelper` class.

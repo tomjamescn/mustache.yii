@@ -2,11 +2,11 @@
   "author": "Cédric Belin <cedric@belin.io>",
   "bugs": "https://github.com/cedx/mustache.yii/issues",
   "description": "Mustache templating for Yii Framework.",
-  "homepage": "https://packagist.org/packages/cedx/yii-mustache",
+  "homepage": "https://packagist.org/packages/cedx/yii2-mustache",
   "license": "MIT",
-  "name": "yii-mustache",
+  "name": "yii2-mustache",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "devDependencies": {
     "del": "^1.1.1",
     "docgen-js": "^0.0.1",
@@ -40,7 +40,7 @@
   "yuidoc": {
     "logo": "http://dev.belin.io/mustache.yii/favicon.ico",
     "name": "Mustache.yii",
-    "url": "https://packagist.org/packages/cedx/yii-mustache",
+    "url": "https://packagist.org/packages/cedx/yii2-mustache",
     "options": {
       "extension": ".php",
       "outdir": "doc/api",

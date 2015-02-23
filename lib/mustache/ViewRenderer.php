@@ -5,9 +5,13 @@
  */
 namespace belin\mustache;
 
-use \belin\mustache\helpers\FormatHelper;
-use \belin\mustache\helpers\HtmlHelper;
-use \belin\mustache\helpers\I18nHelper;
+use belin\mustache\helpers\FormatHelper;
+use belin\mustache\helpers\HtmlHelper;
+use belin\mustache\helpers\I18nHelper;
+use yii\caching\FileCache;
+use yii\helpers\ArrayHelper;
+use yii\helpers\FileHelper;
+use yii\helpers\Html;
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
@@ -15,24 +19,24 @@ use \belin\mustache\helpers\I18nHelper;
  * @extends system.base.CApplicationComponent
  * @constructor
  */
-class ViewRenderer extends \CApplicationComponent implements \IViewRenderer {
+class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
-   * The identifier of the cache application component that is used to cache the compiled views.
-   * If `null` or empty, defaults to using a `system.caching.CFileCache` component.
-   * @property cacheID
+   * The path alias of the directory containing the Mustache engine.
+   * @property ENGINE_PATH
    * @type string
-   * @default null
+   * @final
+   * @static
    */
-  public $cacheID=null;
+  const ENGINE_PATH='@vendor/mustache/mustache/src/Mustache';
 
   /**
-   * Value indicating whether to enable the caching of compiled views.
-   * @property enableCaching
-   * @type boolean
-   * @default true
+   * The directory or path alias pointing to where Mustache cache will be stored.
+   * @property cachePath
+   * @type string
+   * @default "@runtime/mustache/cache"
    */
-  public $enableCaching=true;
+  public $cachePath='@runtime/mustache/cache';
 
   /**
    * The underlying Mustache template engine.
@@ -41,22 +45,6 @@ class ViewRenderer extends \CApplicationComponent implements \IViewRenderer {
    * @private
    */
   private $engine;
-
-  /**
-   * The path alias of the directory containing the Mustache template engine.
-   * @property enginePathAlias
-   * @type string
-   * @default "ext.mustache.mustache.src.Mustache"
-   */
-  public $enginePathAlias='ext.mustache.mustache.src.Mustache';
-
-  /**
-   * The extension name of the view files.
-   * @property fileExtension
-   * @type string
-   * @default ".mustache"
-   */
-  public $fileExtension='.mustache';
 
   /**
    * Values prepended to the context stack, so they will be available in any view loaded by this instance.
@@ -81,22 +69,22 @@ class ViewRenderer extends \CApplicationComponent implements \IViewRenderer {
    */
   public function init() {
     if(!class_exists('\Mustache_Autoloader', false)) {
-      require_once \Yii::getPathOfAlias($this->enginePathAlias).'/Autoloader.php';
+      require_once \Yii::getAlias($this->enginePath).'/Autoloader.php';
       \Yii::registerAutoloader([ new \Mustache_Autoloader(), 'autoload' ]);
     }
 
     $helpers=[
-      'app'=>\Yii::app(),
+      'app'=>\Yii::$app,
       'format'=>new FormatHelper(),
       'html'=>new HtmlHelper(),
       'i18n'=>new I18nHelper()
     ];
 
     $options=[
-      'charset'=>\Yii::app()->charset,
+      'charset'=>\Yii::$app->charset,
       'entity_flags'=>ENT_QUOTES,
-      'escape'=>function($value) { return \CHtml::encode($value); },
-      'helpers'=>\CMap::mergeArray($helpers, $this->helpers),
+      'escape'=>function($value) { return Html::encode($value); },
+      'helpers'=>ArrayHelper::merge($helpers, $this->helpers),
       'logger'=>new Logger(),
       'partials_loader'=>new Loader($this->fileExtension),
       'strict_callables'=>true
@@ -104,16 +92,16 @@ class ViewRenderer extends \CApplicationComponent implements \IViewRenderer {
 
     if($this->enableCaching) {
       $cache=\Yii::createComponent([
-        'class'=>'system.caching.CFileCache',
-        'cachePath'=>\Yii::app()->runtimePath.'/views/mustache'
+        'class'=>'yii\caching\FileCache',
+        'cachePath'=>'@runtime/views/mustache'
       ]);
 
       if($this->cacheID) {
-        $component=\Yii::app()->getComponent($this->cacheID);
+        $component=\Yii::$app->getComponent($this->cacheID);
         if($component instanceof \ICache) $cache=$component;
       }
 
-      if($cache instanceof \CFileCache && !is_dir($cache->cachePath)) @mkdir($cache->cachePath, 0777, true);
+      if($cache instanceof FileCache && !is_dir($cache->cachePath)) FileHelper::createDirectory($cache->cachePath);
       $options['cache']=new Cache($cache);
     }
 

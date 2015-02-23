@@ -3,7 +3,7 @@
   "homepage": "https://github.com/cedx/mustache.yii",
   "license": "MIT",
   "minimum-stability": "dev",
-  "name": "cedx/yii-mustache",
+  "name": "cedx/yii2-mustache",
   "prefer-stable": true,
   "type": "library",
   "authors": [{
@@ -20,11 +20,12 @@
   ],
   "require": {
     "php": ">=5.4.0",
-    "mustache/mustache": "^2.7.0"
+    "mustache/mustache": "^2.7.0",
+    "yiisoft/yii2-composer": "^2.0.2"
   },
   "require-dev": {
     "phpunit/phpunit-story": "^1.0.2",
-    "yiisoft/yii": "^1.1.16"
+    "yiisoft/yii2": "^2.0.2"
   },
   "support": {
     "issues": "https://github.com/cedx/mustache.yii/issues"
