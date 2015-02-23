@@ -3,21 +3,23 @@
  * Entry point of the unit tests.
  * @module test.index
  */
+use yii\console\Application;
+
+// Set the environment.
+define('YII_DEBUG', true);
+define('YII_ENV', 'test');
 
 // Load the dependencies.
 $rootPath=dirname(__DIR__);
-require_once $rootPath.'/vendor/yiisoft/yii/framework/yiit.php';
-require_once $rootPath.'/vendor/mustache/mustache/src/Mustache/Autoloader.php';
+require_once $rootPath.'/vendor/autoload.php';
+require_once $rootPath.'/vendor/yiisoft/yii2/Yii.php';
 
-// Register class loaders.
-spl_autoload_unregister([ 'YiiBase','autoload' ]);
-require_once $rootPath.'/vendor/phpunit/phpunit-story/PHPUnit/Extensions/Story/Autoload.php';
-Mustache_Autoloader::register();
-spl_autoload_register([ 'YiiBase','autoload' ]);
+// Initialize the application.
+Yii::setAlias('@root', $rootPath);
+Yii::setAlias('@yii/i18n', '@root/lib');
 
-// Initialize the test application.
-Yii::setPathOfAlias('belin', $rootPath.'/lib');
-Yii::createWebApplication([
-  'basePath'=>$rootPath.'/lib',
-  'extensionPath'=>$rootPath.'/vendor'
+new Application([
+  'id'=>'mustache.yii',
+  'basePath'=>'@root/lib',
+  'vendorPath'=>'@root/vendor'
 ]);
