@@ -1,23 +1,23 @@
 <?php
 /**
- * Implementation of the `belin\test\mustache\HtmlHelperTest` class.
- * @module mustache.test.helpers.HtmlHelperTest
+ * Implementation of the `yii\test\mustache\HtmlHelperTest` class.
+ * @module test.helpers.HtmlHelperTest
  */
-namespace belin\test\mustache\helpers;
-use belin\mustache\helpers\HtmlHelper;
+namespace yii\test\mustache\helpers;
+use yii\mustache\helpers\HtmlHelper;
 
 /**
- * Tests the features of the `belin\mustache\helpers\HtmlHelper` class.
- * @class belin.test.mustache.helpers.HtmlHelperTest
- * @extends system.test.CTestCase
+ * Tests the features of the `yii\mustache\helpers\HtmlHelper` class.
+ * @class yii.test.mustache.helpers.HtmlHelperTest
+ * @extends phpunit.PHPUnit_Framework_TestCase
  * @constructor
  */
-class HtmlHelperTest extends \CTestCase {
+class HtmlHelperTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * The engine used to render strings.
    * @property helper
-   * @type Mustache_LambdaHelper
+   * @type mustache.Mustache_LambdaHelper
    * @private
    */
   private $helper;
@@ -37,12 +37,7 @@ class HtmlHelperTest extends \CTestCase {
    */
   public function testNl2br() {
     $closure=(new HtmlHelper())->nl2br;
-
-    \CHtml::$closeSingleTags=false;
     $this->assertEquals('Foo<br>Bar', $closure("Foo\r\nBar", $this->helper));
-
-    \CHtml::$closeSingleTags=true;
-    $this->assertEquals('Foo<br />Bar', $closure("Foo\r\nBar", $this->helper));
   }
 
   /**

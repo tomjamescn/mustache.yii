@@ -1,13 +1,13 @@
 <?php
 /**
- * Implementation of the `belin\mustache\Logger` class.
- * @module mustache.Logger
+ * Implementation of the `yii\mustache\Logger` class.
+ * @module Logger
  */
-namespace belin\mustache;
+namespace yii\mustache;
 
 /**
  * Component used to log messages from the view engine to the application logger.
- * @class belin.mustache.Logger
+ * @class yii.mustache.Logger
  * @extends mustache.Mustache_Logger_AbstractLogger
  * @constructor
  */

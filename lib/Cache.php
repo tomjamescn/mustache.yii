@@ -1,13 +1,13 @@
 <?php
 /**
- * Implementation of the `belin\mustache\Cache` class.
- * @module mustache.Cache
+ * Implementation of the `yii\mustache\Cache` class.
+ * @module Cache
  */
-namespace belin\mustache;
+namespace yii\mustache;
 
 /**
  * Component used to store compiled views to a cache application component.
- * @class belin.mustache.Cache
+ * @class yii.mustache.Cache
  * @extends mustache.Mustache_Cache_AbstractCache
  * @constructor
  * @param {system.caching.ICache} $cache The cache application component that is used to store the compiled views.
@@ -25,7 +25,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @static
    * @final
    */
-  const KEY_PREFIX='belin.mustache.Cache:';
+  const KEY_PREFIX='yii.mustache.Cache:';
 
   /**
    * The underlying cache application component that is used to cache the compiled views.

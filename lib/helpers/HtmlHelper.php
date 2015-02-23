@@ -1,13 +1,13 @@
 <?php
 /**
- * Implementation of the `belin\mustache\helpers\HtmlHelper` class.
- * @module mustache.helpers.HtmlHelper
+ * Implementation of the `yii\mustache\helpers\HtmlHelper` class.
+ * @module helpers.HtmlHelper
  */
-namespace belin\mustache\helpers;
+namespace yii\mustache\helpers;
 
 /**
  * Provides a collection of helper methods for creating views.
- * @class belin.mustache.helpers.HtmlHelper
+ * @class yii.mustache.helpers.HtmlHelper
  * @extends mustache.helpers.Helper
  * @constructor
  */

@@ -1,13 +1,13 @@
 <?php
 /**
- * Implementation of the `belin\mustache\ViewRenderer` class.
- * @module mustache.ViewRenderer
+ * Implementation of the `yii\mustache\ViewRenderer` class.
+ * @module ViewRenderer
  */
-namespace belin\mustache;
+namespace yii\mustache;
 
-use belin\mustache\helpers\FormatHelper;
-use belin\mustache\helpers\HtmlHelper;
-use belin\mustache\helpers\I18nHelper;
+use yii\mustache\helpers\FormatHelper;
+use yii\mustache\helpers\HtmlHelper;
+use yii\mustache\helpers\I18nHelper;
 use yii\caching\FileCache;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
@@ -15,7 +15,7 @@ use yii\helpers\Html;
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
- * @class belin.mustache.ViewRenderer
+ * @class yii.mustache.ViewRenderer
  * @extends system.base.CApplicationComponent
  * @constructor
  */

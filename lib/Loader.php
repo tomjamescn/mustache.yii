@@ -1,13 +1,13 @@
 <?php
 /**
- * Implementation of the `belin\mustache\Loader` class.
- * @module mustache.Loader
+ * Implementation of the `yii\mustache\Loader` class.
+ * @module Loader
  */
-namespace belin\mustache;
+namespace yii\mustache;
 
 /**
  * Component used to load views from the file system.
- * @class belin.mustache.Loader
+ * @class yii.mustache.Loader
  * @extends system.base.CComponent
  * @constructor
  * @param {string} [$fileExtension] The extension name of the views.

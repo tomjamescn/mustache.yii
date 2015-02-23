@@ -1,13 +1,13 @@
 <?php
 /**
- * Implementation of the `belin\mustache\helpers\I18nHelper` class.
- * @module mustache.helpers.I18nHelper
+ * Implementation of the `yii\mustache\helpers\I18nHelper` class.
+ * @module helpers.I18nHelper
  */
-namespace belin\mustache\helpers;
+namespace yii\mustache\helpers;
 
 /**
  * Provides a collection of helper methods for internationalization.
- * @class belin.mustache.helpers.I18nHelper
+ * @class yii.mustache.helpers.I18nHelper
  * @extends mustache.helpers.Helper
  * @constructor
  */

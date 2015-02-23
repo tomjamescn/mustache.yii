@@ -1,15 +1,15 @@
 <?php
 /**
- * Implementation of the `belin\test\mustache\HelperTest` class.
- * @module mustache.test.helpers.HelperTest
+ * Implementation of the `yii\test\mustache\helpers\HelperTest` class.
+ * @module test.helpers.HelperTest
  */
-namespace belin\test\mustache\helpers;
-use belin\mustache\helpers\Helper;
+namespace yii\test\mustache\helpers;
+use yii\mustache\helpers\Helper;
 
 /**
- * Publicly exposes the features of the `Helper` class.
- * @class belin.test.mustache.helpers.HelperStub
- * @extends belin.mustache.helpers.Helper
+ * Publicly exposes the features of the `yii\mustache\helpers\Helper` class.
+ * @class yii.test.mustache.helpers.HelperStub
+ * @extends yii.mustache.helpers.Helper
  * @constructor
  */
 class HelperStub extends Helper {
@@ -19,12 +19,12 @@ class HelperStub extends Helper {
 }
 
 /**
- * Tests the features of the `belin\mustache\helpers\Helper` class.
- * @class belin.test.mustache.helpers.HelperTest
- * @extends system.test.CTestCase
+ * Tests the features of the `yii\mustache\helpers\Helper` class.
+ * @class yii.test.mustache.helpers.HelperTest
+ * @extends phpunit.PHPUnit_Framework_TestCase
  * @constructor
  */
-class HelperTest extends \CTestCase {
+class HelperTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Tests the `parseArguments` method.

@@ -1,18 +1,18 @@
 <?php
 /**
- * Implementation of the `belin\test\mustache\FormatHelperTest` class.
- * @module mustache.test.helpers.FormatHelperTest
+ * Implementation of the `yii\test\mustache\FormatHelperTest` class.
+ * @module test.helpers.FormatHelperTest
  */
-namespace belin\test\mustache\helpers;
-use belin\mustache\helpers\FormatHelper;
+namespace yii\test\mustache\helpers;
+use yii\mustache\helpers\FormatHelper;
 
 /**
- * Tests the features of the `belin\mustache\helpers\FormatHelper` class.
- * @class belin.test.mustache.helpers.FormatHelperTest
- * @extends system.test.CTestCase
+ * Tests the features of the `yii\mustache\helpers\FormatHelper` class.
+ * @class yii.test.mustache.helpers.FormatHelperTest
+ * @extends phpunit.PHPUnit_Framework_TestCase
  * @constructor
  */
-class FormatHelperTest extends \CTestCase {
+class FormatHelperTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * The engine used to render strings.

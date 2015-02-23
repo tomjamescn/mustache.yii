@@ -1,13 +1,13 @@
 <?php
 /**
- * Implementation of the `belin\mustache\helpers\FormatHelper` class.
- * @module mustache.helpers.FormatHelper
+ * Implementation of the `yii\mustache\helpers\FormatHelper` class.
+ * @module helpers.FormatHelper
  */
-namespace belin\mustache\helpers;
+namespace yii\mustache\helpers;
 
 /**
  * Provides a collection of helper methods for formatting dates and numbers.
- * @class belin.mustache.helpers.FormatHelper
+ * @class yii.mustache.helpers.FormatHelper
  * @extends mustache.helpers.Helper
  * @constructor
  */

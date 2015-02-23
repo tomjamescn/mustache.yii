@@ -1,13 +1,13 @@
 <?php
 /**
- * Implementation of the `belin\mustache\helpers\ModelHelper` class.
- * @module mustache.helpers.ModelHelper
+ * Implementation of the `yii\mustache\helpers\ModelHelper` class.
+ * @module helpers.ModelHelper
  */
-namespace belin\mustache\helpers;
+namespace yii\mustache\helpers;
 
 /**
  * Provides a collection of helper methods for creating views based on a data model.
- * @class belin.mustache.helpers.ModelHelper
+ * @class yii.mustache.helpers.ModelHelper
  * @extends mustache.helpers.Helper
  * @constructor
  * @param {system.base.CModel} $model The data model.
