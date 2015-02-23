@@ -15,8 +15,9 @@
   },
   "keywords": [
     "mustache",
+    "renderer",
     "templating",
-    "yii"
+    "yii2"
   ],
   "require": {
     "php": ">=5.4.0",

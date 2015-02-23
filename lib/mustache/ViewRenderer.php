@@ -22,15 +22,6 @@ use yii\helpers\Html;
 class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
-   * The path alias of the directory containing the Mustache engine.
-   * @property ENGINE_PATH
-   * @type string
-   * @final
-   * @static
-   */
-  const ENGINE_PATH='@vendor/mustache/mustache/src/Mustache';
-
-  /**
    * The directory or path alias pointing to where Mustache cache will be stored.
    * @property cachePath
    * @type string
@@ -45,6 +36,14 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @private
    */
   private $engine;
+
+  /**
+   * The directory or path alias to where the Mustache engine is stored.
+   * @property enginePath
+   * @type string
+   * @default "@vendor/mustache/mustache/src/Mustache"
+   */
+  public $enginePath='@vendor/mustache/mustache/src/Mustache';
 
   /**
    * Values prepended to the context stack, so they will be available in any view loaded by this instance.
@@ -73,23 +72,26 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       \Yii::registerAutoloader([ new \Mustache_Autoloader(), 'autoload' ]);
     }
 
+    /* TODO
     $helpers=[
       'app'=>\Yii::$app,
       'format'=>new FormatHelper(),
       'html'=>new HtmlHelper(),
       'i18n'=>new I18nHelper()
     ];
+    */
 
     $options=[
       'charset'=>\Yii::$app->charset,
       'entity_flags'=>ENT_QUOTES,
       'escape'=>function($value) { return Html::encode($value); },
-      'helpers'=>ArrayHelper::merge($helpers, $this->helpers),
-      'logger'=>new Logger(),
+      'helpers'=>ArrayHelper::merge([] /* TODO $helpers */, $this->helpers),
+      // TODO 'logger'=>new Logger(),
       'partials_loader'=>new Loader($this->fileExtension),
       'strict_callables'=>true
     ];
 
+    /* TODO
     if($this->enableCaching) {
       $cache=\Yii::createComponent([
         'class'=>'yii\caching\FileCache',
@@ -103,11 +105,30 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
       if($cache instanceof FileCache && !is_dir($cache->cachePath)) FileHelper::createDirectory($cache->cachePath);
       $options['cache']=new Cache($cache);
-    }
+    }*/
 
     $this->engine=new \Mustache_Engine($options);
     parent::init();
     $this->helpers=[];
+  }
+  
+  /**
+   * Renders a view file.
+   * @method render
+   * @param {yii.web.View} $view The view object used for rendering the file.
+   * @param {string} $file The view file.
+   * @param {array} $params The parameters to be passed to the view file.
+   * @return {string} The rendering result.
+   * @throws {yii.base.InvalidCallException} The specified view file is not found.
+   */
+  public function render($view, $file, $params) {
+    if(!is_file($file)) throw new \CException(\Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$file ]));
+
+    $input=file_get_contents($file);
+    $values=ArrayHelper::merge([ 'this'=>$view ], is_array($params) ? $params : []);
+    $output=$this->engine->render($input, $values);
+
+    return $output;
   }
 
   /**
