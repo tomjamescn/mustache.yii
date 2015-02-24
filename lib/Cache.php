@@ -10,11 +10,11 @@ namespace yii\mustache;
  * @class yii.mustache.Cache
  * @extends mustache.Mustache_Cache_AbstractCache
  * @constructor
- * @param {system.caching.ICache} $cache The cache application component that is used to store the compiled views.
+ * @param {yii.caching.Cache} $cache The cache application component that is used to store the compiled views.
  */
 class Cache extends \Mustache_Cache_AbstractCache {
 
-  public function __construct(\ICache $cache) {
+  public function __construct(yii\caching\Cache $cache) {
     $this->cache=$cache;
   }
 
@@ -25,7 +25,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @static
    * @final
    */
-  const KEY_PREFIX='yii.mustache.Cache:';
+  const KEY_PREFIX='yii\\mustache\\Cache:';
 
   /**
    * The underlying cache application component that is used to cache the compiled views.

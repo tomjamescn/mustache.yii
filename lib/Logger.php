@@ -20,7 +20,7 @@ class Logger extends \Mustache_Logger_AbstractLogger {
    * @static
    * @final
    */
-  const CATEGORY='mustache';
+  const CATEGORY='yii\\mustache';
 
   /**
    * Mappings between Mustache levels and Yii ones.

@@ -19,21 +19,14 @@ Now in your application configuration file, you can use the following view rende
 
 ```php
 return [
-  'aliases' => [
-    '@yii/mustache' => '@vendor/cedx/yii2-mustache/lib',
-  ],
   'view' => [
-    'class' => 'yii\web\View',
+    'class' => 'yii\\web\\View',
     'renderers' => [
-      'mustache' => 'yii\mustache\ViewRenderer'
+      'mustache' => 'yii\\mustache\\ViewRenderer'
     ]
   ]
 ];
 ```
-
-Adjust the values as needed. Here, it's supposed that [`CApplication->extensionPath`](http://www.yiiframework.com/doc/api/1.1/CApplication#extensionPath-detail), that is the [`ext`](http://www.yiiframework.com/doc/guide/1.1/en/basics.namespace) root alias, has been set to Composer's `vendor` directory.
-
-The `@yii/mustache` alias must be defined prior to use the view renderer. The library classes rely on this alias to function properly.
 
 ## License
 [Mustache.yii](https://packagist.org/packages/cedx/yii2-mustache) is distributed under the MIT License.

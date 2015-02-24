@@ -5,18 +5,20 @@
  */
 namespace yii\mustache;
 
-use yii\mustache\helpers\FormatHelper;
-use yii\mustache\helpers\HtmlHelper;
-use yii\mustache\helpers\I18nHelper;
+// Module dependencies.
+use yii\base\InvalidParamException;
 use yii\caching\FileCache;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 use yii\helpers\Html;
+use yii\mustache\helpers\FormatHelper;
+use yii\mustache\helpers\HtmlHelper;
+use yii\mustache\helpers\I18nHelper;
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
  * @class yii.mustache.ViewRenderer
- * @extends system.base.CApplicationComponent
+ * @extends yii.base.ViewRenderer
  * @constructor
  */
 class ViewRenderer extends \yii\base\ViewRenderer {
@@ -67,25 +69,25 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @method init
    */
   public function init() {
+    /*
     if(!class_exists('\Mustache_Autoloader', false)) {
-      require_once \Yii::getAlias($this->enginePath).'/Autoloader.php';
+      require_once \Yii::getAlias($this->enginePath).'@vendor/mustache/mustache/src/Mustache/Autoloader.php';
       \Yii::registerAutoloader([ new \Mustache_Autoloader(), 'autoload' ]);
     }
+    */
 
-    /* TODO
     $helpers=[
       'app'=>\Yii::$app,
-      'format'=>new FormatHelper(),
-      'html'=>new HtmlHelper(),
-      'i18n'=>new I18nHelper()
+      //'format'=>new FormatHelper(),
+      //'html'=>new HtmlHelper(),
+      //'i18n'=>new I18nHelper()
     ];
-    */
 
     $options=[
       'charset'=>\Yii::$app->charset,
       'entity_flags'=>ENT_QUOTES,
       'escape'=>function($value) { return Html::encode($value); },
-      'helpers'=>ArrayHelper::merge([] /* TODO $helpers */, $this->helpers),
+      'helpers'=>ArrayHelper::merge($helpers, $this->helpers),
       // TODO 'logger'=>new Logger(),
       'partials_loader'=>new Loader($this->fileExtension),
       'strict_callables'=>true
