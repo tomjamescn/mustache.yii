@@ -5,28 +5,27 @@
  */
 namespace yii\mustache;
 
-/**
- * Component used to load views from the file system.
- * @class yii.mustache.Loader
- * @extends system.base.CComponent
- * @constructor
- * @param {string} [$fileExtension] The extension name of the views.
- */
-class Loader extends \CComponent implements \Mustache_Loader {
+// Module dependencies.
+use yii\base\InvalidCallException;
+use yii\base\InvalidParamException;
+use yii\base\Object;
 
-  public function __construct($fileExtension='.mustache') {
-    $this->fileExtension=$fileExtension;
-  }
+/**
+ * Loads views from the file system.
+ * @class yii.mustache.Loader
+ * @extends yii.base.Object
+ * @constructor
+ */
+class Loader extends Object implements \Mustache_Loader {
 
   /**
-   * The extension name of the views.
-   * @property fileExtension
+   * The default extension of template files.
+   * @property DEFAULT_EXTENSION
    * @type string
    * @final
-   * @default ".mustache"
+   * @static
    */
-  private $fileExtension;
-  public function getFileExtension() { return $this->fileExtension; }
+  const DEFAULT_EXTENSION='mustache';
 
   /**
    * The loaded views.
@@ -46,7 +45,7 @@ class Loader extends \CComponent implements \Mustache_Loader {
     $controller=\Yii::$app->controller;
     if(!$controller) return \Yii::$app->viewPath;
 
-    $viewPath=($theme=\Yii::$app->theme ? $theme->viewPath : $controller->viewPath);
+    $viewPath=(($theme=\Yii::$app->theme) ? $theme->viewPath : $controller->viewPath);
     return ($module=$controller->module) ? $viewPath.'/'.$module->id : $viewPath;
   }
 
@@ -55,15 +54,23 @@ class Loader extends \CComponent implements \Mustache_Loader {
    * @method load
    * @param {string} $name The view name.
    * @return {string} The view contents.
-   * @throws {system.base.CException} The view file does not exist.
+   * @throws {yii.base.InvalidCallException} The view file does not exist.
+   * @throws {yii.base.InvalidParamException} The view name is empty.
    */
   public function load($name) {
     if(!isset($this->views[$name])) {
-      $fileName=(mb_substr($name, 0, 2)=='//' ? \Yii::$app->viewPath.'/'.mb_substr($name, 2) : $this->viewPath.'/'.$name);
-      if(mb_substr($fileName, 0-mb_strlen($this->fileExtension))!=$this->fileExtension) $fileName.=$this->fileExtension;
+      if(!mb_strlen($name)) throw new InvalidParamException(\Yii::t('yii', 'View "{name}" does not exist.', [ 'name'=>$name ]));
 
-      if(!is_file($fileName)) throw new \CException(\Yii::t('yii', 'View file "{file}" does not exist.', [ '{file}'=>$fileName ]));
-      $this->views[$name]=file_get_contents($fileName);
+      if($name[0]=='@') $fileName=\Yii::getAlias($name);
+      else $fileName=(mb_substr($name, 0, 2)=='//' ? \Yii::$app->viewPath.'/'.mb_substr($name, 2) : $this->viewPath.'/'.$name);
+
+      if(!mb_strlen(pathinfo($fileName, PATHINFO_EXTENSION))) {
+        $controller=\Yii::$app->controller;
+        $fileName.='.'.($controller && ($view=$controller->view) ? $view->defaultExtension : static::DEFAULT_EXTENSION);
+      }
+
+      if(!is_file($fileName)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', [ 'file'=>$fileName ]));
+      $this->views[$name]=@file_get_contents($fileName);
     }
 
     return $this->views[$name];

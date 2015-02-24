@@ -17,7 +17,7 @@ class FormatHelperTest extends \PHPUnit_Framework_TestCase {
   /**
    * The engine used to render strings.
    * @property helper
-   * @type Mustache_LambdaHelper
+   * @type mustache.Mustache_LambdaHelper
    * @private
    */
   private $helper;

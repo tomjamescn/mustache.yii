@@ -14,7 +14,7 @@ namespace yii\mustache;
  */
 class Cache extends \Mustache_Cache_AbstractCache {
 
-  public function __construct(yii\caching\Cache $cache) {
+  public function __construct(\yii\caching\Cache $cache) {
     $this->cache=$cache;
   }
 

@@ -5,12 +5,15 @@
  */
 namespace yii\mustache\helpers;
 
+// Module dependencies.
+use yii\helpers\Html;
+
 /**
  * Provides a collection of helper methods for creating views based on a data model.
  * @class yii.mustache.helpers.ModelHelper
  * @extends mustache.helpers.Helper
  * @constructor
- * @param {system.base.CModel} $model The data model.
+ * @param {yii.base.CModel} $model The data model.
  */
 class ModelHelper extends Helper {
 
@@ -35,7 +38,7 @@ class ModelHelper extends Helper {
    */
   public function __call($name, $arguments) {
     try { return parent::__call($name, $arguments); }
-    catch(\CException $e) { return call_user_func_array([ $model, $name ], $arguments); }
+    catch(\Exception $e) { return call_user_func_array([ $model, $name ], $arguments); }
   }
 
   /**
@@ -46,7 +49,7 @@ class ModelHelper extends Helper {
    */
   public function __get($name) {
     try { return parent::__get($name); }
-    catch(\CException $e) { return $this->model->$name; }
+    catch(\Exception $e) { return $this->model->$name; }
   }
 
   /**
@@ -78,7 +81,7 @@ class ModelHelper extends Helper {
   public function getActiveCheckBox() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeCheckBox($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeCheckBox($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -92,7 +95,7 @@ class ModelHelper extends Helper {
   public function getActiveDateField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeDateField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeDateField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -106,7 +109,7 @@ class ModelHelper extends Helper {
   public function getActiveEmailField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeEmailField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeEmailField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -120,7 +123,7 @@ class ModelHelper extends Helper {
   public function getActiveFileField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeFileField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeFileField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -134,7 +137,7 @@ class ModelHelper extends Helper {
   public function getActiveHiddenField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeHiddenField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeHiddenField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -147,7 +150,7 @@ class ModelHelper extends Helper {
    */
   public function getActiveId() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::activeId($this->model, $helper->render($value));
+      return Html::activeId($this->model, $helper->render($value));
     };
   }
 
@@ -161,7 +164,7 @@ class ModelHelper extends Helper {
   public function getActiveLabel() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeLabel($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeLabel($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -175,7 +178,7 @@ class ModelHelper extends Helper {
   public function getActiveLabelEx() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeLabelEx($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeLabelEx($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -188,7 +191,7 @@ class ModelHelper extends Helper {
    */
   public function getActiveName() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::activeName($this->model, $helper->render($value));
+      return Html::activeName($this->model, $helper->render($value));
     };
   }
 
@@ -202,7 +205,7 @@ class ModelHelper extends Helper {
   public function getActiveNumberField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeNumberField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeNumberField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -216,7 +219,7 @@ class ModelHelper extends Helper {
   public function getActivePasswordField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activePasswordField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activePasswordField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -230,7 +233,7 @@ class ModelHelper extends Helper {
   public function getActiveRadioButton() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeRadioButton($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeRadioButton($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -244,7 +247,7 @@ class ModelHelper extends Helper {
   public function getActiveRangeField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeRangeField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeRangeField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -258,7 +261,7 @@ class ModelHelper extends Helper {
   public function getActiveSearchField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeSearchField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeSearchField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -272,7 +275,7 @@ class ModelHelper extends Helper {
   public function getActiveTelField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeTelField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeTelField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -286,7 +289,7 @@ class ModelHelper extends Helper {
   public function getActiveTextArea() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeTextArea($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeTextArea($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -300,7 +303,7 @@ class ModelHelper extends Helper {
   public function getActiveTextField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeTextField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeTextField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -314,7 +317,7 @@ class ModelHelper extends Helper {
   public function getActiveTimeField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeTimeField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeTimeField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -328,7 +331,7 @@ class ModelHelper extends Helper {
   public function getActiveUrlField() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::activeUrlField($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::activeUrlField($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -341,7 +344,7 @@ class ModelHelper extends Helper {
    */
   public function getAttributeLabel() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::encode($this->model->getAttributeLabel($helper->render($value)));
+      return Html::encode($this->model->getAttributeLabel($helper->render($value)));
     };
   }
 
@@ -397,7 +400,7 @@ class ModelHelper extends Helper {
   public function getError() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'htmlOptions'=>[] ]);
-      return \CHtml::error($this->model, $args['attribute'], $args['htmlOptions']);
+      return Html::error($this->model, $args['attribute'], $args['htmlOptions']);
     };
   }
 
@@ -426,7 +429,7 @@ class ModelHelper extends Helper {
         'htmlOptions'=>[]
       ]);
 
-      return \CHtml::errorSummary($this->model, $args['header'], $args['footer'], $args['htmlOptions']);
+      return Html::errorSummary($this->model, $args['header'], $args['footer'], $args['htmlOptions']);
     };
   }
 
@@ -438,7 +441,7 @@ class ModelHelper extends Helper {
    * @final
    */
   public function getModelName() {
-    return \CHtml::modelName($this->model);
+    return Html::modelName($this->model);
   }
 
   /**
@@ -451,7 +454,7 @@ class ModelHelper extends Helper {
   public function getValue() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'attribute', [ 'defaultValue'=>null ]);
-      return \CHtml::encode(\CHtml::value($this->model, $args['attribute'], $args['defaultValue']));
+      return Html::encode(Html::value($this->model, $args['attribute'], $args['defaultValue']));
     };
   }
 
@@ -459,7 +462,7 @@ class ModelHelper extends Helper {
    * Gets the URL query parameters corresponding to the primary key of the specified model.
    * This methods returns an empty array if the model is not an instance of `CActiveRecord`.
    * @method getQueryParams
-   * @param {system.base.CModel} $model The model providing the primary key.
+   * @param {yii.base.CModel} $model The model providing the primary key.
    * @return {array} The query parameters corresponding to the model primary key, or an empty array if model has no primary key.
    */
   private static function getQueryParams(\CModel $model) {

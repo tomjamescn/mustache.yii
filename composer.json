@@ -14,8 +14,7 @@
     "psr-4": { "yii\\mustache\\": "lib/" }
   },
   "config": {
-    "bin-dir": "bin",
-    "vendor-dir": "vendor"
+    "bin-dir": "bin"
   },
   "keywords": [
     "mustache",

@@ -5,6 +5,9 @@
  */
 namespace yii\mustache\helpers;
 
+// Module dependencies.
+use yii\helpers\Html;
+
 /**
  * Provides a collection of helper methods for creating views.
  * @class yii.mustache.helpers.HtmlHelper
@@ -23,7 +26,7 @@ class HtmlHelper extends Helper {
   public function getAjax() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'options');
-      return \CHtml::ajax($args['options']);
+      return Html::ajax($args['options']);
     };
   }
 
@@ -42,7 +45,7 @@ class HtmlHelper extends Helper {
         'url'=>''
       ]);
 
-      return \CHtml::ajaxButton($args['label'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
+      return Html::ajaxButton($args['label'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
     };
   }
 
@@ -61,7 +64,7 @@ class HtmlHelper extends Helper {
         'url'=>''
       ]);
 
-      return \CHtml::ajaxLink($args['text'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
+      return Html::ajaxLink($args['text'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
     };
   }
 
@@ -80,7 +83,7 @@ class HtmlHelper extends Helper {
         'url'=>''
       ]);
 
-      return \CHtml::ajaxSubmitButton($args['label'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
+      return Html::ajaxSubmitButton($args['label'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
     };
   }
 
@@ -94,7 +97,7 @@ class HtmlHelper extends Helper {
   public function getAsset() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'path', [ 'hashByName'=>false ]);
-      return \CHtml::asset($args['path'], $args['hashByName']);
+      return Html::asset($args['path'], $args['hashByName']);
     };
   }
 
@@ -112,7 +115,7 @@ class HtmlHelper extends Helper {
         'method'=>'post'
       ]);
 
-      return \CHtml::beginForm($args['action'], $args['method'], $args['htmlOptions']);
+      return Html::beginForm($args['action'], $args['method'], $args['htmlOptions']);
     };
   }
 
@@ -126,7 +129,7 @@ class HtmlHelper extends Helper {
   public function getButton() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return \CHtml::button($args['label'], $args['htmlOptions']);
+      return Html::button($args['label'], $args['htmlOptions']);
     };
   }
 
@@ -139,7 +142,7 @@ class HtmlHelper extends Helper {
    */
   public function getCdata() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::cdata($helper->render($value));
+      return Html::cdata($helper->render($value));
     };
   }
 
@@ -157,7 +160,7 @@ class HtmlHelper extends Helper {
         'htmlOptions'=>[]
       ]);
 
-      return \CHtml::checkBox($args['name'], $args['checked'], $args['htmlOptions']);
+      return Html::checkBox($args['name'], $args['checked'], $args['htmlOptions']);
     };
   }
 
@@ -210,7 +213,7 @@ class HtmlHelper extends Helper {
    */
   public function getCsrfTokenField() {
     $request=\Yii::$app->request;
-    return !$request->enableCsrfValidation ? '' : \CHtml::hiddenField($request->csrfTokenName, $request->csrfToken, [ 'id'=>false ]);
+    return !$request->enableCsrfValidation ? '' : Html::hiddenField($request->csrfTokenName, $request->csrfToken, [ 'id'=>false ]);
   }
 
   /**
@@ -223,7 +226,7 @@ class HtmlHelper extends Helper {
   public function getCss() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'text', [ 'media'=>'' ]);
-      return \CHtml::css($args['text'], $args['media']);
+      return Html::css($args['text'], $args['media']);
     };
   }
 
@@ -241,7 +244,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::dateField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::dateField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -259,7 +262,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::emailField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::emailField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -271,7 +274,7 @@ class HtmlHelper extends Helper {
    * @final
    */
   public function getEndForm() {
-    return \CHtml::endForm();
+    return Html::endForm();
   }
 
   /**
@@ -288,7 +291,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::fileField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::fileField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -306,7 +309,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::hiddenField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::hiddenField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -320,7 +323,7 @@ class HtmlHelper extends Helper {
   public function getHtmlButton() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return \CHtml::htmlButton($args['label'], $args['htmlOptions']);
+      return Html::htmlButton($args['label'], $args['htmlOptions']);
     };
   }
 
@@ -333,7 +336,7 @@ class HtmlHelper extends Helper {
    */
   public function getIdByName() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::idByName($helper->render($value));
+      return Html::idByName($helper->render($value));
     };
   }
 
@@ -347,7 +350,7 @@ class HtmlHelper extends Helper {
   public function getImageButton() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'src', [ 'htmlOptions'=>[] ]);
-      return \CHtml::imageButton($args['src'], $args['htmlOptions']);
+      return Html::imageButton($args['src'], $args['htmlOptions']);
     };
   }
 
@@ -365,7 +368,7 @@ class HtmlHelper extends Helper {
         'htmlOptions'=>[]
       ]);
 
-      return \CHtml::label($args['label'], $args['for'], $args['htmlOptions']);
+      return Html::label($args['label'], $args['for'], $args['htmlOptions']);
     };
   }
 
@@ -383,7 +386,7 @@ class HtmlHelper extends Helper {
         'url'=>'#'
       ]);
 
-      return \CHtml::link($args['text'], $args['url'], $args['htmlOptions']);
+      return Html::link($args['text'], $args['url'], $args['htmlOptions']);
     };
   }
 
@@ -397,7 +400,7 @@ class HtmlHelper extends Helper {
   public function getLinkButton() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return \CHtml::linkButton($args['label'], $args['htmlOptions']);
+      return Html::linkButton($args['label'], $args['htmlOptions']);
     };
   }
 
@@ -415,7 +418,7 @@ class HtmlHelper extends Helper {
         'htmlOptions'=>[]
       ]);
 
-      return \CHtml::mailto($args['text'], $args['email'], $args['htmlOptions']);
+      return Html::mailto($args['text'], $args['email'], $args['htmlOptions']);
     };
   }
 
@@ -428,7 +431,7 @@ class HtmlHelper extends Helper {
    */
   public function getNl2br() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return preg_replace('/\r?\n/', \CHtml::$closeSingleTags ? '<br />' : '<br>', $helper->render($value));
+      return preg_replace('/\r?\n/', Html::$closeSingleTags ? '<br />' : '<br>', $helper->render($value));
     };
   }
 
@@ -446,7 +449,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::numberField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::numberField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -459,7 +462,7 @@ class HtmlHelper extends Helper {
    */
   public function getPageStateField() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return \CHtml::pageStateField($helper->render($value));
+      return Html::pageStateField($helper->render($value));
     };
   }
 
@@ -477,7 +480,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::passwordField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::passwordField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -495,7 +498,7 @@ class HtmlHelper extends Helper {
         'htmlOptions'=>[]
       ]);
 
-      return \CHtml::radioButton($args['name'], $args['checked'], $args['htmlOptions']);
+      return Html::radioButton($args['name'], $args['checked'], $args['htmlOptions']);
     };
   }
 
@@ -513,7 +516,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::rangeField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::rangeField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -527,7 +530,7 @@ class HtmlHelper extends Helper {
   public function getRefresh() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'seconds', [ 'url'=>'' ]);
-      return \CHtml::refresh($args['seconds'], $args['url']);
+      return Html::refresh($args['seconds'], $args['url']);
     };
   }
 
@@ -541,7 +544,7 @@ class HtmlHelper extends Helper {
   public function getResetButton() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return \CHtml::resetButton($args['label'], $args['htmlOptions']);
+      return Html::resetButton($args['label'], $args['htmlOptions']);
     };
   }
 
@@ -555,7 +558,7 @@ class HtmlHelper extends Helper {
   public function getScript() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'text', [ 'htmlOptions'=>[] ]);
-      return \CHtml::script($args['text'], $args['htmlOptions']);
+      return Html::script($args['text'], $args['htmlOptions']);
     };
   }
 
@@ -573,8 +576,8 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      \CHtml::clientChange('change', $args['htmlOptions']);
-      return \CHtml::inputField('search', $args['name'], $args['value'], $args['htmlOptions']);
+      Html::clientChange('change', $args['htmlOptions']);
+      return Html::inputField('search', $args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -592,7 +595,7 @@ class HtmlHelper extends Helper {
         'method'=>'post'
       ]);
 
-      return \CHtml::statefulForm($args['action'], $args['method'], $args['htmlOptions']);
+      return Html::statefulForm($args['action'], $args['method'], $args['htmlOptions']);
     };
   }
 
@@ -606,7 +609,7 @@ class HtmlHelper extends Helper {
   public function getSubmitButton() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return \CHtml::submitButton($args['label'], $args['htmlOptions']);
+      return Html::submitButton($args['label'], $args['htmlOptions']);
     };
   }
 
@@ -624,7 +627,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::telField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::telField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -642,7 +645,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::textArea($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::textArea($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -660,7 +663,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::textField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::textField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -678,7 +681,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::timeField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::timeField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 
@@ -696,7 +699,7 @@ class HtmlHelper extends Helper {
         'value'=>''
       ]);
 
-      return \CHtml::urlField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::urlField($args['name'], $args['value'], $args['htmlOptions']);
     };
   }
 }

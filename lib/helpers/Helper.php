@@ -5,13 +5,18 @@
  */
 namespace yii\mustache\helpers;
 
+// Module dependencies.
+use yii\base\Object;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
+
 /**
  * Provides the abstract base class for a view helper.
  * @class yii.mustache.helpers.Helper
  * @extends system.base.CComponent
  * @constructor
  */
-abstract class Helper extends \CComponent {
+abstract class Helper extends Object {
 
   /**
    * Parses the arguments of a parametized helper.
@@ -24,9 +29,7 @@ abstract class Helper extends \CComponent {
    */
   protected function parseArguments($text, $defaultArgument, array $defaultValues=[]) {
     $args=$defaultValues;
-
-    $json=\CJSON::decode($text);
-    if(is_array($json)) return \CMap::mergeArray($args, $json);
+    if(is_array($json=Json::decode($text))) return ArrayHelper::merge($args, $json);
 
     $args[$defaultArgument]=$text;
     return $args;
