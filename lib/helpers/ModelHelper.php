@@ -6,6 +6,7 @@
 namespace yii\mustache\helpers;
 
 // Module dependencies.
+use yii\base\Model;
 use yii\helpers\Html;
 
 /**
@@ -13,18 +14,18 @@ use yii\helpers\Html;
  * @class yii.mustache.helpers.ModelHelper
  * @extends mustache.helpers.Helper
  * @constructor
- * @param {yii.base.CModel} $model The data model.
+ * @param {yii.base.Model} $model The data model.
  */
 class ModelHelper extends Helper {
 
-  public function __construct(\CModel $model) {
+  public function __construct(Model $model) {
     $this->model=$model;
   }
 
   /**
    * The underlying data model.
    * @property model
-   * @type system.base.CModel
+   * @type yii.base.Model
    * @private
    */
   private $model;
@@ -73,7 +74,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a check box for a model attribute.
-   * See: `CHtml::activeCheckBox()`
+   * See: `Html::activeCheckBox()`
    * @property activeCheckBox
    * @type Closure
    * @final
@@ -87,7 +88,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a date field input for a model attribute.
-   * See: `CHtml::activeDateField()`
+   * See: `Html::activeDateField()`
    * @property activeDateField
    * @type Closure
    * @final
@@ -101,7 +102,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates an email field input for a model attribute.
-   * See: `CHtml::activeEmailField()`
+   * See: `Html::activeEmailField()`
    * @property activeEmailField
    * @type Closure
    * @final
@@ -115,7 +116,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a file input for a model attribute.
-   * See: `CHtml::activeFileField()`
+   * See: `Html::activeFileField()`
    * @property activeFileField
    * @type Closure
    * @final
@@ -129,7 +130,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a hidden input for a model attribute.
-   * See: `CHtml::activeHiddenField()`
+   * See: `Html::activeHiddenField()`
    * @property activeHiddenField
    * @type Closure
    * @final
@@ -143,7 +144,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates input field identifier for a model attribute.
-   * See: `CHtml::activeId()`
+   * See: `Html::activeId()`
    * @property activeId
    * @type Closure
    * @final
@@ -156,7 +157,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a label tag for a model attribute.
-   * See: `CHtml::activeLabel()`
+   * See: `Html::activeLabel()`
    * @property activeLabel
    * @type Closure
    * @final
@@ -170,7 +171,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a label tag for a model attribute.
-   * See: `CHtml::activeLabelEx()`
+   * See: `Html::activeLabelEx()`
    * @property activeLabelEx
    * @type Closure
    * @final
@@ -184,7 +185,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates input field name for a model attribute.
-   * See: `CHtml::activeName()`
+   * See: `Html::activeName()`
    * @property activeName
    * @type Closure
    * @final
@@ -197,7 +198,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a number field input for a model attribute.
-   * See: `CHtml::activeNumberField()`
+   * See: `Html::activeNumberField()`
    * @property activeNumberField
    * @type Closure
    * @final
@@ -211,7 +212,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a password field input for a model attribute.
-   * See: `CHtml::activePasswordField()`
+   * See: `Html::activePasswordField()`
    * @property activePasswordField
    * @type Closure
    * @final
@@ -225,7 +226,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a radio button for a model attribute.
-   * See: `CHtml::activeRadioButton()`
+   * See: `Html::activeRadioButton()`
    * @property activeRadioButton
    * @type Closure
    * @final
@@ -239,7 +240,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a range field input for a model attribute.
-   * See: `CHtml::activeRangeField()`
+   * See: `Html::activeRangeField()`
    * @property activeRangeField
    * @type Closure
    * @final
@@ -253,7 +254,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a search field input for a model attribute.
-   * See: `CHtml::activeSearchField()`
+   * See: `Html::activeSearchField()`
    * @property activeSearchField
    * @type Closure
    * @final
@@ -267,7 +268,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a telephone field input for a model attribute.
-   * See: `CHtml::activeTelField()`
+   * See: `Html::activeTelField()`
    * @property activeTelField
    * @type Closure
    * @final
@@ -281,7 +282,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a text area input for a model attribute.
-   * See: `CHtml::activeTextArea()`
+   * See: `Html::activeTextArea()`
    * @property activeTextArea
    * @type Closure
    * @final
@@ -295,7 +296,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a text field input for a model attribute.
-   * See: `CHtml::activeTextField()`
+   * See: `Html::activeTextField()`
    * @property activeTextField
    * @type Closure
    * @final
@@ -309,7 +310,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a time field input for a model attribute.
-   * See: `CHtml::activeTimeField()`
+   * See: `Html::activeTimeField()`
    * @property activeTimeField
    * @type Closure
    * @final
@@ -323,7 +324,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a URL field input for a model attribute.
-   * See: `CHtml::activeUrlField()`
+   * See: `Html::activeUrlField()`
    * @property activeUrlField
    * @type Closure
    * @final
@@ -392,7 +393,7 @@ class ModelHelper extends Helper {
 
   /**
    * Displays the first validation error for a model attribute.
-   * See: `CHtml::error()`
+   * See: `Html::error()`
    * @property error
    * @type Closure
    * @final
@@ -417,7 +418,7 @@ class ModelHelper extends Helper {
 
   /**
    * Displays a summary of validation errors for a model.
-   * See: `CHtml::errorSummary()`
+   * See: `Html::errorSummary()`
    * @property errorSummary
    * @type Closure
    * @final
@@ -435,7 +436,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates HTML name for the model.
-   * See: `CHtml::modelName()`
+   * See: `Html::modelName()`
    * @property modelName
    * @type string
    * @final
@@ -446,7 +447,7 @@ class ModelHelper extends Helper {
 
   /**
    * Evaluates the value of a model attribute.
-   * See: `CHtml::value()`
+   * See: `Html::value()`
    * @property value
    * @type Closure
    * @final
@@ -465,7 +466,7 @@ class ModelHelper extends Helper {
    * @param {yii.base.CModel} $model The model providing the primary key.
    * @return {array} The query parameters corresponding to the model primary key, or an empty array if model has no primary key.
    */
-  private static function getQueryParams(\CModel $model) {
+  private static function getQueryParams(Model $model) {
     if(!$model instanceof \CActiveRecord) return [];
 
     $keys=$model->tableSchema->primaryKey;

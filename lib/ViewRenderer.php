@@ -80,7 +80,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'app'=>\Yii::$app,
       //'format'=>new FormatHelper(),
       //'html'=>new HtmlHelper(),
-      //'i18n'=>new I18nHelper()
+      'i18n'=>new I18nHelper()
     ];
 
     $options=[

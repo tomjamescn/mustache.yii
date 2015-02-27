@@ -18,7 +18,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates the JavaScript that initiates an AJAX request.
-   * See: `CHtml::ajax()`
+   * See: `Html::ajax()`
    * @property ajax
    * @type Closure
    * @final
@@ -32,7 +32,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a push button that can initiate AJAX requests.
-   * See: `CHtml::ajaxButton()`
+   * See: `Html::ajaxButton()`
    * @property ajaxButton
    * @type Closure
    * @final
@@ -51,7 +51,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a link that can initiate AJAX requests.
-   * See: `CHtml::ajaxLink()`
+   * See: `Html::ajaxLink()`
    * @property ajaxLink
    * @type Closure
    * @final
@@ -70,7 +70,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a push button that can submit the current form in POST method.
-   * See: `CHtml::ajaxSubmitButton()`
+   * See: `Html::ajaxSubmitButton()`
    * @property ajaxSubmitButton
    * @type Closure
    * @final
@@ -89,7 +89,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates the URL for the published assets.
-   * See: `CHtml::asset()`
+   * See: `Html::asset()`
    * @property asset
    * @type Closure
    * @final
@@ -103,7 +103,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates an opening form tag.
-   * See: `CHtml::beginForm()`
+   * See: `Html::beginForm()`
    * @property beginForm
    * @type Closure
    * @final
@@ -121,7 +121,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a button.
-   * See: `CHtml::button()`
+   * See: `Html::button()`
    * @property button
    * @type Closure
    * @final
@@ -135,7 +135,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Encloses the given string within a CDATA tag.
-   * See: `CHtml::cdata()`
+   * See: `Html::cdata()`
    * @property cdata
    * @type Closure
    * @final
@@ -148,7 +148,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a check box.
-   * See: `CHtml::checkBox()`
+   * See: `Html::checkBox()`
    * @property checkBox
    * @type Closure
    * @final
@@ -218,7 +218,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Encloses the given CSS content with a CSS tag.
-   * See: `CHtml::css()`
+   * See: `Html::css()`
    * @property css
    * @type Closure
    * @final
@@ -232,7 +232,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a date field input.
-   * See: `CHtml::dateField()`
+   * See: `Html::dateField()`
    * @property dateField
    * @type Closure
    * @final
@@ -250,7 +250,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates an email field input.
-   * See: `CHtml::emailField()`
+   * See: `Html::emailField()`
    * @property emailField
    * @type Closure
    * @final
@@ -268,7 +268,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a closing form tag.
-   * See: `CHtml::endForm()`
+   * See: `Html::endForm()`
    * @property endForm
    * @type string
    * @final
@@ -279,7 +279,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a file input.
-   * See: `CHtml::fileField()`
+   * See: `Html::fileField()`
    * @property fileField
    * @type Closure
    * @final
@@ -297,7 +297,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a hidden input.
-   * See: `CHtml::hiddenField()`
+   * See: `Html::hiddenField()`
    * @property hiddenField
    * @type Closure
    * @final
@@ -315,7 +315,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a button using HTML button tag.
-   * See: `CHtml::htmlButton()`
+   * See: `Html::htmlButton()`
    * @property htmlButton
    * @type Closure
    * @final
@@ -329,7 +329,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a valid HTML identifier based on name.
-   * See: `CHtml::idByName()`
+   * See: `Html::idByName()`
    * @property idByName
    * @type Closure
    * @final
@@ -342,7 +342,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates an image submit button.
-   * See: `CHtml::imageButton()`
+   * See: `Html::imageButton()`
    * @property imageButton
    * @type Closure
    * @final
@@ -356,7 +356,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a label tag.
-   * See: `CHtml::label()`
+   * See: `Html::label()`
    * @property label
    * @type Closure
    * @final
@@ -374,7 +374,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a hyperlink tag.
-   * See: `CHtml::link()`
+   * See: `Html::link()`
    * @property link
    * @type Closure
    * @final
@@ -392,7 +392,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a link submit button.
-   * See: `CHtml::linkButton()`
+   * See: `Html::linkButton()`
    * @property linkButton
    * @type Closure
    * @final
@@ -406,7 +406,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a mailto link.
-   * See: `CHtml::mailto()`
+   * See: `Html::mailto()`
    * @property mailto
    * @type Closure
    * @final
@@ -437,7 +437,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a number field input.
-   * See: `CHtml::numberField()`
+   * See: `Html::numberField()`
    * @property numberField
    * @type Closure
    * @final
@@ -455,7 +455,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a hidden field for storing persistent page states.
-   * See: `CHtml::pageStateField()`
+   * See: `Html::pageStateField()`
    * @property pageStateField
    * @type Closure
    * @final
@@ -468,7 +468,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a password field input.
-   * See: `CHtml::passwordField()`
+   * See: `Html::passwordField()`
    * @property passwordField
    * @type Closure
    * @final
@@ -486,7 +486,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a radio button.
-   * See: `CHtml::radioButton()`
+   * See: `Html::radioButton()`
    * @property radioButton
    * @type Closure
    * @final
@@ -504,7 +504,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a range field input.
-   * See: `CHtml::rangeField()`
+   * See: `Html::rangeField()`
    * @property rangeField
    * @type Closure
    * @final
@@ -522,7 +522,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Registers a `refresh` meta tag.
-   * See: `CHtml::refresh()`
+   * See: `Html::refresh()`
    * @property refresh
    * @type Closure
    * @final
@@ -536,7 +536,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a reset button.
-   * See: `CHtml::resetButton()`
+   * See: `Html::resetButton()`
    * @property resetButton
    * @type Closure
    * @final
@@ -550,7 +550,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Encloses the given JavaScript within a script tag.
-   * See: `CHtml::script()`
+   * See: `Html::script()`
    * @property script
    * @type Closure
    * @final
@@ -564,7 +564,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a search field input.
-   * See: `CHtml::searchField()`
+   * See: `Html::searchField()`
    * @property searchField
    * @type Closure
    * @final
@@ -583,7 +583,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a stateful form tag.
-   * See: `CHtml::statefulForm()`
+   * See: `Html::statefulForm()`
    * @property statefulForm
    * @type Closure
    * @final
@@ -601,7 +601,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a submit button.
-   * See: `CHtml::submitButton()`
+   * See: `Html::submitButton()`
    * @property submitButton
    * @type Closure
    * @final
@@ -615,7 +615,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a telephone field input.
-   * See: `CHtml::telField()`
+   * See: `Html::telField()`
    * @property telField
    * @type Closure
    * @final
@@ -633,7 +633,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a text area input.
-   * See: `CHtml::textArea()`
+   * See: `Html::textArea()`
    * @property textArea
    * @type Closure
    * @final
@@ -651,7 +651,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a text field input.
-   * See: `CHtml::textField()`
+   * See: `Html::textField()`
    * @property textField
    * @type Closure
    * @final
@@ -669,7 +669,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a time field input.
-   * See: `CHtml::timeField()`
+   * See: `Html::timeField()`
    * @property timeField
    * @type Closure
    * @final
@@ -687,7 +687,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a URL field input.
-   * See: `CHtml::urlField()`
+   * See: `Html::urlField()`
    * @property urlField
    * @type Closure
    * @final

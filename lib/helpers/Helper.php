@@ -13,7 +13,7 @@ use yii\helpers\Json;
 /**
  * Provides the abstract base class for a view helper.
  * @class yii.mustache.helpers.Helper
- * @extends system.base.CComponent
+ * @extends yii.base.Object
  * @constructor
  */
 abstract class Helper extends Object {
