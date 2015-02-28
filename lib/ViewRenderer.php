@@ -78,6 +78,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public function init() {
     $helpers=[
       'app'=>\Yii::$app,
+      'debug'=>YII_DEBUG,
       //'format'=>new FormatHelper(),
       //'html'=>new HtmlHelper(),
       'i18n'=>new I18nHelper()
