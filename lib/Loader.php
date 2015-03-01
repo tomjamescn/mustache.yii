@@ -44,9 +44,7 @@ class Loader extends Object implements \Mustache_Loader {
   public function getViewPath() {
     $controller=\Yii::$app->controller;
     if(!$controller) return \Yii::$app->viewPath;
-
-    $viewPath=(($theme=\Yii::$app->theme) ? $theme->viewPath : $controller->viewPath);
-    return ($module=$controller->module) ? $viewPath.'/'.$module->id : $viewPath;
+    return ($theme=$controller->view->theme) ? $theme->basePath : $controller->viewPath;
   }
 
   /**
@@ -61,9 +59,7 @@ class Loader extends Object implements \Mustache_Loader {
     if(!isset($this->views[$name])) {
       if(!mb_strlen($name)) throw new InvalidParamException(\Yii::t('yii', 'View "{name}" does not exist.', [ 'name'=>$name ]));
 
-      if($name[0]=='@') $fileName=\Yii::getAlias($name);
-      else $fileName=(mb_substr($name, 0, 2)=='//' ? \Yii::$app->viewPath.'/'.mb_substr($name, 2) : $this->viewPath.'/'.$name);
-
+      $fileName=\Yii::getAlias(mb_substr($name, 0, 2)=='//' ? \Yii::$app->viewPath.'/'.mb_substr($name, 2) : $this->viewPath.'/'.$name);
       if(!mb_strlen(pathinfo($fileName, PATHINFO_EXTENSION))) {
         $controller=\Yii::$app->controller;
         $fileName.='.'.($controller && ($view=$controller->view) ? $view->defaultExtension : static::DEFAULT_EXTENSION);
