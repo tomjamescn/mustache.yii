@@ -7,6 +7,7 @@ namespace yii\mustache\helpers;
 
 // Module dependencies.
 use yii\base\Model;
+use yii\db\ActiveRecord;
 use yii\helpers\Html;
 
 /**
@@ -74,7 +75,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a check box for a model attribute.
-   * See: `Html::activeCheckBox()`
+   * See: `yii\helpers\Html::activeCheckBox()`
    * @property activeCheckBox
    * @type Closure
    * @final
@@ -88,7 +89,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a date field input for a model attribute.
-   * See: `Html::activeDateField()`
+   * See: `yii\helpers\Html::activeDateField()`
    * @property activeDateField
    * @type Closure
    * @final
@@ -102,7 +103,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates an email field input for a model attribute.
-   * See: `Html::activeEmailField()`
+   * See: `yii\helpers\Html::activeEmailField()`
    * @property activeEmailField
    * @type Closure
    * @final
@@ -116,7 +117,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a file input for a model attribute.
-   * See: `Html::activeFileField()`
+   * See: `yii\helpers\Html::activeFileField()`
    * @property activeFileField
    * @type Closure
    * @final
@@ -130,7 +131,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a hidden input for a model attribute.
-   * See: `Html::activeHiddenField()`
+   * See: `yii\helpers\Html::activeHiddenField()`
    * @property activeHiddenField
    * @type Closure
    * @final
@@ -144,7 +145,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates input field identifier for a model attribute.
-   * See: `Html::activeId()`
+   * See: `yii\helpers\Html::activeId()`
    * @property activeId
    * @type Closure
    * @final
@@ -157,7 +158,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a label tag for a model attribute.
-   * See: `Html::activeLabel()`
+   * See: `yii\helpers\Html::activeLabel()`
    * @property activeLabel
    * @type Closure
    * @final
@@ -171,7 +172,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a label tag for a model attribute.
-   * See: `Html::activeLabelEx()`
+   * See: `yii\helpers\Html::activeLabelEx()`
    * @property activeLabelEx
    * @type Closure
    * @final
@@ -185,7 +186,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates input field name for a model attribute.
-   * See: `Html::activeName()`
+   * See: `yii\helpers\Html::activeName()`
    * @property activeName
    * @type Closure
    * @final
@@ -198,7 +199,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a number field input for a model attribute.
-   * See: `Html::activeNumberField()`
+   * See: `yii\helpers\Html::activeNumberField()`
    * @property activeNumberField
    * @type Closure
    * @final
@@ -212,7 +213,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a password field input for a model attribute.
-   * See: `Html::activePasswordField()`
+   * See: `yii\helpers\Html::activePasswordField()`
    * @property activePasswordField
    * @type Closure
    * @final
@@ -226,7 +227,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a radio button for a model attribute.
-   * See: `Html::activeRadioButton()`
+   * See: `yii\helpers\Html::activeRadioButton()`
    * @property activeRadioButton
    * @type Closure
    * @final
@@ -240,7 +241,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a range field input for a model attribute.
-   * See: `Html::activeRangeField()`
+   * See: `yii\helpers\Html::activeRangeField()`
    * @property activeRangeField
    * @type Closure
    * @final
@@ -254,7 +255,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a search field input for a model attribute.
-   * See: `Html::activeSearchField()`
+   * See: `yii\helpers\Html::activeSearchField()`
    * @property activeSearchField
    * @type Closure
    * @final
@@ -268,7 +269,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a telephone field input for a model attribute.
-   * See: `Html::activeTelField()`
+   * See: `yii\helpers\Html::activeTelField()`
    * @property activeTelField
    * @type Closure
    * @final
@@ -282,7 +283,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a text area input for a model attribute.
-   * See: `Html::activeTextArea()`
+   * See: `yii\helpers\Html::activeTextArea()`
    * @property activeTextArea
    * @type Closure
    * @final
@@ -296,7 +297,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a text field input for a model attribute.
-   * See: `Html::activeTextField()`
+   * See: `yii\helpers\Html::activeTextField()`
    * @property activeTextField
    * @type Closure
    * @final
@@ -310,7 +311,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a time field input for a model attribute.
-   * See: `Html::activeTimeField()`
+   * See: `yii\helpers\Html::activeTimeField()`
    * @property activeTimeField
    * @type Closure
    * @final
@@ -324,7 +325,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates a URL field input for a model attribute.
-   * See: `Html::activeUrlField()`
+   * See: `yii\helpers\Html::activeUrlField()`
    * @property activeUrlField
    * @type Closure
    * @final
@@ -338,7 +339,7 @@ class ModelHelper extends Helper {
 
   /**
    * Returns the text label for a model attribute.
-   * See: `CModel->getAttributeLabel()`
+   * See: `yii\base\Model->getAttributeLabel()`
    * @property attributeLabel
    * @type Closure
    * @final
@@ -352,7 +353,7 @@ class ModelHelper extends Helper {
   /**
    * Creates an absolute URL for the specified route.
    * If the model is an instance of `CActiveRecord`, the resulting URL contains the model primary key as query parameters.
-   * See: `CController->createAbsoluteUrl()`
+   * See: `yii\base\Controller->createAbsoluteUrl()`
    * @property createAbsoluteUrl
    * @type Closure
    * @final
@@ -373,7 +374,7 @@ class ModelHelper extends Helper {
   /**
    * Creates a relative URL for the specified route.
    * If the model is an instance of `CActiveRecord`, the resulting URL contains the model primary key as query parameters.
-   * See: `CController->createUrl()`
+   * See: `yii\base\Controller->createUrl()`
    * @property createUrl
    * @type Closure
    * @final
@@ -393,7 +394,7 @@ class ModelHelper extends Helper {
 
   /**
    * Displays the first validation error for a model attribute.
-   * See: `Html::error()`
+   * See: `yii\helpers\Html::error()`
    * @property error
    * @type Closure
    * @final
@@ -407,7 +408,7 @@ class ModelHelper extends Helper {
 
   /**
    * Returns the first validation error of all model attributes.
-   * See: `CModel->getErrors()`
+   * See: `yii\base\Model->getErrors()`
    * @property errors
    * @type array
    * @final
@@ -418,7 +419,7 @@ class ModelHelper extends Helper {
 
   /**
    * Displays a summary of validation errors for a model.
-   * See: `Html::errorSummary()`
+   * See: `yii\helpers\Html::errorSummary()`
    * @property errorSummary
    * @type Closure
    * @final
@@ -436,7 +437,7 @@ class ModelHelper extends Helper {
 
   /**
    * Generates HTML name for the model.
-   * See: `Html::modelName()`
+   * See: `yii\helpers\Html::modelName()`
    * @property modelName
    * @type string
    * @final
@@ -447,7 +448,7 @@ class ModelHelper extends Helper {
 
   /**
    * Evaluates the value of a model attribute.
-   * See: `Html::value()`
+   * See: `yii\helpers\Html::value()`
    * @property value
    * @type Closure
    * @final
@@ -467,7 +468,7 @@ class ModelHelper extends Helper {
    * @return {array} The query parameters corresponding to the model primary key, or an empty array if model has no primary key.
    */
   private static function getQueryParams(Model $model) {
-    if(!$model instanceof \CActiveRecord) return [];
+    if(!$model instanceof ActiveRecord) return [];
 
     $keys=$model->tableSchema->primaryKey;
     if(!is_array($keys)) $keys=[ $keys ];

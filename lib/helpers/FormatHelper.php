@@ -24,7 +24,7 @@ class FormatHelper extends Helper {
 
   /**
    * Formats a number using the currency format defined in the locale.
-   * See: `CNumberFormatter->asCurrency()`
+   * See: `yii\i18n\Formatter->asCurrency()`
    * @property currency
    * @type Closure
    * @final
@@ -56,7 +56,7 @@ class FormatHelper extends Helper {
 
   /**
    * Formats a number using the decimal format defined in the locale.
-   * See: `CNumberFormatter->asDecimal()`
+   * See: `yii\i18n\Formatter->asDecimal()`
    * @property decimal
    * @type Closure
    * @final
@@ -147,7 +147,7 @@ class FormatHelper extends Helper {
 
   /**
    * Formats a number using the percentage format defined in the locale.
-   * See: `CNumberFormatter->asPercentage()`
+   * See: `yii\i18n\Formatter->asPercentage()`
    * @property percentage
    * @type Closure
    * @final

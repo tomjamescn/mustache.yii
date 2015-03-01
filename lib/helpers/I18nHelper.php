@@ -19,7 +19,7 @@ use yii\helpers\Html;
 class I18nHelper extends Helper {
 
   /**
-   * String used to separate the category from the message in a translation.
+   * String used to separate the category from the message in a translation template.
    * @property categorySeparator
    * @type string
    * @default ":"

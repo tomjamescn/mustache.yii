@@ -50,6 +50,6 @@ class Logger extends \Mustache_Logger_AbstractLogger {
       [ 'enum'=>implode(', ', (new \ReflectionClass('\Mustache_Logger'))->getConstants()), 'value'=>$value ]
     ));
 
-    \Yii::getLogger()->log($message, self::$levels[$level], 'yii\\mustache');
+    \Yii::getLogger()->log($message, self::$levels[$level], __METHOD__);
   }
 }

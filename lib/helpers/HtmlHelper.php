@@ -18,7 +18,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates the JavaScript that initiates an AJAX request.
-   * See: `Html::ajax()`
+   * See: `yii\helpers\Html::ajax()`
    * @property ajax
    * @type Closure
    * @final
@@ -32,7 +32,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a push button that can initiate AJAX requests.
-   * See: `Html::ajaxButton()`
+   * See: `yii\helpers\Html::ajaxButton()`
    * @property ajaxButton
    * @type Closure
    * @final
@@ -41,17 +41,17 @@ class HtmlHelper extends Helper {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'label', [
         'ajaxOptions'=>[],
-        'htmlOptions'=>[],
+        'options'=>[],
         'url'=>''
       ]);
 
-      return Html::ajaxButton($args['label'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
+      return Html::ajaxButton($args['label'], $args['url'], $args['ajaxOptions'], $args['options']);
     };
   }
 
   /**
    * Generates a link that can initiate AJAX requests.
-   * See: `Html::ajaxLink()`
+   * See: `yii\helpers\Html::ajaxLink()`
    * @property ajaxLink
    * @type Closure
    * @final
@@ -60,17 +60,17 @@ class HtmlHelper extends Helper {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'text', [
         'ajaxOptions'=>[],
-        'htmlOptions'=>[],
+        'options'=>[],
         'url'=>''
       ]);
 
-      return Html::ajaxLink($args['text'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
+      return Html::ajaxLink($args['text'], $args['url'], $args['ajaxOptions'], $args['options']);
     };
   }
 
   /**
    * Generates a push button that can submit the current form in POST method.
-   * See: `Html::ajaxSubmitButton()`
+   * See: `yii\helpers\Html::ajaxSubmitButton()`
    * @property ajaxSubmitButton
    * @type Closure
    * @final
@@ -79,17 +79,17 @@ class HtmlHelper extends Helper {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'label', [
         'ajaxOptions'=>[],
-        'htmlOptions'=>[],
+        'options'=>[],
         'url'=>''
       ]);
 
-      return Html::ajaxSubmitButton($args['label'], $args['url'], $args['ajaxOptions'], $args['htmlOptions']);
+      return Html::ajaxSubmitButton($args['label'], $args['url'], $args['ajaxOptions'], $args['options']);
     };
   }
 
   /**
    * Generates the URL for the published assets.
-   * See: `Html::asset()`
+   * See: `yii\helpers\Html::asset()`
    * @property asset
    * @type Closure
    * @final
@@ -103,7 +103,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates an opening form tag.
-   * See: `Html::beginForm()`
+   * See: `yii\helpers\Html::beginForm()`
    * @property beginForm
    * @type Closure
    * @final
@@ -111,62 +111,17 @@ class HtmlHelper extends Helper {
   public function getBeginForm() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'action', [
-        'htmlOptions'=>[],
+        'options'=>[],
         'method'=>'post'
       ]);
 
-      return Html::beginForm($args['action'], $args['method'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a button.
-   * See: `Html::button()`
-   * @property button
-   * @type Closure
-   * @final
-   */
-  public function getButton() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return Html::button($args['label'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Encloses the given string within a CDATA tag.
-   * See: `Html::cdata()`
-   * @property cdata
-   * @type Closure
-   * @final
-   */
-  public function getCdata() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::cdata($helper->render($value));
-    };
-  }
-
-  /**
-   * Generates a check box.
-   * See: `Html::checkBox()`
-   * @property checkBox
-   * @type Closure
-   * @final
-   */
-  public function getCheckBox() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'checked'=>false,
-        'htmlOptions'=>[]
-      ]);
-
-      return Html::checkBox($args['name'], $args['checked'], $args['htmlOptions']);
+      return Html::beginForm($args['action'], $args['method'], $args['options']);
     };
   }
 
   /**
    * Creates an absolute URL for the specified route.
-   * See: `CController->createAbsoluteUrl()`
+   * See: `yii\base\Controller->createAbsoluteUrl()`
    * @property createAbsoluteUrl
    * @type Closure
    * @final
@@ -186,7 +141,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Creates a relative URL for the specified route.
-   * See: `CController->createUrl()`
+   * See: `yii\base\Controller->createUrl()`
    * @property createUrl
    * @type Closure
    * @final
@@ -206,7 +161,7 @@ class HtmlHelper extends Helper {
 
   /**
    * Generates a hidden field for storing the token used to perform CSRF validation.
-   * See: `CHttpRequest->csrfToken`
+   * See: `yii\web\Request->csrfToken`
    * @property csrfTokenField
    * @type string
    * @final
@@ -217,119 +172,8 @@ class HtmlHelper extends Helper {
   }
 
   /**
-   * Encloses the given CSS content with a CSS tag.
-   * See: `Html::css()`
-   * @property css
-   * @type Closure
-   * @final
-   */
-  public function getCss() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'text', [ 'media'=>'' ]);
-      return Html::css($args['text'], $args['media']);
-    };
-  }
-
-  /**
-   * Generates a date field input.
-   * See: `Html::dateField()`
-   * @property dateField
-   * @type Closure
-   * @final
-   */
-  public function getDateField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::dateField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates an email field input.
-   * See: `Html::emailField()`
-   * @property emailField
-   * @type Closure
-   * @final
-   */
-  public function getEmailField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::emailField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a closing form tag.
-   * See: `Html::endForm()`
-   * @property endForm
-   * @type string
-   * @final
-   */
-  public function getEndForm() {
-    return Html::endForm();
-  }
-
-  /**
-   * Generates a file input.
-   * See: `Html::fileField()`
-   * @property fileField
-   * @type Closure
-   * @final
-   */
-  public function getFileField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::fileField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a hidden input.
-   * See: `Html::hiddenField()`
-   * @property hiddenField
-   * @type Closure
-   * @final
-   */
-  public function getHiddenField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::hiddenField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a button using HTML button tag.
-   * See: `Html::htmlButton()`
-   * @property htmlButton
-   * @type Closure
-   * @final
-   */
-  public function getHtmlButton() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return Html::htmlButton($args['label'], $args['htmlOptions']);
-    };
-  }
-
-  /**
    * Generates a valid HTML identifier based on name.
-   * See: `Html::idByName()`
+   * See: `yii\helpers\Html::idByName()`
    * @property idByName
    * @type Closure
    * @final
@@ -337,88 +181,6 @@ class HtmlHelper extends Helper {
   public function getIdByName() {
     return function($value, \Mustache_LambdaHelper $helper) {
       return Html::idByName($helper->render($value));
-    };
-  }
-
-  /**
-   * Generates an image submit button.
-   * See: `Html::imageButton()`
-   * @property imageButton
-   * @type Closure
-   * @final
-   */
-  public function getImageButton() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'src', [ 'htmlOptions'=>[] ]);
-      return Html::imageButton($args['src'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a label tag.
-   * See: `Html::label()`
-   * @property label
-   * @type Closure
-   * @final
-   */
-  public function getLabel() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'label', [
-        'for'=>false,
-        'htmlOptions'=>[]
-      ]);
-
-      return Html::label($args['label'], $args['for'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a hyperlink tag.
-   * See: `Html::link()`
-   * @property link
-   * @type Closure
-   * @final
-   */
-  public function getLink() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'text', [
-        'htmlOptions'=>[],
-        'url'=>'#'
-      ]);
-
-      return Html::link($args['text'], $args['url'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a link submit button.
-   * See: `Html::linkButton()`
-   * @property linkButton
-   * @type Closure
-   * @final
-   */
-  public function getLinkButton() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return Html::linkButton($args['label'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a mailto link.
-   * See: `Html::mailto()`
-   * @property mailto
-   * @type Closure
-   * @final
-   */
-  public function getMailto() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'text', [
-        'email'=>'',
-        'htmlOptions'=>[]
-      ]);
-
-      return Html::mailto($args['text'], $args['email'], $args['htmlOptions']);
     };
   }
 
@@ -436,26 +198,8 @@ class HtmlHelper extends Helper {
   }
 
   /**
-   * Generates a number field input.
-   * See: `Html::numberField()`
-   * @property numberField
-   * @type Closure
-   * @final
-   */
-  public function getNumberField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::numberField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
    * Generates a hidden field for storing persistent page states.
-   * See: `Html::pageStateField()`
+   * See: `yii\helpers\Html::pageStateField()`
    * @property pageStateField
    * @type Closure
    * @final
@@ -467,123 +211,8 @@ class HtmlHelper extends Helper {
   }
 
   /**
-   * Generates a password field input.
-   * See: `Html::passwordField()`
-   * @property passwordField
-   * @type Closure
-   * @final
-   */
-  public function getPasswordField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::passwordField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a radio button.
-   * See: `Html::radioButton()`
-   * @property radioButton
-   * @type Closure
-   * @final
-   */
-  public function getRadioButton() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'checked'=>false,
-        'htmlOptions'=>[]
-      ]);
-
-      return Html::radioButton($args['name'], $args['checked'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a range field input.
-   * See: `Html::rangeField()`
-   * @property rangeField
-   * @type Closure
-   * @final
-   */
-  public function getRangeField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::rangeField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Registers a `refresh` meta tag.
-   * See: `Html::refresh()`
-   * @property refresh
-   * @type Closure
-   * @final
-   */
-  public function getRefresh() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'seconds', [ 'url'=>'' ]);
-      return Html::refresh($args['seconds'], $args['url']);
-    };
-  }
-
-  /**
-   * Generates a reset button.
-   * See: `Html::resetButton()`
-   * @property resetButton
-   * @type Closure
-   * @final
-   */
-  public function getResetButton() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return Html::resetButton($args['label'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Encloses the given JavaScript within a script tag.
-   * See: `Html::script()`
-   * @property script
-   * @type Closure
-   * @final
-   */
-  public function getScript() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'text', [ 'htmlOptions'=>[] ]);
-      return Html::script($args['text'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a search field input.
-   * See: `Html::searchField()`
-   * @property searchField
-   * @type Closure
-   * @final
-   */
-  public function getSearchField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      Html::clientChange('change', $args['htmlOptions']);
-      return Html::inputField('search', $args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
    * Generates a stateful form tag.
-   * See: `Html::statefulForm()`
+   * See: `yii\helpers\Html::statefulForm()`
    * @property statefulForm
    * @type Closure
    * @final
@@ -591,115 +220,11 @@ class HtmlHelper extends Helper {
   public function getStatefulForm() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'action', [
-        'htmlOptions'=>[],
-        'method'=>'post'
+        'method'=>'post',
+        'options'=>[]
       ]);
 
-      return Html::statefulForm($args['action'], $args['method'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a submit button.
-   * See: `Html::submitButton()`
-   * @property submitButton
-   * @type Closure
-   * @final
-   */
-  public function getSubmitButton() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'label', [ 'htmlOptions'=>[] ]);
-      return Html::submitButton($args['label'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a telephone field input.
-   * See: `Html::telField()`
-   * @property telField
-   * @type Closure
-   * @final
-   */
-  public function getTelField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::telField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a text area input.
-   * See: `Html::textArea()`
-   * @property textArea
-   * @type Closure
-   * @final
-   */
-  public function getTextArea() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::textArea($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a text field input.
-   * See: `Html::textField()`
-   * @property textField
-   * @type Closure
-   * @final
-   */
-  public function getTextField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::textField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a time field input.
-   * See: `Html::timeField()`
-   * @property timeField
-   * @type Closure
-   * @final
-   */
-  public function getTimeField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::timeField($args['name'], $args['value'], $args['htmlOptions']);
-    };
-  }
-
-  /**
-   * Generates a URL field input.
-   * See: `Html::urlField()`
-   * @property urlField
-   * @type Closure
-   * @final
-   */
-  public function getUrlField() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'name', [
-        'htmlOptions'=>[],
-        'value'=>''
-      ]);
-
-      return Html::urlField($args['name'], $args['value'], $args['htmlOptions']);
+      return Html::statefulForm($args['action'], $args['method'], $args['options']);
     };
   }
 }
