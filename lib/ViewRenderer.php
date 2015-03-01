@@ -39,6 +39,14 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public $enableCaching=true;
 
   /**
+   * Value indicating whether to enable the logging of engine messages.
+   * @property enableLogging
+   * @type boolean
+   * @default false
+   */
+  public $enableLogging=false;
+
+  /**
    * The underlying Mustache template engine.
    * @property engine
    * @type mustache.Mustache_Engine
@@ -89,14 +97,15 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'entity_flags'=>ENT_QUOTES | ENT_SUBSTITUTE,
       'escape'=>function($value) { return Html::encode($value); },
       'helpers'=>ArrayHelper::merge($helpers, $this->helpers),
-      'logger'=>new Logger(),
       'partials_loader'=>new Loader(),
       'strict_callables'=>true
     ];
 
+    if($this->enableLogging) $options['logger']=new Logger();
+
     if($this->enableCaching) {
       $cache=\Yii::createObject([
-        'class'=>'yii\\caching\\FileCache',
+        'class'=>'yii\caching\FileCache',
         'cachePath'=>'@runtime/mustache'
       ]);
 
