@@ -6,6 +6,7 @@
 namespace yii\mustache\helpers;
 
 // Module dependencies.
+use yii\base\InvalidParamException;
 use yii\base\Object;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -28,10 +29,10 @@ abstract class Helper extends Object {
    * @return {array} The parsed arguments as an associative array.
    */
   protected function parseArguments($text, $defaultArgument, array $defaultValues=[]) {
-    $args=$defaultValues;
-    if(is_array($json=Json::decode($text))) return ArrayHelper::merge($args, $json);
+    try { if(is_array($json=Json::decode($text))) return ArrayHelper::merge($defaultValues, $json); }
+    catch(InvalidParamException $e) {}
 
-    $args[$defaultArgument]=$text;
-    return $args;
+    $defaultValues[$defaultArgument]=$text;
+    return $defaultValues;
   }
 }

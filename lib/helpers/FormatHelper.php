@@ -16,14 +16,21 @@ use yii\helpers\Html;
  */
 class FormatHelper extends Helper {
 
-  public function getAsBoolean() {
+  /**
+   * Formats the value as a boolean.
+   * See: `yii\i18n\Formatter->asBoolean()`
+   * @property boolean
+   * @type Closure
+   * @final
+   */
+  public function getBoolean() {
     return function($value, \Mustache_LambdaHelper $helper) {
       return Html::encode(\Yii::$app->formatter->asBoolean($helper->render($value)));
     };
   }
 
   /**
-   * Formats a number using the currency format defined in the locale.
+   * Formats the value as a currency number.
    * See: `yii\i18n\Formatter->asCurrency()`
    * @property currency
    * @type Closure
@@ -31,13 +38,32 @@ class FormatHelper extends Helper {
    */
   public function getCurrency() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'value', [ 'currency'=>'USD' ]);
-      return Html::encode(\Yii::$app->formatter->asCurrency($args['value'], $args['currency']));
+      $args=$this->parseArguments($helper->render($value), 'value', [
+        'currency'=>null,
+        'options'=>[],
+        'textOptions'=>[]
+      ]);
+
+      return Html::encode(\Yii::$app->formatter->asCurrency($args['value'], $args['currency'], $args['options'], $args['textOptions']));
     };
   }
 
   /**
-   * Formats a date according to a predefined pattern.
+   * Formats the value as a date.
+   * See: `yii\i18n\Formatter->asDate()`
+   * @property date
+   * @type Closure
+   * @final
+   */
+  public function getDate() {
+    return function($value, \Mustache_LambdaHelper $helper) {
+      $args=$this->parseArguments($helper->render($value), 'value', [ 'format'=>null ]);
+      return Html::encode(\Yii::$app->formatter->asDate($args['value'], $args['format']));
+    };
+  }
+
+  /**
+   * Formats the value as a datetime.
    * See: `yii\i18n\Formatter->asDateTime()`
    * @property dateTime
    * @type Closure
@@ -45,12 +71,8 @@ class FormatHelper extends Helper {
    */
   public function getDateTime() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      $args=$this->parseArguments($helper->render($value), 'timestamp', [
-        'dateWidth'=>'medium',
-        'timeWidth'=>'medium'
-      ]);
-
-      return Html::encode(\Yii::$app->formatter->asDateTime($args['timestamp'], $args['dateWidth'] , $args['timeWidth']));
+      $args=$this->parseArguments($helper->render($value), 'value', [ 'format'=>null ]);
+      return Html::encode(\Yii::$app->formatter->asDatetime($args['value'], $args['format']));
     };
   }
 
@@ -181,6 +203,20 @@ class FormatHelper extends Helper {
   public function getShortTime() {
     return function($value, \Mustache_LambdaHelper $helper) {
       return Html::encode(\Yii::$app->formatter->asDateTime($helper->render($value), null, 'short'));
+    };
+  }
+
+  /**
+   * Formats the value as a time.
+   * See: `yii\i18n\Formatter->asTime()`
+   * @property time
+   * @type Closure
+   * @final
+   */
+  public function getTime() {
+    return function($value, \Mustache_LambdaHelper $helper) {
+      $args=$this->parseArguments($helper->render($value), 'value', [ 'format'=>null ]);
+      return Html::encode(\Yii::$app->formatter->asTime($args['value'], $args['format']));
     };
   }
 }

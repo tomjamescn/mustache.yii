@@ -4,6 +4,8 @@
  * @module test.ViewRendererTest
  */
 namespace yii\test\mustache;
+
+// Module dependencies.
 use yii\mustache\ViewRenderer;
 
 /**
@@ -18,19 +20,19 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
    * Tests the `render` method.
    * @method testRender
    */
-  public function testRenderFile() {
+  public function testRender() {
     $model=new ViewRenderer();
-    $sourceFile=__DIR__.'/data.mustache';
+    $file=__DIR__.'/data.mustache';
 
     $data=null;
-    $output=preg_split('/\r?\n/', $model->render($this, $sourceFile, $data));
+    $output=preg_split('/\r?\n/', $model->render($this, $file, $data));
     $this->assertEquals('<test></test>', $output[0]);
     $this->assertEquals('<test></test>', $output[1]);
     $this->assertEquals('<test></test>', $output[2]);
     $this->assertEquals('<test>hidden</test>', $output[3]);
 
     $data=[ 'label'=>'"Mustache"', 'show'=>true ];
-    $output=preg_split('/\r?\n/', $model->render($this, $sourceFile, $data));
+    $output=preg_split('/\r?\n/', $model->render($this, $file, $data));
     $this->assertEquals('<test>&quot;Mustache&quot;</test>', $output[0]);
     $this->assertEquals('<test>"Mustache"</test>', $output[1]);
     $this->assertEquals('<test>visible</test>', $output[2]);

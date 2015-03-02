@@ -4,6 +4,8 @@
  * @module test.helpers.HtmlHelperTest
  */
 namespace yii\test\mustache\helpers;
+
+// Module dependencies.
 use yii\mustache\helpers\HtmlHelper;
 
 /**
@@ -23,21 +25,13 @@ class HtmlHelperTest extends \PHPUnit_Framework_TestCase {
   private $helper;
 
   /**
-   * Tests the `cdata` property.
-   * @method testCdata
-   */
-  public function testCdata() {
-    $closure=(new HtmlHelper())->cdata;
-    $this->assertEquals('<![CDATA[FooBar]]>', $closure('FooBar', $this->helper));
-  }
-
-  /**
    * Tests the `nl2br` property.
    * @method testNl2br
    */
   public function testNl2br() {
     $closure=(new HtmlHelper())->nl2br;
-    $this->assertEquals('Foo<br>Bar', $closure("Foo\r\nBar", $this->helper));
+    $this->assertEquals('Foo<br>Bar', $closure("Foo\nBar", $this->helper));
+    $this->assertEquals('Foo<br>Baz', $closure("Foo\r\nBaz", $this->helper));
   }
 
   /**

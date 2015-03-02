@@ -4,6 +4,8 @@
  * @module test.helpers.FormatHelperTest
  */
 namespace yii\test\mustache\helpers;
+
+// Module dependencies.
 use yii\mustache\helpers\FormatHelper;
 
 /**
