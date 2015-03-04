@@ -25,7 +25,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @static
    * @final
    */
-  const CACHE_KEY_PREFIX=__CLASS__.':';
+  const CACHE_KEY_PREFIX='yii\mustache\Cache:';
 
   /**
    * The underlying cache application component that is used to cache the compiled views.
