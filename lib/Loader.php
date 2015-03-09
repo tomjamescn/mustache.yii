@@ -36,37 +36,31 @@ class Loader extends Object implements \Mustache_Loader {
   private $views=[];
 
   /**
-   * The path of the directory containing the views.
-   * @property viewPath
-   * @type string
-   * @final
-   */
-  public function getViewPath() {
-    $controller=\Yii::$app->controller;
-    if(!$controller) return \Yii::$app->viewPath;
-    return ($theme=$controller->view->theme) ? $theme->basePath : $controller->viewPath;
-  }
-
-  /**
    * Loads the view with the specified name.
    * @method load
    * @param {string} $name The view name.
    * @return {string} The view contents.
-   * @throws {yii.base.InvalidCallException} The view file does not exist.
+   * @throws {yii.base.InvalidCallException} Unable to locate the view file.
    * @throws {yii.base.InvalidParamException} The view name is empty.
    */
   public function load($name) {
     if(!isset($this->views[$name])) {
-      if(!mb_strlen($name)) throw new InvalidParamException(\Yii::t('yii', 'View "{name}" does not exist.', [ 'name'=>$name ]));
+      if(!mb_strlen($name)) throw new InvalidParamException(\Yii::t('yii', 'The view name is empty.'));
+      $controller=\Yii::$app->controller;
 
-      $fileName=\Yii::getAlias(mb_substr($name, 0, 2)=='//' ? \Yii::$app->viewPath.'/'.mb_substr($name, 2) : $this->viewPath.'/'.$name);
-      if(!mb_strlen(pathinfo($fileName, PATHINFO_EXTENSION))) {
-        $controller=\Yii::$app->controller;
-        $fileName.='.'.($controller && ($view=$controller->view) ? $view->defaultExtension : static::DEFAULT_EXTENSION);
+      if(mb_substr($name, 0, 2)=='//') $file=\Yii::$app->viewPath.'/'.ltrim($name, '/');
+      else if($name[0]=='/') {
+        if(!$controller) throw new InvalidCallException(\Yii::t('yii', 'Unable to locale the view "{name}": no active controller.', [ 'name'=>$name ]));
+        $file=$controller->module->viewPath.'/'.ltrim($view, '/');
+      }
+      else {
+        $viewPath=($controller ? $controller->viewPath : \Yii::$app->viewPath);
+        $file=\Yii::getAlias("$viewPath/$name");
       }
 
-      if(!is_file($fileName)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', [ 'file'=>$fileName ]));
-      $this->views[$name]=@file_get_contents($fileName);
+      if(!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file.='.'.($controller && ($view=$controller->view) ? $view->defaultExtension : static::DEFAULT_EXTENSION);
+      if(!is_file($file)) throw new InvalidCallException(\Yii::t('yii', 'The view file "{file}" does not exist.', [ 'file'=>$file ]));
+      $this->views[$name]=@file_get_contents($file);
     }
 
     return $this->views[$name];
