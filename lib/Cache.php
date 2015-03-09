@@ -42,7 +42,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @param {string} $value The view to be cached.
    */
   public function cache($key, $value) {
-    $this->cache->set(static::CACHE_KEY_PREFIX.$key, $value);
+    $this->cache[static::CACHE_KEY_PREFIX.$key]=$value;
     $this->load($key);
   }
 
@@ -53,7 +53,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @return {boolean} `true` if the view was successfully loaded, otherwise `false`.
    */
   public function load($key) {
-    $value=$this->cache->get(static::CACHE_KEY_PREFIX.$key);
+    $value=$this->cache[static::CACHE_KEY_PREFIX.$key];
     if($value===false) return false;
 
     eval('?>'.$value);

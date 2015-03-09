@@ -34,9 +34,9 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * Value indicating whether to enable the caching of compiled views.
    * @property enableCaching
    * @type boolean
-   * @default true
+   * @default YII_ENV_PROD
    */
-  public $enableCaching=true;
+  public $enableCaching=YII_ENV_PROD;
 
   /**
    * Value indicating whether to enable the logging of engine messages.
