@@ -193,7 +193,7 @@ class HtmlHelper extends Helper {
    */
   public function getNl2br() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return preg_replace('/\r?\n/', Html::$closeSingleTags ? '<br />' : '<br>', $helper->render($value));
+      return preg_replace('/\r?\n/', '<br>', Html::encode($helper->render($value)));
     };
   }
 

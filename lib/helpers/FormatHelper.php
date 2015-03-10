@@ -9,7 +9,7 @@ namespace yii\mustache\helpers;
 use yii\helpers\Html;
 
 /**
- * Provides a collection of helper methods for formatting dates and numbers.
+ * Provides a collection of helper methods for formatting data.
  * @class yii.mustache.helpers.FormatHelper
  * @extends mustache.helpers.Helper
  * @constructor
@@ -77,7 +77,7 @@ class FormatHelper extends Helper {
   }
 
   /**
-   * Formats a number using the decimal format defined in the locale.
+   * Formats the value as a decimal number.
    * See: `yii\i18n\Formatter->asDecimal()`
    * @property decimal
    * @type Closure
@@ -85,7 +85,13 @@ class FormatHelper extends Helper {
    */
   public function getDecimal() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asDecimal($helper->render($value)));
+      $args=$this->parseArguments($helper->render($value), 'value', [
+        'decimals'=>null,
+        'options'=>[],
+        'textOptions'=>[]
+      ]);
+
+      return Html::encode(\Yii::$app->formatter->asDecimal($args['value'], $args['decimals'], $args['options'], $args['textOptions']));
     };
   }
 
@@ -168,15 +174,21 @@ class FormatHelper extends Helper {
   }
 
   /**
-   * Formats a number using the percentage format defined in the locale.
-   * See: `yii\i18n\Formatter->asPercentage()`
+   * Formats the value as a percent number with `%` sign.
+   * See: `yii\i18n\Formatter->asPercent()`
    * @property percentage
    * @type Closure
    * @final
    */
-  public function getPercentage() {
+  public function getPercent() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asPercentage($helper->render($value)));
+      $args=$this->parseArguments($helper->render($value), 'value', [
+        'decimals'=>null,
+        'options'=>[],
+        'textOptions'=>[]
+      ]);
+
+      return Html::encode(\Yii::$app->formatter->asPercent($args['value'], $args['decimals'], $args['options'], $args['textOptions']));
     };
   }
 

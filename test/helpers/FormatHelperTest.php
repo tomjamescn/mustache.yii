@@ -45,11 +45,11 @@ class FormatHelperTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `percentage` property.
-   * @method testPercentage
+   * Tests the `percent` property.
+   * @method testPercent
    */
-  public function testPercentage() {
-    $closure=(new FormatHelper())->percentage;
+  public function testPercent() {
+    $closure=(new FormatHelper())->percent;
     $this->assertEquals('10%', $closure('0.1', $this->helper));
     $this->assertEquals('123%', $closure('1.23', $this->helper));
   }
