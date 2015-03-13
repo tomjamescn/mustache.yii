@@ -96,6 +96,24 @@ class FormatHelper extends Helper {
   }
 
   /**
+   * Formats the value as an integer number by removing any decimal digits without rounding.
+   * See: `yii\i18n\Formatter->asInteger()`
+   * @property integer
+   * @type Closure
+   * @final
+   */
+  public function getInteger() {
+    return function($value, \Mustache_LambdaHelper $helper) {
+      $args=$this->parseArguments($helper->render($value), 'value', [
+        'options'=>[],
+        'textOptions'=>[]
+      ]);
+
+      return Html::encode(\Yii::$app->formatter->asInteger($args['value'], $args['options'], $args['textOptions']));
+    };
+  }
+
+  /**
    * Formats a timestamp using the full date format defined in the locale.
    * See: `yii\i18n\Formatter->asDateTime()`
    * @property fullDate
