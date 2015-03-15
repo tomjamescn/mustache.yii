@@ -11,7 +11,7 @@ use yii\mustache\helpers\HtmlHelper;
 /**
  * Tests the features of the `yii\mustache\helpers\HtmlHelper` class.
  * @class yii.test.mustache.helpers.HtmlHelperTest
- * @extends phpunit.PHPUnit_Framework_TestCase
+ * @extends PHPUnit_Framework_TestCase
  * @constructor
  */
 class HtmlHelperTest extends \PHPUnit_Framework_TestCase {

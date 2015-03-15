@@ -23,7 +23,7 @@ class HelperStub extends Helper {
 /**
  * Tests the features of the `yii\mustache\helpers\Helper` class.
  * @class yii.test.mustache.helpers.HelperTest
- * @extends phpunit.PHPUnit_Framework_TestCase
+ * @extends PHPUnit_Framework_TestCase
  * @constructor
  */
 class HelperTest extends \PHPUnit_Framework_TestCase {

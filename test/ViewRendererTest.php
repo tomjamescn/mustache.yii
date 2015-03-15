@@ -11,7 +11,7 @@ use yii\mustache\ViewRenderer;
 /**
  * Tests the features of the `yii\mustache\ViewRenderer` class.
  * @class yii.mustache.test.ViewRendererTest
- * @extends phpunit.PHPUnit_Framework_TestCase
+ * @extends PHPUnit_Framework_TestCase
  * @constructor
  */
 class ViewRendererTest extends \PHPUnit_Framework_TestCase {
@@ -21,8 +21,8 @@ class ViewRendererTest extends \PHPUnit_Framework_TestCase {
    * @method testRender
    */
   public function testRender() {
-    $model=new ViewRenderer();
     $file=__DIR__.'/data.mustache';
+    $model=new ViewRenderer([ 'cacheId'=>false ]);
 
     $data=null;
     $output=preg_split('/\r?\n/', $model->render($this, $file, $data));

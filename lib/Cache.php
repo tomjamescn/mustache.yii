@@ -11,11 +11,13 @@ namespace yii\mustache;
  * @extends mustache.Mustache_Cache_AbstractCache
  * @constructor
  * @param {yii.caching.Cache} $cache The cache application component that is used to store the compiled views.
+ * @param {int} [$duration] The number of seconds in which the cached views will expire. 0 means never expire.
  */
 class Cache extends \Mustache_Cache_AbstractCache {
 
-  public function __construct(\yii\caching\Cache $cache) {
+  public function __construct(\yii\caching\Cache $cache, $duration=0) {
     $this->cache=$cache;
+    $this->duration=$duration;
   }
 
   /**
@@ -30,10 +32,18 @@ class Cache extends \Mustache_Cache_AbstractCache {
   /**
    * The underlying cache application component that is used to cache the compiled views.
    * @property cache
-   * @type system.caching.ICache
+   * @type system.caching.Cache
    * @private
    */
   private $cache;
+
+  /**
+   * The time in seconds that the compiled views can remain valid in cache.
+   * If set to `0`, the cache never expires.
+   * @property duration
+   * @type int
+   */
+  private $duration;
 
   /**
    * Caches and loads a compiled view.
@@ -42,7 +52,7 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @param {string} $value The view to be cached.
    */
   public function cache($key, $value) {
-    $this->cache[static::CACHE_KEY_PREFIX.$key]=$value;
+    $this->cache->set(static::CACHE_KEY_PREFIX.$key, $value, $this->duration);
     $this->load($key);
   }
 

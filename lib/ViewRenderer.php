@@ -23,20 +23,21 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * The identifier of the cache application component that is used to cache the compiled views.
-   * If `null` or empty, defaults to using a `yii\caching\FileCache` component.
-   * @property cacheID
+   * If set to `false`, caching is disabled. Defaults to "cache" in production environment, which refers to the primary cache application component.
+   * @property cacheId
    * @type string
-   * @default null
+   * @default "cache"
    */
-  public $cacheID=null;
+  public $cacheId=(YII_ENV_PROD ? 'cache' : false);
 
   /**
-   * Value indicating whether to enable the caching of compiled views.
-   * @property enableCaching
-   * @type boolean
-   * @default YII_ENV_PROD
+   * The time in seconds that the compiled views can remain valid in cache.
+   * If set to `0`, the cache never expires.
+   * @property cachingDuration
+   * @type int
+   * @default 0
    */
-  public $enableCaching=YII_ENV_PROD;
+  public $cachingDuration=0;
 
   /**
    * Value indicating whether to enable the logging of engine messages.
@@ -82,6 +83,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   /**
    * Initializes the application component.
    * @method init
+   * @throws {yii.base.InvalidCallException} The underlying cache component is invalid.
    */
   public function init() {
     $helpers=[
@@ -101,23 +103,17 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'strict_callables'=>true
     ];
 
-    if($this->enableLogging) $options['logger']=new Logger();
+    if(is_string($this->cacheId)) {
+      $cache=\Yii::$app->get($this->cacheId);
+      if(!$cache instanceof \yii\caching\Cache)
+        throw new InvalidCallException(\Yii::t('yii', 'Invalid cache component "{cacheId}".', [ 'cacheId'=>$this->cacheId ]));
 
-    if($this->enableCaching) {
-      $cache=\Yii::createObject([
-        'class'=>'yii\caching\FileCache',
-        'cachePath'=>'@runtime/mustache'
-      ]);
-
-      if($this->cacheID) {
-        $component=\Yii::$app->get($this->cacheID);
-        if($component instanceof \yii\caching\Cache) $cache=$component;
-      }
-
-      $options['cache']=new Cache($cache);
+      $options['cache']=new Cache($cache, $this->cachingDuration);
     }
 
+    if($this->enableLogging) $options['logger']=new Logger();
     $this->engine=new \Mustache_Engine($options);
+
     parent::init();
     $this->helpers=[];
   }

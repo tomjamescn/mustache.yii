@@ -11,7 +11,7 @@ use yii\mustache\helpers\FormatHelper;
 /**
  * Tests the features of the `yii\mustache\helpers\FormatHelper` class.
  * @class yii.test.mustache.helpers.FormatHelperTest
- * @extends phpunit.PHPUnit_Framework_TestCase
+ * @extends PHPUnit_Framework_TestCase
  * @constructor
  */
 class FormatHelperTest extends \PHPUnit_Framework_TestCase {
