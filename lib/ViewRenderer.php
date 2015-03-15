@@ -23,12 +23,12 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * The identifier of the cache application component that is used to cache the compiled views.
-   * If set to `false`, caching is disabled. Defaults to "cache" in production environment, which refers to the primary cache application component.
+   * If set to `null`, caching is disabled.
    * @property cacheId
    * @type string
-   * @default "cache"
+   * @default false
    */
-  public $cacheId=(YII_ENV_PROD ? 'cache' : false);
+  public $cacheId=null;
 
   /**
    * The time in seconds that the compiled views can remain valid in cache.
@@ -54,14 +54,6 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @private
    */
   private $engine;
-
-  /**
-   * The directory or path alias to where the Mustache engine is located.
-   * @property enginePath
-   * @type string
-   * @default "@vendor/mustache/mustache/src/Mustache"
-   */
-  public $enginePath='@vendor/mustache/mustache/src/Mustache';
 
   /**
    * Values prepended to the context stack, so they will be available in any view loaded by this instance.
