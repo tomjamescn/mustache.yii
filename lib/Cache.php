@@ -10,14 +10,12 @@ namespace yii\mustache;
  * @class yii.mustache.Cache
  * @extends mustache.Mustache_Cache_AbstractCache
  * @constructor
- * @param {yii.caching.Cache} $cache The cache application component that is used to store the compiled views.
- * @param {int} [$duration] The number of seconds in which the cached views will expire. 0 means never expire.
+ * @param {yii.mustache.ViewRenderer} $renderer The instance used to render the views.
  */
 class Cache extends \Mustache_Cache_AbstractCache {
 
-  public function __construct(\yii\caching\Cache $cache, $duration=0) {
-    $this->cache=$cache;
-    $this->duration=$duration;
+  public function __construct(ViewRenderer $renderer) {
+    $this->renderer=$renderer;
   }
 
   /**
@@ -30,20 +28,12 @@ class Cache extends \Mustache_Cache_AbstractCache {
   const CACHE_KEY_PREFIX='yii\mustache\Cache:';
 
   /**
-   * The underlying cache application component that is used to cache the compiled views.
-   * @property cache
-   * @type system.caching.Cache
+   * The instance used to render the views.
+   * @property renderer
+   * @type yii.mustache.ViewRenderer
    * @private
    */
-  private $cache;
-
-  /**
-   * The time in seconds that the compiled views can remain valid in cache.
-   * If set to `0`, the cache never expires.
-   * @property duration
-   * @type int
-   */
-  private $duration;
+  private $renderer;
 
   /**
    * Caches and loads a compiled view.
@@ -52,8 +42,12 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @param {string} $value The view to be cached.
    */
   public function cache($key, $value) {
-    $this->cache->set(static::CACHE_KEY_PREFIX.$key, $value, $this->duration);
-    $this->load($key);
+    $cache=($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
+    if(!$cache) eval('?>'.$value);
+    else {
+      $cache->set(static::CACHE_KEY_PREFIX.$key, $value, $this->renderer->cachingDuration);
+      $this->load($key);
+    }
   }
 
   /**
@@ -63,10 +57,11 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @return {boolean} `true` if the view was successfully loaded, otherwise `false`.
    */
   public function load($key) {
-    $value=$this->cache[static::CACHE_KEY_PREFIX.$key];
-    if($value===false) return false;
+    $cache=($this->renderer->cacheId ? \Yii::$app->get($this->renderer->cacheId) : null);
+    $key=static::CACHE_KEY_PREFIX.$key;
+    if(!$cache || !$cache->exists($key)) return false;
 
-    eval('?>'.$value);
+    eval('?>'.$cache[$key]);
     return true;
   }
 }

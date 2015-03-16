@@ -22,11 +22,20 @@ use yii\mustache\helpers\I18nHelper;
 class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
+   * The string prefixed to every cache key in order to avoid name collisions.
+   * @property CACHE_KEY_PREFIX
+   * @type string
+   * @static
+   * @final
+   */
+  const CACHE_KEY_PREFIX='yii\mustache\ViewRenderer:';
+
+  /**
    * The identifier of the cache application component that is used to cache the compiled views.
    * If set to `null`, caching is disabled.
    * @property cacheId
    * @type string
-   * @default false
+   * @default null
    */
   public $cacheId=null;
 
@@ -91,7 +100,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'entity_flags'=>ENT_QUOTES | ENT_SUBSTITUTE,
       'escape'=>function($value) { return Html::encode($value); },
       'helpers'=>ArrayHelper::merge($helpers, $this->helpers),
-      'partials_loader'=>new Loader(),
+      'partials_loader'=>new Loader($this),
       'strict_callables'=>true
     ];
 
@@ -120,8 +129,17 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @throws {yii.base.InvalidCallException} The specified view file is not found.
    */
   public function render($view, $file, $params) {
-    if(!is_file($file)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', [ 'file'=>$file ]));
+    $cache=($this->cacheId ? \Yii::$app->get($this->cacheId) : null);
+    $key=static::CACHE_KEY_PREFIX.$file;
+
+    if($cache && $cache->exists($key)) $output=$cache[$key];
+    else {
+      if(!is_file($file)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', [ 'file'=>$file ]));
+      $output=@file_get_contents($file);
+      if($cache) $cache->set($key, $output, $this->cachingDuration);
+    }
+
     $values=ArrayHelper::merge([ 'this'=>$view ], is_array($params) ? $params : []);
-    return $this->engine->render(@file_get_contents($file), $values);
+    return $this->engine->render($output, $values);
   }
 }
