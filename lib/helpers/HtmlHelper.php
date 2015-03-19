@@ -7,6 +7,7 @@ namespace yii\mustache\helpers;
 
 // Module dependencies.
 use yii\helpers\Html;
+use yii\helpers\Markdown;
 
 /**
  * Provides a collection of helper methods for creating views.
@@ -181,6 +182,18 @@ class HtmlHelper extends Helper {
   public function getIdByName() {
     return function($value, \Mustache_LambdaHelper $helper) {
       return Html::idByName($helper->render($value));
+    };
+  }
+
+  // TODO
+  public function getMarkdown() {
+    return function($value, \Mustache_LambdaHelper $helper) {
+      \Yii::trace($value, 'mustache');
+      $args=$this->parseArguments($helper->render($value), 'markdown', [ 'flavor'=>Markdown::$defaultFlavor ]);
+      \Yii::trace($args['markdown'], 'mustache');
+      \Yii::trace($args['flavor'], 'mustache');
+      \Yii::trace(Markdown::processParagraph($args['markdown']));
+      return Markdown::processParagraph($args['markdown'], $args['flavor']);
     };
   }
 
