@@ -96,6 +96,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     ];
 
     $options=[
+      'cache'=>new Cache($this),
       'charset'=>\Yii::$app->charset,
       'entity_flags'=>ENT_QUOTES | ENT_SUBSTITUTE,
       'escape'=>function($value) { return Html::encode($value); },
@@ -103,14 +104,6 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'partials_loader'=>new Loader($this),
       'strict_callables'=>true
     ];
-
-    if(is_string($this->cacheId)) {
-      $cache=\Yii::$app->get($this->cacheId);
-      if(!$cache instanceof \yii\caching\Cache)
-        throw new InvalidCallException(\Yii::t('yii', 'Invalid cache component "{cacheId}".', [ 'cacheId'=>$this->cacheId ]));
-
-      $options['cache']=new Cache($cache, $this->cachingDuration);
-    }
 
     if($this->enableLogging) $options['logger']=new Logger();
     $this->engine=new \Mustache_Engine($options);
