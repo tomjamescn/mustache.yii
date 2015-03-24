@@ -8,6 +8,7 @@ namespace yii\mustache;
 // Module dependencies.
 use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
+use yii\helpers\FileHelper;
 use yii\helpers\Html;
 use yii\mustache\helpers\FormatHelper;
 use yii\mustache\helpers\HtmlHelper;
@@ -127,8 +128,10 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
     if($cache && $cache->exists($key)) $output=$cache[$key];
     else {
-      if(!is_file($file)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', [ 'file'=>$file ]));
-      $output=@file_get_contents($file);
+      $path=FileHelper::localize($file);
+      if(!is_file($path)) throw new InvalidCallException(\Yii::t('yii', 'View file "{file}" does not exist.', [ 'file'=>$file ]));
+
+      $output=@file_get_contents($path);
       if($cache) $cache->set($key, $output, $this->cachingDuration);
     }
 
