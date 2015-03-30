@@ -114,84 +114,6 @@ class FormatHelper extends Helper {
   }
 
   /**
-   * Formats a timestamp using the full date format defined in the locale.
-   * See: `yii\i18n\Formatter->asDateTime()`
-   * @property fullDate
-   * @type Closure
-   * @final
-   */
-  public function getFullDate() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asDateTime($helper->render($value), 'full', null));
-    };
-  }
-
-  /**
-   * Formats a timestamp using the full time format defined in the locale.
-   * See: `yii\i18n\Formatter->asDateTime()`
-   * @property fullTime
-   * @type Closure
-   * @final
-   */
-  public function getFullTime() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asDateTime($helper->render($value), null, 'full'));
-    };
-  }
-
-  /**
-   * Formats a timestamp using the long date format defined in the locale.
-   * See: `yii\i18n\Formatter->asDateTime()`
-   * @property longDate
-   * @type Closure
-   * @final
-   */
-  public function getLongDate() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asDateTime($helper->render($value), 'long', null));
-    };
-  }
-
-  /**
-   * Formats a timestamp using the long time format defined in the locale.
-   * See: `yii\i18n\Formatter->asDateTime()`
-   * @property longTime
-   * @type Closure
-   * @final
-   */
-  public function getLongTime() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asDateTime($helper->render($value), null, 'long'));
-    };
-  }
-
-  /**
-   * Formats a timestamp using the medium date format defined in the locale.
-   * See: `yii\i18n\Formatter->asDateTime()`
-   * @property mediumDate
-   * @type Closure
-   * @final
-   */
-  public function getMediumDate() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asDateTime($helper->render($value), 'medium', null));
-    };
-  }
-
-  /**
-   * Formats a timestamp using the medium time format defined in the locale.
-   * See: `yii\i18n\Formatter->asDateTime()`
-   * @property mediumTime
-   * @type Closure
-   * @final
-   */
-  public function getMediumTime() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asDateTime($helper->render($value), null, 'medium'));
-    };
-  }
-
-  /**
    * Formats the value as a percent number with `%` sign.
    * See: `yii\i18n\Formatter->asPercent()`
    * @property percentage
@@ -207,32 +129,6 @@ class FormatHelper extends Helper {
       ]);
 
       return Html::encode(\Yii::$app->formatter->asPercent($args['value'], $args['decimals'], $args['options'], $args['textOptions']));
-    };
-  }
-
-  /**
-   * Formats a timestamp using the short date format defined in the locale.
-   * See: `yii\i18n\Formatter->asDateTime()`
-   * @property shortDate
-   * @type Closure
-   * @final
-   */
-  public function getShortDate() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asDateTime($helper->render($value), 'short', null));
-    };
-  }
-
-  /**
-   * Formats a timestamp using the short time format defined in the locale.
-   * See: `yii\i18n\Formatter->asDateTime()`
-   * @property shortTime
-   * @type Closure
-   * @final
-   */
-  public function getShortTime() {
-    return function($value, \Mustache_LambdaHelper $helper) {
-      return Html::encode(\Yii::$app->formatter->asDateTime($helper->render($value), null, 'short'));
     };
   }
 

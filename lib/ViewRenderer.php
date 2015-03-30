@@ -13,6 +13,7 @@ use yii\helpers\Html;
 use yii\mustache\helpers\FormatHelper;
 use yii\mustache\helpers\HtmlHelper;
 use yii\mustache\helpers\I18nHelper;
+use yii\mustache\helpers\UrlHelper;
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
@@ -93,7 +94,8 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'debug'=>YII_DEBUG,
       'format'=>new FormatHelper(),
       'html'=>new HtmlHelper(),
-      'i18n'=>new I18nHelper()
+      'i18n'=>new I18nHelper(),
+      'url'=>new UrlHelper()
     ];
 
     $options=[
