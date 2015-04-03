@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Mustache.y
 
 #### Version 0.3.0
 - Breaking change: ported the library API to [Yii](http://www.yiiframework.com) version 2.
+- Upgraded [Mustache](https://github.com/bobthecow/mustache.php) dependency to version 2.8.0.
 
 #### Version 0.2.0
 - Breaking change: ported the library API to [namespaces](http://php.net/manual/en/language.namespaces.php).
