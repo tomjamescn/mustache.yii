@@ -1,6 +1,6 @@
 {
   "description": "Mustache templating for Yii Framework.",
-  "homepage": "https://bitbucket.org/cedx/mustache.yii",
+  "homepage": "http://dev.belin.io/mustache.yii",
   "license": "MIT",
   "minimum-stability": "dev",
   "name": "cedx/yii2-mustache",
@@ -32,6 +32,6 @@
     "phpunit/phpunit": "^4.6.0"
   },
   "support": {
-    "issues": "https://bitbucket.org/cedx/mustache.yii/issues"
+    "issues": "http://dev.belin.io/mustache.yii/issues"
   }
 }
