@@ -19,10 +19,12 @@ Now in your application configuration file, you can use the following view rende
 
 ```php
 return [
-  'view' => [
-    'class' => 'yii\web\View',
-    'renderers' => [
-      'mustache' => 'yii\mustache\ViewRenderer'
+  'components' => [
+    'view' => [
+      'class' => 'yii\web\View',
+      'renderers' => [
+        'mustache' => 'yii\mustache\ViewRenderer'
+      ]
     ]
   ]
 ];
