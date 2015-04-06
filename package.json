@@ -34,6 +34,10 @@
     "undef": true,
     "unused": true
   },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/cedx/mustache.yii.git"
+  },
   "scripts": {
     "test": "gulp test"
   },
