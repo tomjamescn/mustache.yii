@@ -94,8 +94,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'debug'=>YII_DEBUG,
       'format'=>new FormatHelper(),
       'html'=>new HtmlHelper(),
-      'i18n'=>new I18nHelper(),
-      'url'=>new UrlHelper()
+      'i18n'=>new I18nHelper()
     ];
 
     $options=[
