@@ -1,7 +1,7 @@
 <?php
 /**
- * Implementation of the `yii\mustache\helpers\FormatHelper` class.
- * @module helpers.FormatHelper
+ * Implementation of the `yii\mustache\helpers\Format` class.
+ * @module helpers.Format
  */
 namespace yii\mustache\helpers;
 
@@ -9,12 +9,12 @@ namespace yii\mustache\helpers;
 use yii\helpers\Html;
 
 /**
- * Provides a collection of helper methods for formatting data.
- * @class yii.mustache.helpers.FormatHelper
+ * Provides a set of commonly used data formatting methods.
+ * @class yii.mustache.helpers.Format
  * @extends mustache.helpers.Helper
  * @constructor
  */
-class FormatHelper extends Helper {
+class Format extends Helper {
 
   /**
    * Formats the value as a boolean.
@@ -110,6 +110,20 @@ class FormatHelper extends Helper {
       ]);
 
       return Html::encode(\Yii::$app->formatter->asInteger($args['value'], $args['options'], $args['textOptions']));
+    };
+  }
+
+  /**
+   * Formats the value as an HTML-encoded plain text with newlines converted into breaks.
+   * See: `yii\i18n\Formatter->asNtext()`
+   * @property ntext
+   * @type Closure
+   * @final
+   */
+  public function getNtext() {
+    return function($value, \Mustache_LambdaHelper $helper) {
+      if($value===null) return \Yii::$app->formatter->nullDisplay;
+      return preg_replace('/\r?\n/', '<br>', Html::encode($helper->render($value)));
     };
   }
 

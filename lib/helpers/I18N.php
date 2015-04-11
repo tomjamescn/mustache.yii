@@ -1,7 +1,7 @@
 <?php
 /**
- * Implementation of the `yii\mustache\helpers\I18nHelper` class.
- * @module helpers.I18nHelper
+ * Implementation of the `yii\mustache\helpers\I18N` class.
+ * @module helpers.I18N
  */
 namespace yii\mustache\helpers;
 
@@ -11,12 +11,12 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
- * Provides a collection of helper methods for internationalization.
- * @class yii.mustache.helpers.I18nHelper
+ * Provides features related with internationalization (I18N) and localization (L10N).
+ * @class yii.mustache.helpers.I18N
  * @extends mustache.helpers.Helper
  * @constructor
  */
-class I18nHelper extends Helper {
+class I18N extends Helper {
 
   /**
    * String used to separate the category from the message in a translation template.

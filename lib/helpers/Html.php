@@ -1,21 +1,21 @@
 <?php
 /**
- * Implementation of the `yii\mustache\helpers\HtmlHelper` class.
- * @module helpers.HtmlHelper
+ * Implementation of the `yii\mustache\helpers\Html` class.
+ * @module helpers.Html
  */
 namespace yii\mustache\helpers;
 
 // Module dependencies.
-use yii\helpers\Html;
 use yii\helpers\Markdown;
+use yii\widgets\Spaceless;
 
 /**
- * Provides a collection of helper methods for creating views.
- * @class yii.mustache.helpers.HtmlHelper
+ * Provides a set of methods for generating commonly used HTML tags.
+ * @class yii.mustache.helpers.Html
  * @extends mustache.helpers.Helper
  * @constructor
  */
-class HtmlHelper extends Helper {
+class Html extends Helper {
 
   /**
    * Converts Markdown into HTML.
@@ -32,16 +32,19 @@ class HtmlHelper extends Helper {
   }
 
   /**
-   * Sets the page title.
-   * See: `yii\web\View->title`
-   * @property viewTitle
+   * Removes whitespace characters between HTML tags.
+   * See: `yii\widgets\Spaceless`
+   * @property spaceless
    * @type Closure
    * @final
    */
-  public function getViewTitle() {
+  public function getSpaceless() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      \Yii::trace(\Yii::$app->view);
-      \Yii::$app->view->title=trim($helper->render($value));
+      ob_start();
+      Spaceless::begin();
+      echo $helper->render($value);
+      Spaceless::end();
+      return ob_get_clean();
     };
   }
 }

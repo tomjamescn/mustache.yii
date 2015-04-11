@@ -9,11 +9,7 @@ namespace yii\mustache;
 use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
-use yii\helpers\Html;
-use yii\mustache\helpers\FormatHelper;
-use yii\mustache\helpers\HtmlHelper;
-use yii\mustache\helpers\I18nHelper;
-use yii\mustache\helpers\UrlHelper;
+use yii\mustache\helpers\View;
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
@@ -86,23 +82,22 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   /**
    * Initializes the application component.
    * @method init
-   * @throws {yii.base.InvalidCallException} The underlying cache component is invalid.
    */
   public function init() {
     $helpers=[
       'app'=>\Yii::$app,
       'debug'=>YII_DEBUG,
-      'format'=>new FormatHelper(),
-      'html'=>new HtmlHelper(),
-      'i18n'=>new I18nHelper(),
-      'url'=>new UrlHelper()
+      'format'=>new \yii\mustache\helpers\Format(),
+      'html'=>new \yii\mustache\helpers\Html(),
+      'i18n'=>new \yii\mustache\helpers\I18N(),
+      'url'=>new \yii\mustache\helpers\Url()
     ];
 
     $options=[
       'cache'=>new Cache($this),
       'charset'=>\Yii::$app->charset,
       'entity_flags'=>ENT_QUOTES | ENT_SUBSTITUTE,
-      'escape'=>function($value) { return Html::encode($value); },
+      'escape'=>[ 'yii\helpers\Html', 'encode' ],
       'helpers'=>ArrayHelper::merge($helpers, $this->helpers),
       'partials_loader'=>new Loader($this),
       'strict_callables'=>true
@@ -118,7 +113,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   /**
    * Renders a view file.
    * @method render
-   * @param {yii.web.View} $view The view object used for rendering the file.
+   * @param {yii.base.View} $view The view object used for rendering the file.
    * @param {string} $file The view file.
    * @param {array} $params The parameters to be passed to the view file.
    * @return {string} The rendering result.
@@ -137,7 +132,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       if($cache) $cache->set($key, $output, $this->cachingDuration);
     }
 
-    $values=ArrayHelper::merge([ 'this'=>$view ], is_array($params) ? $params : []);
+    $values=ArrayHelper::merge([ 'this'=>new View($view) ], is_array($params) ? $params : []);
     return $this->engine->render($output, $values);
   }
 }
