@@ -9,7 +9,7 @@ namespace yii\mustache;
 use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
-use yii\mustache\helpers\View;
+use yii\mustache\helpers\View as ViewHelper;
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
@@ -132,7 +132,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       if($cache) $cache->set($key, $output, $this->cachingDuration);
     }
 
-    $values=ArrayHelper::merge([ 'this'=>new View($view) ], is_array($params) ? $params : []);
+    $values=ArrayHelper::merge([ 'this'=>new ViewHelper($view) ], is_array($params) ? $params : []);
     return $this->engine->render($output, $values);
   }
 }

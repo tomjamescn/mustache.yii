@@ -5,11 +5,6 @@
  */
 namespace yii\mustache\helpers;
 
-// Module dependencies.
-use yii\base\InvalidCallException;
-use yii\helpers\ArrayHelper;
-use yii\helpers\FileHelper;
-
 /**
  * Provides a set of methods for managing views.
  * @class yii.mustache.helpers.View

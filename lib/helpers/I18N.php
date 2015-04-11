@@ -8,7 +8,7 @@ namespace yii\mustache\helpers;
 // Module dependencies.
 use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
+use yii\helpers\Html as HtmlHelper;
 
 /**
  * Provides features related with internationalization (I18N) and localization (L10N).
@@ -66,7 +66,7 @@ class I18N extends Helper {
         ]);
       }
 
-      return Html::encode(\Yii::t($args['category'], $args['message'], $args['params'], $args['language']));
+      return HtmlHelper::encode(\Yii::t($args['category'], $args['message'], $args['params'], $args['language']));
     };
   }
 }
