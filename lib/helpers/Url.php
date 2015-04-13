@@ -5,6 +5,9 @@
  */
 namespace yii\mustache\helpers;
 
+// Module dependencies.
+use yii\helpers\Url as UrlHelper;
+
 /**
  * Provides a set of methods for managing URLs.
  * @class yii.mustache.helpers.Url
@@ -24,7 +27,7 @@ class Url extends Helper {
     return function($value, \Mustache_LambdaHelper $helper) {
       \Yii::trace($value);
       // TODO
-      return \yii\helpers\Url::home($helper->render($value) ?: false);
+      return UrlHelper::home($helper->render($value) ?: false);
     };
   }
 
@@ -39,7 +42,7 @@ class Url extends Helper {
     return function($value, \Mustache_LambdaHelper $helper) {
       \Yii::trace($value);
       // TODO
-      return \yii\helpers\Url::previous($helper->render($value) ?: null);
+      return UrlHelper::previous($helper->render($value) ?: null);
     };
   }
 
@@ -53,7 +56,7 @@ class Url extends Helper {
   public function getTo() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'url', [ 'scheme'=>false ]);
-      return \yii\helpers\Url::to($args['url'], $args['scheme']);
+      return UrlHelper::to($args['url'], $args['scheme']);
     };
   }
 
@@ -67,7 +70,7 @@ class Url extends Helper {
   public function getToRoute() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'route', [ 'scheme'=>false ]);
-      return \yii\helpers\Url::toRoute($args['route'], $args['scheme']);
+      return UrlHelper::toRoute($args['route'], $args['scheme']);
     };
   }
 }
