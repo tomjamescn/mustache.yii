@@ -18,14 +18,6 @@ use yii\helpers\ArrayHelper;
 class I18N extends Helper {
 
   /**
-   * String used to separate the category from the message in a translation template.
-   * @property categorySeparator
-   * @type string
-   * @default ":"
-   */
-  public $categorySeparator=':';
-
-  /**
    * Translates a message.
    * See: `getTranslate()`
    * @property t
@@ -57,7 +49,7 @@ class I18N extends Helper {
 
       if($isJson) $args=$this->parseArguments($helper->render($value), 'message', $defaultArgs);
       else {
-        $parts=explode($this->categorySeparator, $output, 2);
+        $parts=explode($this->argumentSeparator, $output, 2);
         if(count($parts)!=2) throw new InvalidCallException(\Yii::t('yii', 'Invalid translation format.'));
         $args=ArrayHelper::merge($defaultArgs, [
           'category'=>$parts[0],

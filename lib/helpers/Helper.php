@@ -20,6 +20,14 @@ use yii\helpers\Json;
 abstract class Helper extends Object {
 
   /**
+   * String used to separate the arguments for helpers supporting the "two arguments" syntax.
+   * @property argumentSeparator
+   * @type string
+   * @default ":"
+   */
+  public $argumentSeparator=':';
+
+  /**
    * Parses the arguments of a parametized helper.
    * Arguments can be specified as a single value, or as a string in JSON format.
    * @method parseArguments
