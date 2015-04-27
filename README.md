@@ -1,5 +1,5 @@
 # Mustache.yii
-[![Release](http://img.shields.io/packagist/v/cedx/yii2-mustache.svg)](https://packagist.org/packages/cedx/yii2-mustache) [![License](http://img.shields.io/packagist/l/cedx/yii2-mustache.svg)](http://dev.belin.io/mustache.yii/src/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-mustache.svg)](https://packagist.org/packages/cedx/yii2-mustache) ![Build](https://img.shields.io/codeship/fc8e1cd0-bc21-0132-257d-7ab97aac1fb6.svg)
+[![Release](http://img.shields.io/packagist/v/cedx/yii2-mustache.svg)](https://packagist.org/packages/cedx/yii2-mustache) [![License](http://img.shields.io/packagist/l/cedx/yii2-mustache.svg)](https://bitbucket.org/cedx/mustache.yii/src/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-mustache.svg)](https://packagist.org/packages/cedx/yii2-mustache) ![Build](https://img.shields.io/codeship/fc8e1cd0-bc21-0132-257d-7ab97aac1fb6.svg)
 
 [Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), high-performance [PHP](https://php.net) framework.
 
@@ -47,18 +47,19 @@ Within Mustache templates the following variables are always defined:
 
 - `app`: the [`\Yii::$app`](http://www.yiiframework.com/doc-2.0/yii-baseyii.html#$app-detail) instance.
 - `debug`: the `YII_DEBUG` constant.
-- `this`: a [wrapper](http://dev.belin.io/mustache.yii/src/master/lib/helpers/View.php) around the current [`View`](http://www.yiiframework.com/doc-2.0/yii-web-view.html) object.
+- `this`: the current [`View`](http://www.yiiframework.com/doc-2.0/yii-web-view.html) object.
 
 #### Lambdas
 - `format`: provides a set of commonly used data formatting methods.
+- `html`: Provides a set of methods for generating commonly used HTML tags.
 - `i18n`: provides features related with internationalization (I18N) and localization (L10N).
 
 #### Partials
 There are two ways of referencing partials:
 
 ```
-{{> post}}
-{{> @app/views/layouts/2columns}}
+{{> post }}
+{{> @app/views/layouts/2columns }}
 ```
 
 In the first case the view will be searched relatively to the current view path. For `post.mustache`

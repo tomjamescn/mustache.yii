@@ -28,6 +28,19 @@ abstract class Helper extends Object {
   public $argumentSeparator=':';
 
   /**
+   * Returns the output sent by the call of the specified function.
+   * @method captureOutput
+   * @param {callable} $callback The function to invoke.
+   * @return {string} The captured output.
+   * @protected
+   */
+  protected function captureOutput($callback) {
+    ob_start();
+    call_user_func($callback);
+    return ob_get_clean();
+  }
+
+  /**
    * Parses the arguments of a parametized helper.
    * Arguments can be specified as a single value, or as a string in JSON format.
    * @method parseArguments
@@ -35,6 +48,7 @@ abstract class Helper extends Object {
    * @param {string} $defaultArgument The name of the default argument. This is used when the section content provides a plain string instead of a JSON object.
    * @param {array} [$defaultValues] The default values of arguments. These are used when the section content does not specify all arguments.
    * @return {array} The parsed arguments as an associative array.
+   * @protected
    */
   protected function parseArguments($text, $defaultArgument, array $defaultValues=[]) {
     try { if(is_array($json=Json::decode($text))) return ArrayHelper::merge($defaultValues, $json); }

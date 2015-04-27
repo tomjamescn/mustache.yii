@@ -1,6 +1,6 @@
 {
   "author": "Cédric Belin <cedric@belin.io>",
-  "bugs": "http://dev.belin.io/mustache.yii/issues",
+  "bugs": "https://bitbucket.org/cedx/mustache.yii/issues",
   "description": "Mustache templating for Yii Framework.",
   "homepage": "https://packagist.org/packages/cedx/yii2-mustache",
   "license": "MIT",

@@ -27,9 +27,9 @@ class Html extends Helper {
     $view=\Yii::$app->view;
     if(!$view || !$view->hasMethod('beginBody')) return '';
 
-    ob_start();
-    $view->beginBody();
-    return ob_get_clean();
+    return $this->captureOutput(function() use($view) {
+      $view->beginBody();
+    });
   }
 
   /**
@@ -42,9 +42,9 @@ class Html extends Helper {
     $view=\Yii::$app->view;
     if(!$view || !$view->hasMethod('beginPage')) return '';
 
-    ob_start();
-    $view->beginPage();
-    return ob_get_clean();
+    return $this->captureOutput(function() use($view) {
+      $view->beginPage();
+    });
   }
 
   /**
@@ -57,9 +57,9 @@ class Html extends Helper {
     $view=\Yii::$app->view;
     if(!$view || !$view->hasMethod('endBody')) return '';
 
-    ob_start();
-    $view->endBody();
-    return ob_get_clean();
+    return $this->captureOutput(function() use($view) {
+      $view->endBody();
+    });
   }
 
   /**
@@ -72,9 +72,9 @@ class Html extends Helper {
     $view=\Yii::$app->view;
     if(!$view || !$view->hasMethod('endPage')) return '';
 
-    ob_start();
-    $view->endPage();
-    return ob_get_clean();
+    return $this->captureOutput(function() use($view) {
+      $view->endPage();
+    });
   }
 
   /**
@@ -87,9 +87,9 @@ class Html extends Helper {
     $view=\Yii::$app->view;
     if(!$view || !$view->hasMethod('head')) return '';
 
-    ob_start();
-    $view->head();
-    return ob_get_clean();
+    return $this->captureOutput(function() use($view) {
+      $view->head();
+    });
   }
 
   /**
@@ -115,11 +115,11 @@ class Html extends Helper {
    */
   public function getSpaceless() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      ob_start();
-      Spaceless::begin();
-      echo $helper->render($value);
-      Spaceless::end();
-      return ob_get_clean();
+      return $this->captureOutput(function() use($helper, $value) {
+        Spaceless::begin();
+        echo $helper->render($value);
+        Spaceless::end();
+      });
     };
   }
 
