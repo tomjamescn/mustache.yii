@@ -86,6 +86,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
     $helpers=[
       'app'=>\Yii::$app,
       'debug'=>YII_DEBUG,
+      'env'=>YII_ENV,
       'format'=>new \yii\mustache\helpers\Format(),
       'html'=>new \yii\mustache\helpers\Html(),
       'i18n'=>new \yii\mustache\helpers\I18N(),

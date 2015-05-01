@@ -47,11 +47,12 @@ Within Mustache templates the following variables are always defined:
 
 - `app`: the [`\Yii::$app`](http://www.yiiframework.com/doc-2.0/yii-baseyii.html#$app-detail) instance.
 - `debug`: the `YII_DEBUG` constant.
+- `env`: the `YII_ENV` constant.
 - `this`: the current [`View`](http://www.yiiframework.com/doc-2.0/yii-web-view.html) object.
 
 #### Lambdas
 - `format`: provides a set of commonly used data formatting methods.
-- `html`: Provides a set of methods for generating commonly used HTML tags.
+- `html`: provides a set of methods for generating commonly used HTML tags.
 - `i18n`: provides features related with internationalization (I18N) and localization (L10N).
 
 #### Partials
