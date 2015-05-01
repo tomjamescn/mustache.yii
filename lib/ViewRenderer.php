@@ -85,12 +85,14 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public function init() {
     $helpers=[
       'app'=>\Yii::$app,
-      'debug'=>YII_DEBUG,
-      'env'=>YII_ENV,
       'format'=>new \yii\mustache\helpers\Format(),
       'html'=>new \yii\mustache\helpers\Html(),
       'i18n'=>new \yii\mustache\helpers\I18N(),
-      'url'=>new \yii\mustache\helpers\Url()
+      'url'=>new \yii\mustache\helpers\Url(),
+      'yii'=>[
+        'debug'=>YII_DEBUG,
+        'env'=>YII_ENV
+      ]
     ];
 
     $options=[
