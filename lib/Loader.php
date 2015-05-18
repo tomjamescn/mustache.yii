@@ -86,7 +86,7 @@ class Loader extends Object implements \Mustache_Loader {
           $file=\Yii::getAlias("$viewPath/$name");
         }
 
-        $view=($controller ? $controller->view : null);
+        $view=\Yii::$app->view;
         if($view && $view->theme) $file=$view->theme->applyTo($file);
         if(!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file.='.'.($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
 
