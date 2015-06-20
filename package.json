@@ -6,6 +6,7 @@
   "license": "MIT",
   "name": "yii2-mustache",
   "private": true,
+  "repository": "bitbucket:cedx/mustache.yii",
   "version": "0.3.0",
   "devDependencies": {
     "del": "^1.1.1",
@@ -33,10 +34,6 @@
     "trailing": true,
     "undef": true,
     "unused": true
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://bitbucket.org/cedx/mustache.yii.git"
   },
   "scripts": {
     "test": "gulp test"

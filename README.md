@@ -46,7 +46,7 @@ The best resource to learn Mustache basics is its official documentation you can
 Within Mustache templates the following variables are always defined:
 
 - `app`: the [`\Yii::$app`](http://www.yiiframework.com/doc-2.0/yii-baseyii.html#$app-detail) instance.
-- `this`: the current [`View`](http://www.yiiframework.com/doc-2.0/yii-web-view.html) object.
+- `this`: the current [`yii\base\View`](http://www.yiiframework.com/doc-2.0/yii-base-view.html) object.
 - `yii.debug`: the `YII_DEBUG` constant.
 - `yii.env`: the `YII_ENV` constant.
 
