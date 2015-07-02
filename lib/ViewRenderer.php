@@ -91,7 +91,10 @@ class ViewRenderer extends \yii\base\ViewRenderer {
       'url'=>new \yii\mustache\helpers\Url(),
       'yii'=>[
         'debug'=>YII_DEBUG,
-        'env'=>YII_ENV
+        'env'=>YII_ENV,
+        'env_dev'=>YII_ENV_DEV,
+        'env_prod'=>YII_ENV_PROD,
+        'env_test'=>YII_ENV_TEST
       ]
     ];
 
