@@ -26,10 +26,10 @@
   "require": {
     "php": ">=5.5.0",
     "mustache/mustache": "^2.8.0",
-    "yiisoft/yii2": "^2.0.3"
+    "yiisoft/yii2": "^2.0.4"
   },
   "require-dev": {
-    "phpunit/phpunit": "^4.6.0"
+    "phpunit/phpunit": "^4.7.6"
   },
   "support": {
     "issues": "https://bitbucket.org/cedx/mustache.yii/issues"
