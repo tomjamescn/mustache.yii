@@ -94,12 +94,26 @@ class Html extends Helper {
 
   /**
    * Converts Markdown into HTML.
-   * See: `yii\helpers\Markdown::processParagraph()`
+   * See: `yii\helpers\Markdown::process()`
    * @property markdown
    * @type Closure
    * @final
    */
   public function getMarkdown() {
+    return function($value, \Mustache_LambdaHelper $helper) {
+      $args=$this->parseArguments($helper->render($value), 'markdown', [ 'flavor'=>Markdown::$defaultFlavor ]);
+      return Markdown::process($args['markdown'], $args['flavor']);
+    };
+  }
+
+  /**
+   * Converts Markdown into HTML but only parses inline elements.
+   * See: `yii\helpers\Markdown::processParagraph()`
+   * @property markdownParagraph
+   * @type Closure
+   * @final
+   */
+  public function getMarkdownParagraph() {
     return function($value, \Mustache_LambdaHelper $helper) {
       $args=$this->parseArguments($helper->render($value), 'markdown', [ 'flavor'=>Markdown::$defaultFlavor ]);
       return Markdown::processParagraph($args['markdown'], $args['flavor']);

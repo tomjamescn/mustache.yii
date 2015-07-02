@@ -30,10 +30,7 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
    */
   public function testMarkdown() {
     $closure=(new Html())->markdown;
-    /* TODO
-    $this->assertEquals('<h1>title</h1>', $closure("title\n-----\n", $this->helper));
-    $this->assertEquals('<em>label</em> <strong>label</strong>', $closure('*label* **label**', $this->helper));
-    */
+    $this->assertEquals("<h1>title</h1>\n", $closure("# title", $this->helper));
   }
 
   /**
@@ -43,7 +40,7 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
   public function testSpaceless() {
     $closure=(new Html())->spaceless;
     $this->assertEquals('<strong>label</strong><em>label</em>', $closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper));
-    $this->assertEquals('<strong> label </strong><em> label </em>', $closure('<strong> label </strong> <em> label </em>', $this->helper));
+    $this->assertEquals('<strong> label </strong><em> label </em>', $closure('<strong> label </strong>  <em> label </em>', $this->helper));
   }
 
   /**
