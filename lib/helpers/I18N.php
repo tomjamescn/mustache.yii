@@ -1,40 +1,31 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\mustache\helpers\I18N` class.
- * @module helpers.I18N
  */
 namespace yii\mustache\helpers;
 
-// Module dependencies.
+// Dependencies.
 use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
 
 /**
  * Provides features related with internationalization (I18N) and localization (L10N).
- * @class yii.mustache.helpers.I18N
- * @extends mustache.helpers.Helper
- * @constructor
  */
 class I18N extends Helper {
 
   /**
-   * Translates a message.
-   * See: `getTranslate()`
-   * @property t
-   * @type Closure
-   * @final
+   * Returns a function translating a message.
+   * @return Closure A function translating a message.
    */
   public function getT() {
     return static::getTranslate();
   }
 
   /**
-   * Translates a message.
-   * See: `Yii::t()`
-   * @property translate
-   * @type Closure
-   * @final
-   * @throws {yii.base.InvalidCallException} The specified message has an invalid format.
+   * Returns a function translating a message.
+   * @return Closure A function translating a message.
+   * @throws yii::base::InvalidCallException The specified message has an invalid format.
    */
   public function getTranslate() {
     return function($value, \Mustache_LambdaHelper $helper) {

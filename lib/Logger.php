@@ -1,28 +1,22 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\mustache\Logger` class.
- * @module Logger
  */
 namespace yii\mustache;
 
-// Modules dependencies.
+// Dependencies.
 use yii\base\InvalidParamException;
 use yii\log\Logger as YiiLogger;
 
 /**
  * Component used to log messages from the view engine to the application logger.
- * @class yii.mustache.Logger
- * @extends mustache.Mustache_Logger_AbstractLogger
- * @constructor
  */
 class Logger extends \Mustache_Logger_AbstractLogger {
 
   /**
+   * @var array $levels
    * Mappings between Mustache levels and Yii ones.
-   * @property levels
-   * @type array
-   * @static
-   * @private
    */
   private static $levels=[
     \Mustache_Logger::ALERT=>YiiLogger::LEVEL_ERROR,
@@ -37,11 +31,10 @@ class Logger extends \Mustache_Logger_AbstractLogger {
 
   /**
    * Logs a message.
-   * @method log
-   * @param {string} $level The logging level.
-   * @param {string} $message The message to be logged.
-   * @param {array} [$context] The log context.
-   * @throws {yii.base.InvalidParamException} The specified logging level is unknown.
+   * @param string $level The logging level.
+   * @param string $message The message to be logged.
+   * @param array $context The log context.
+   * @throws yii::base::InvalidParamException The specified logging level is unknown.
    */
   public function log($level, $message, array $context=array()) {
     if(!isset(self::$levels[$level])) throw new InvalidParamException(\Yii::t(

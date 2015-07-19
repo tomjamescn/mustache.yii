@@ -1,27 +1,21 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\mustache\helpers\Format` class.
- * @module helpers.Format
  */
 namespace yii\mustache\helpers;
 
-// Module dependencies.
+// Dependencies.
 use yii\helpers\Html as HtmlHelper;
 
 /**
  * Provides a set of commonly used data formatting methods.
- * @class yii.mustache.helpers.Format
- * @extends mustache.helpers.Helper
- * @constructor
  */
 class Format extends Helper {
 
   /**
-   * Formats the value as a boolean.
-   * See: `yii\i18n\Formatter->asBoolean()`
-   * @property boolean
-   * @type Closure
-   * @final
+   * Returns a helper function formatting a value as boolean.
+   * @return Closure A function formatting a value as boolean.
    */
   public function getBoolean() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -30,11 +24,8 @@ class Format extends Helper {
   }
 
   /**
-   * Formats the value as a currency number.
-   * See: `yii\i18n\Formatter->asCurrency()`
-   * @property currency
-   * @type Closure
-   * @final
+   * Returns a helper function formatting a value as currency number.
+   * @return Closure A function formatting a value as currency number.
    */
   public function getCurrency() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -49,11 +40,8 @@ class Format extends Helper {
   }
 
   /**
-   * Formats the value as a date.
-   * See: `yii\i18n\Formatter->asDate()`
-   * @property date
-   * @type Closure
-   * @final
+   * Returns a helper function formatting a value as date.
+   * @return Closure A function formatting a value as date.
    */
   public function getDate() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -63,11 +51,8 @@ class Format extends Helper {
   }
 
   /**
-   * Formats the value as a datetime.
-   * See: `yii\i18n\Formatter->asDateTime()`
-   * @property dateTime
-   * @type Closure
-   * @final
+   * Returns a helper function formatting a value as datetime.
+   * @return Closure A function formatting a value as datetime.
    */
   public function getDateTime() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -77,11 +62,8 @@ class Format extends Helper {
   }
 
   /**
-   * Formats the value as a decimal number.
-   * See: `yii\i18n\Formatter->asDecimal()`
-   * @property decimal
-   * @type Closure
-   * @final
+   * Returns a helper function formatting a value as decimal number.
+   * @return Closure A function formatting a value as decimal number.
    */
   public function getDecimal() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -96,11 +78,8 @@ class Format extends Helper {
   }
 
   /**
-   * Formats the value as an integer number by removing any decimal digits without rounding.
-   * See: `yii\i18n\Formatter->asInteger()`
-   * @property integer
-   * @type Closure
-   * @final
+   * Returns a helper function formatting a value as integer number by removing any decimal digits without rounding.
+   * @return Closure A function formatting a value as integer number without rounding.
    */
   public function getInteger() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -114,11 +93,8 @@ class Format extends Helper {
   }
 
   /**
-   * Formats the value as an HTML-encoded plain text with newlines converted into breaks.
-   * See: `yii\i18n\Formatter->asNtext()`
-   * @property ntext
-   * @type Closure
-   * @final
+   * Returns a helper function formatting a value as HTML-encoded plain text with newlines converted into breaks.
+   * @return Closure A function formatting a value as HTML-encoded text with newlines converted into breaks.
    */
   public function getNtext() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -128,11 +104,8 @@ class Format extends Helper {
   }
 
   /**
-   * Formats the value as a percent number with `%` sign.
-   * See: `yii\i18n\Formatter->asPercent()`
-   * @property percentage
-   * @type Closure
-   * @final
+   * Returns a helper function formatting a value as percent number with `%` sign.
+   * @return Closure A function formatting a value as percent number.
    */
   public function getPercent() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -147,11 +120,8 @@ class Format extends Helper {
   }
 
   /**
-   * Formats the value as a time.
-   * See: `yii\i18n\Formatter->asTime()`
-   * @property time
-   * @type Closure
-   * @final
+   * Returns a helper function formatting a value as time.
+   * @return Closure A function formatting a value as time.
    */
   public function getTime() {
     return function($value, \Mustache_LambdaHelper $helper) {

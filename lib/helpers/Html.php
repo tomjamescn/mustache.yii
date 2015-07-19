@@ -1,27 +1,22 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\mustache\helpers\Html` class.
- * @module helpers.Html
  */
 namespace yii\mustache\helpers;
 
-// Module dependencies.
+// Dependencies.
 use yii\helpers\Markdown;
 use yii\widgets\Spaceless;
 
 /**
  * Provides a set of methods for generating commonly used HTML tags.
- * @class yii.mustache.helpers.Html
- * @extends mustache.helpers.Helper
- * @constructor
  */
 class Html extends Helper {
 
   /**
-   * Marks the beginning of an HTML body section.
-   * @property beginBody
-   * @type string
-   * @final
+   * Returns the tag marking the beginning of an HTML body section.
+   * @return string The tag marking the beginning of an HTML body section.
    */
   public function getBeginBody() {
     $view=\Yii::$app->view;
@@ -33,10 +28,8 @@ class Html extends Helper {
   }
 
   /**
-   * Marks the beginning of an HTML page.
-   * @property beginPage
-   * @type string
-   * @final
+   * Returns the tag marking the beginning of an HTML page.
+   * @return string The tag marking the beginning of an HTML page.
    */
   public function getBeginPage() {
     $view=\Yii::$app->view;
@@ -48,10 +41,8 @@ class Html extends Helper {
   }
 
   /**
-   * Marks the ending of an HTML body section.
-   * @property endBody
-   * @type string
-   * @final
+   * Returns the tag marking the ending of an HTML body section.
+   * @return string The tag marking the ending of an HTML body section.
    */
   public function getEndBody() {
     $view=\Yii::$app->view;
@@ -63,10 +54,8 @@ class Html extends Helper {
   }
 
   /**
-   * Marks the ending of an HTML page.
-   * @property endPage
-   * @type string
-   * @final
+   * Returns the tag marking the ending of an HTML page.
+   * @return string The tag marking the ending of an HTML page.
    */
   public function getEndPage() {
     $view=\Yii::$app->view;
@@ -78,10 +67,8 @@ class Html extends Helper {
   }
 
   /**
-   * Marks the position of an HTML head section.
-   * @property head
-   * @type string
-   * @final
+   * Returns the tag marking the position of an HTML head section.
+   * @return string The tag marking the position of an HTML head section.
    */
   public function getHead() {
     $view=\Yii::$app->view;
@@ -93,11 +80,8 @@ class Html extends Helper {
   }
 
   /**
-   * Converts Markdown into HTML.
-   * See: `yii\helpers\Markdown::process()`
-   * @property markdown
-   * @type Closure
-   * @final
+   * Returns a function converting Markdown into HTML.
+   * @return Closure A function converting Markdown into HTML.
    */
   public function getMarkdown() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -107,11 +91,8 @@ class Html extends Helper {
   }
 
   /**
-   * Converts Markdown into HTML but only parses inline elements.
-   * See: `yii\helpers\Markdown::processParagraph()`
-   * @property markdownParagraph
-   * @type Closure
-   * @final
+   * Returns a function converting Markdown into HTML but only parsing inline elements.
+   * @return Closure A function converting Markdown into HTML but only parsing inline elements.
    */
   public function getMarkdownParagraph() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -121,11 +102,8 @@ class Html extends Helper {
   }
 
   /**
-   * Removes whitespace characters between HTML tags.
-   * See: `yii\widgets\Spaceless`
-   * @property spaceless
-   * @type Closure
-   * @final
+   * Returns a function removing whitespace characters between HTML tags.
+   * @return Closure A function removing whitespaces between HTML tags.
    */
   public function getSpaceless() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -138,11 +116,8 @@ class Html extends Helper {
   }
 
   /**
-   * Sets the view title.
-   * See: `yii\web\View->title`
-   * @property viewTitle
-   * @type Closure
-   * @final
+   * Returns a function setting the view title.
+   * @return Closure A function setting the view title.
    */
   public function getViewTitle() {
     return function($value, \Mustache_LambdaHelper $helper) {

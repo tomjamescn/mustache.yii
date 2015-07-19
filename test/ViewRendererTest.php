@@ -1,25 +1,21 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\test\mustache\ViewRendererTest` class.
- * @module test.ViewRendererTest
  */
 namespace yii\test\mustache;
 
-// Module dependencies.
+// Dependencies.
 use yii\mustache\ViewRenderer;
 use yii\web\View;
 
 /**
  * Tests the features of the `yii\mustache\ViewRenderer` class.
- * @class yii.mustache.test.ViewRendererTest
- * @extends PHPUnit_Framework_TestCase
- * @constructor
  */
 class ViewRendererTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Tests the `render` method.
-   * @method testRender
    */
   public function testRender() {
     $file=__DIR__.'/data.mustache';

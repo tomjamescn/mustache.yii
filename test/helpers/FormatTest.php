@@ -1,32 +1,26 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\test\mustache\FormatTest` class.
- * @module test.helpers.FormatTest
  */
 namespace yii\test\mustache\helpers;
 
-// Module dependencies.
+// Dependencies.
 use yii\mustache\helpers\Format;
 
 /**
  * Tests the features of the `yii\mustache\helpers\Format` class.
- * @class yii.test.mustache.helpers.FormatTest
- * @extends PHPUnit_Framework_TestCase
- * @constructor
  */
 class FormatTest extends \PHPUnit_Framework_TestCase {
 
   /**
+   * @var Mustache_LambdaHelper $helper
    * The engine used to render strings.
-   * @property helper
-   * @type mustache.Mustache_LambdaHelper
-   * @private
    */
   private $helper;
 
   /**
    * Tests the `currency` property.
-   * @method testCurrency
    */
   public function testCurrency() {
     $closure=(new Format())->currency;
@@ -36,7 +30,6 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Tests the `decimal` property.
-   * @method testDecimal
    */
   public function testDecimal() {
     $closure=(new Format())->decimal;
@@ -46,7 +39,6 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Tests the `ntext` property.
-   * @method testNtext
    */
   public function testNtext() {
     $closure=(new Format())->ntext;
@@ -56,7 +48,6 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Tests the `percent` property.
-   * @method testPercent
    */
   public function testPercent() {
     $closure=(new Format())->percent;
@@ -66,8 +57,6 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Performs a common set of tasks just before each test method is called.
-   * @method setUp
-   * @protected
    */
   protected function setUp() {
     $this->helper=new \Mustache_LambdaHelper(new \Mustache_Engine(), new \Mustache_Context());

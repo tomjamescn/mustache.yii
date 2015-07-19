@@ -1,11 +1,11 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\mustache\Loader` class.
- * @module Loader
  */
 namespace yii\mustache;
 
-// Module dependencies.
+// Dependencies.
 use yii\base\InvalidCallException;
 use yii\base\InvalidParamException;
 use yii\base\Object;
@@ -13,58 +13,47 @@ use yii\helpers\FileHelper;
 
 /**
  * Loads views from the file system.
- * @class yii.mustache.Loader
- * @extends yii.base.Object
- * @constructor
- * @param {yii.mustache.ViewRenderer} $renderer The instance used to render the views.
  */
 class Loader extends Object implements \Mustache_Loader {
 
+  /**
+   * Initializes a new instance of the class.
+   * @param yii::mustache::ViewRenderer $renderer The instance used to render the views.
+   */
   public function __construct(ViewRenderer $renderer) {
     $this->renderer=$renderer;
   }
 
   /**
+   * @var string CACHE_KEY_PREFIX
    * The string prefixed to every cache key in order to avoid name collisions.
-   * @property CACHE_KEY_PREFIX
-   * @type string
-   * @static
-   * @final
    */
   const CACHE_KEY_PREFIX='yii\mustache\Loader:';
 
   /**
+   * @var string DEFAULT_EXTENSION
    * The default extension of template files.
-   * @property DEFAULT_EXTENSION
-   * @type string
-   * @final
-   * @static
    */
   const DEFAULT_EXTENSION='mustache';
 
   /**
+   * @var yii\mustache\ViewRenderer $renderer
    * The instance used to render the views.
-   * @property renderer
-   * @type yii.mustache.ViewRenderer
-   * @private
    */
   private $renderer;
 
   /**
+   * @var array $views
    * The loaded views.
-   * @property views
-   * @type array
-   * @private
    */
   private $views=[];
 
   /**
    * Loads the view with the specified name.
-   * @method load
-   * @param {string} $name The view name.
-   * @return {string} The view contents.
-   * @throws {yii.base.InvalidCallException} Unable to locate the view file.
-   * @throws {yii.base.InvalidParamException} The view name is empty.
+   * @param string $name The view name.
+   * @return string The view contents.
+   * @throws yii::base::InvalidCallException Unable to locate the view file.
+   * @throws yii::base::InvalidParamException The view name is empty.
    */
   public function load($name) {
     if(!isset($this->views[$name])) {

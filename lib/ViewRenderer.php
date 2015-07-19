@@ -1,86 +1,68 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\mustache\ViewRenderer` class.
- * @module ViewRenderer
  */
 namespace yii\mustache;
 
-// Module dependencies.
+// Dependencies.
 use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 
 /**
  * View renderer allowing to use the [Mustache](http://mustache.github.io) template syntax.
- * @class yii.mustache.ViewRenderer
- * @extends yii.base.ViewRenderer
- * @constructor
  */
 class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
+   * @var string CACHE_KEY_PREFIX
    * The string prefixed to every cache key in order to avoid name collisions.
-   * @property CACHE_KEY_PREFIX
-   * @type string
-   * @static
-   * @final
    */
   const CACHE_KEY_PREFIX='yii\mustache\ViewRenderer:';
 
   /**
+   * @var string $cacheId
    * The identifier of the cache application component that is used to cache the compiled views.
    * If set to `null`, caching is disabled.
-   * @property cacheId
-   * @type string
-   * @default null
    */
   public $cacheId=null;
 
   /**
+   * @var int $cachingDuration
    * The time in seconds that the compiled views can remain valid in cache.
    * If set to `0`, the cache never expires.
-   * @property cachingDuration
-   * @type int
-   * @default 0
    */
   public $cachingDuration=0;
 
   /**
+   * @var bool $enableLogging
    * Value indicating whether to enable the logging of engine messages.
-   * @property enableLogging
-   * @type boolean
-   * @default false
    */
   public $enableLogging=false;
 
   /**
+   * @var Mustache_Engine $engine
    * The underlying Mustache template engine.
-   * @property engine
-   * @type mustache.Mustache_Engine
-   * @private
    */
   private $engine;
 
   /**
-   * Values prepended to the context stack, so they will be available in any view loaded by this instance.
-   * Always `null` until the component is fully initialized.
-   * @property helpers
-   * @type mustache.Mustache_HelperCollection
+   * @var array $helpers
+   * The values prepended to the context stack.
    */
   private $helpers=[];
 
+  /**
+   * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.
+   * @return Mustache_HelperCollection The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
+   */
   public function getHelpers() {
     return $this->isInitialized ? $this->engine->getHelpers() : null;
   }
 
-  public function setHelpers(array $value) {
-    if($this->isInitialized) $this->engine->setHelpers($value);
-    else $this->helpers=$value;
-  }
-
   /**
    * Initializes the application component.
-   * @method init
    */
   public function init() {
     $helpers=[
@@ -117,12 +99,11 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
   /**
    * Renders a view file.
-   * @method render
-   * @param {yii.base.View} $view The view object used for rendering the file.
-   * @param {string} $file The view file.
-   * @param {array} $params The parameters to be passed to the view file.
-   * @return {string} The rendering result.
-   * @throws {yii.base.InvalidCallException} The specified view file is not found.
+   * @param yii::base::View $view The view object used for rendering the file.
+   * @param string $file The view file.
+   * @param array $params The parameters to be passed to the view file.
+   * @return string The rendering result.
+   * @throws yii::base::InvalidCallException The specified view file is not found.
    */
   public function render($view, $file, $params) {
     $cache=($this->cacheId ? \Yii::$app->get($this->cacheId) : null);
@@ -139,5 +120,14 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
     $values=ArrayHelper::merge([ 'this'=>$view ], is_array($params) ? $params : []);
     return $this->engine->render($output, $values);
+  }
+
+  /**
+   * Sets the values to prepend to the context stack, so they will be available in any view loaded by this instance.
+   * @param array $value The list of the values to prepend to the context stack.
+   */
+  public function setHelpers(array $value) {
+    if($this->isInitialized) $this->engine->setHelpers($value);
+    else $this->helpers=$value;
   }
 }

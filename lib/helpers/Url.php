@@ -1,27 +1,21 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\mustache\helpers\Url` class.
- * @module helpers.Url
  */
 namespace yii\mustache\helpers;
 
-// Module dependencies.
+// Dependencies.
 use yii\helpers\Url as UrlHelper;
 
 /**
  * Provides a set of methods for managing URLs.
- * @class yii.mustache.helpers.Url
- * @extends mustache.helpers.Helper
- * @constructor
  */
 class Url extends Helper {
 
   /**
-   * Returns the base URL of the current request.
-   * See: `yii\helpers\Url::base()`
-   * @property base
-   * @type Closure
-   * @final
+   * Returns a function returning the base URL of the current request.
+   * @return Closure A function returning the base URL of the current request.
    */
   public function getBase() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -33,21 +27,15 @@ class Url extends Helper {
 
   /**
    * Returns the canonical URL of the currently requested page.
-   * See: `yii\helpers\Url::canonical()`
-   * @property canonical
-   * @type string
-   * @final
+   * @return string The canonical URL of the currently requested page.
    */
   public function getCanonical() {
     return UrlHelper::canonical();
   }
 
   /**
-   * Returns the home URL.
-   * See: `yii\helpers\Url::current()`
-   * @property current
-   * @type Closure
-   * @final
+   * Returns a function creating a URL by using the current route and the GET parameters.
+   * @return Closure A function creating a URL by using the current route and the GET parameters.
    */
   public function getCurrent() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -59,11 +47,8 @@ class Url extends Helper {
   }
 
   /**
-   * Returns the home URL.
-   * See: `yii\helpers\Url::home()`
-   * @property home
-   * @type Closure
-   * @final
+   * Returns a function returning the home URL.
+   * @return Closure A function returning the home URL.
    */
   public function getHome() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -74,11 +59,8 @@ class Url extends Helper {
   }
 
   /**
-   * Returns the URL previously remembered.
-   * See: `yii\helpers\Url::previous()`
-   * @property previous
-   * @type Closure
-   * @final
+   * Returns a function returning the URL previously remembered.
+   * @return Closure A function returning the URL previously remembered.
    */
   public function getPrevious() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -89,11 +71,8 @@ class Url extends Helper {
   }
 
   /**
-   * Creates a URL based on the given parameters.
-   * See: `yii\helpers\Url::to()`
-   * @property to
-   * @type Closure
-   * @final
+   * Returns a function creating a URL based on the given parameters.
+   * @return Closure A function creating a URL based on the given parameters.
    */
   public function getTo() {
     return function($value, \Mustache_LambdaHelper $helper) {
@@ -103,11 +82,8 @@ class Url extends Helper {
   }
 
   /**
-   * Creates a URL for the given route.
-   * See: `yii\helpers\Url::toRoute()`
-   * @property toRoute
-   * @type Closure
-   * @final
+   * Returns a function creating a URL for the given route.
+   * @return Closure A function creating a URL for the given route.
    */
   public function getToRoute() {
     return function($value, \Mustache_LambdaHelper $helper) {

@@ -1,20 +1,26 @@
 <?php
 /**
+ * @file
  * Implementation of the `yii\test\mustache\helpers\HelperTest` class.
- * @module test.helpers.HelperTest
  */
 namespace yii\test\mustache\helpers;
 
-// Module dependencies.
+// Dependencies.
 use yii\mustache\helpers\Helper;
 
 /**
  * Publicly exposes the features of the `yii\mustache\helpers\Helper` class.
- * @class yii.test.mustache.helpers.HelperStub
- * @extends yii.mustache.helpers.Helper
- * @constructor
  */
 class HelperStub extends Helper {
+
+  /**
+   * Parses the arguments of a parametized helper.
+   * Arguments can be specified as a single value, or as a string in JSON format.
+   * @param string $text The section content specifying the helper arguments.
+   * @param string $defaultArgument The name of the default argument. This is used when the section content provides a plain string instead of a JSON object.
+   * @param array $defaultValues The default values of arguments. These are used when the section content does not specify all arguments.
+   * @return array The parsed arguments as an associative array.
+   */
   public function parseArguments($text, $defaultArgument, array $defaultValues=[]) {
     return parent::parseArguments($text, $defaultArgument, $defaultValues);
   }
@@ -22,15 +28,11 @@ class HelperStub extends Helper {
 
 /**
  * Tests the features of the `yii\mustache\helpers\Helper` class.
- * @class yii.test.mustache.helpers.HelperTest
- * @extends PHPUnit_Framework_TestCase
- * @constructor
  */
 class HelperTest extends \PHPUnit_Framework_TestCase {
 
   /**
    * Tests the `parseArguments` method.
-   * @method testParseArguments
    */
   public function testParseArguments() {
     $model=new HelperStub();
