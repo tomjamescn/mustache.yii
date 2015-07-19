@@ -11,4 +11,5 @@ $archive=new ZipArchive();
 $archive->open('var/mustache.yii-0.4.0.zip', ZipArchive::CREATE | ZipArchive::OVERWRITE);
 $archive->addGlob('*.{json,md,txt}', GLOB_BRACE);
 $archive->addGlob('lib/*.php');
+$archive->addGlob('lib/helpers/*.php');
 $archive->close();
