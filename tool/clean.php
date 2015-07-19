@@ -6,4 +6,4 @@
  */
 
 chdir(dirname(__DIR__));
-unlink('var/mustache.yii-0.4.0.zip');
+@unlink('var/mustache.yii-0.4.0.zip');
