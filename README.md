@@ -1,6 +1,4 @@
 # Mustache.yii
-[![Release](http://img.shields.io/packagist/v/cedx/yii2-mustache.svg)](https://packagist.org/packages/cedx/yii2-mustache) [![License](http://img.shields.io/packagist/l/cedx/yii2-mustache.svg)](https://bitbucket.org/cedx/mustache.yii/src/master/LICENSE.txt) [![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-mustache.svg)](https://packagist.org/packages/cedx/yii2-mustache) ![Build](https://img.shields.io/codeship/fc8e1cd0-bc21-0132-257d-7ab97aac1fb6.svg)
-
 [Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), high-performance [PHP](https://php.net) framework.
 
 This package provides a view renderer, the `yii\mustache\ViewRenderer` class. This renderer allows to use [Mustache syntax](http://mustache.github.io/mustache.5.html) in view templates.
@@ -45,8 +43,8 @@ The best resource to learn Mustache basics is its official documentation you can
 #### Variables
 Within Mustache templates the following variables are always defined:
 
-- `app`: the [`\Yii::$app`](http://www.yiiframework.com/doc-2.0/yii-baseyii.html#$app-detail) instance.
-- `this`: the current [`yii\base\View`](http://www.yiiframework.com/doc-2.0/yii-base-view.html) object.
+- `app`: the [`Yii::$app`](http://www.yiiframework.com/doc-2.0/yii-baseyii.html#$app-detail) instance.
+- `this`: the current [`View`](http://www.yiiframework.com/doc-2.0/yii-base-view.html) object.
 - `yii.debug`: the `YII_DEBUG` constant.
 - `yii.env`: the `YII_ENV` constant.
 
