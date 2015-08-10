@@ -19,7 +19,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
    * @var string CACHE_KEY_PREFIX
    * The string prefixed to every cache key in order to avoid name collisions.
    */
-  const CACHE_KEY_PREFIX='yii\mustache\ViewRenderer:';
+  const CACHE_KEY_PREFIX=__CLASS__;
 
   /**
    * @var string $cacheId
@@ -54,6 +54,12 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   private $helpers=[];
 
   /**
+   * @var bool $isInitialized
+   * Value indicating whether the instance is initialized.
+   */
+  private $isInitialized=false;
+
+  /**
    * Gets the values prepended to the context stack, so they will be available in any view loaded by this instance.
    * @return Mustache_HelperCollection The list of the values prepended to the context stack. Always `null` until the component is fully initialized.
    */
@@ -67,10 +73,10 @@ class ViewRenderer extends \yii\base\ViewRenderer {
   public function init() {
     $helpers=[
       'app'=>\Yii::$app,
-      'format'=>new \yii\mustache\helpers\Format(),
-      'html'=>new \yii\mustache\helpers\Html(),
-      'i18n'=>new \yii\mustache\helpers\I18N(),
-      'url'=>new \yii\mustache\helpers\Url(),
+      'format'=>new helpers\Format(),
+      'html'=>new helpers\Html(),
+      'i18n'=>new helpers\I18N(),
+      'url'=>new helpers\Url(),
       'yii'=>[
         'debug'=>YII_DEBUG,
         'env'=>YII_ENV,
@@ -92,6 +98,7 @@ class ViewRenderer extends \yii\base\ViewRenderer {
 
     if($this->enableLogging) $options['logger']=new Logger();
     $this->engine=new \Mustache_Engine($options);
+    $this->isInitialized=true;
 
     parent::init();
     $this->helpers=[];

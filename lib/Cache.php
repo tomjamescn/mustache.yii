@@ -22,10 +22,10 @@ class Cache extends \Mustache_Cache_AbstractCache {
    * @var string CACHE_KEY_PREFIX
    * The string prefixed to every cache key in order to avoid name collisions.
    */
-  const CACHE_KEY_PREFIX='yii\mustache\Cache:';
+  const CACHE_KEY_PREFIX=__CLASS__;
 
   /**
-   * @var yii\mustache\ViewRenderer $renderer
+   * @var yii::mustache::ViewRenderer $renderer
    * The instance used to render the views.
    */
   private $renderer;

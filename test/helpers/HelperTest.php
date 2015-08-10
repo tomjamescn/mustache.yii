@@ -14,7 +14,7 @@ use yii\mustache\helpers\Helper;
 class HelperStub extends Helper {
 
   /**
-   * Parses the arguments of a parametized helper.
+   * Parses the arguments of a parametrized helper.
    * Arguments can be specified as a single value, or as a string in JSON format.
    * @param string $text The section content specifying the helper arguments.
    * @param string $defaultArgument The name of the default argument. This is used when the section content provides a plain string instead of a JSON object.

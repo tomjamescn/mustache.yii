@@ -28,7 +28,7 @@ class Loader extends Object implements \Mustache_Loader {
    * @var string CACHE_KEY_PREFIX
    * The string prefixed to every cache key in order to avoid name collisions.
    */
-  const CACHE_KEY_PREFIX='yii\mustache\Loader:';
+  const CACHE_KEY_PREFIX=__CLASS__;
 
   /**
    * @var string DEFAULT_EXTENSION
@@ -37,7 +37,7 @@ class Loader extends Object implements \Mustache_Loader {
   const DEFAULT_EXTENSION='mustache';
 
   /**
-   * @var yii\mustache\ViewRenderer $renderer
+   * @var yii::mustache::ViewRenderer $renderer
    * The instance used to render the views.
    */
   private $renderer;

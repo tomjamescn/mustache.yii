@@ -23,7 +23,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
    * Tests the `currency` property.
    */
   public function testCurrency() {
-    $closure=(new Format())->currency;
+    $closure=(new Format())->getCurrency();
     $this->assertEquals('$100.00', $closure('100', $this->helper));
     $this->assertEquals('€1,234.56', $closure('{ "value": 1234.56, "currency": "EUR" }', $this->helper));
   }
@@ -32,7 +32,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
    * Tests the `decimal` property.
    */
   public function testDecimal() {
-    $closure=(new Format())->decimal;
+    $closure=(new Format())->getDecimal();
     $this->assertEquals('100.00', $closure('100', $this->helper));
     $this->assertEquals('1,234.56', $closure('1234.56', $this->helper));
   }
@@ -41,7 +41,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
    * Tests the `ntext` property.
    */
   public function testNtext() {
-    $closure=(new Format())->ntext;
+    $closure=(new Format())->getNtext();
     $this->assertEquals('Foo<br>Bar', $closure("Foo\nBar", $this->helper));
     $this->assertEquals('Foo<br>Baz', $closure("Foo\r\nBaz", $this->helper));
   }
@@ -50,7 +50,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
    * Tests the `percent` property.
    */
   public function testPercent() {
-    $closure=(new Format())->percent;
+    $closure=(new Format())->getPercent();
     $this->assertEquals('10%', $closure('0.1', $this->helper));
     $this->assertEquals('123%', $closure('1.23', $this->helper));
   }
