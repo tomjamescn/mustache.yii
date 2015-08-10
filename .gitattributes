@@ -3,7 +3,6 @@
 .gitattributes text
 .gitignore text
 
-*.cmd text
 *.css text
 *.html text diff=html
 *.js text
