@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project default="dist" name="mustache.yii">
+  <property name="dist.output" value="var"/>
+  <property name="dist.version" value="0.4.1"/>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="${dist.output}" includes="*.zip"/>
+    </delete>
+  </target>
+
+  <target name="dist" depends="clean">
+    <zip destfile="${dist.output}/${phing.project.name}-${dist.version}.zip">
+      <fileset dir="." includes="*.json,*.md,*.txt,*.xml"/>
+      <fileset dir="lib"/>
+      <fileset dir="test"/>
+    </zip>
+  </target>
+
+  <target name="doc">
+    <exec executable="doxygen">
+      <arg file="doc/api.doxyfile"/>
+    </exec>
+
+    <copy file="web/favicon.ico" todir="doc/api"/>
+  </target>
+</project>
