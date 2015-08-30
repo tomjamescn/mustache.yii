@@ -62,25 +62,8 @@ class Loader extends Object implements \Mustache_Loader {
 
       if($cache && $cache->exists($key)) $output=$cache[$key];
       else {
-        if(!mb_strlen($name)) throw new InvalidParamException('The view name is empty.');
-        $controller=\Yii::$app->controller;
-
-        if(mb_substr($name, 0, 2)=='//') $file=\Yii::$app->viewPath.'/'.ltrim($name, '/');
-        else if($name[0]=='/') {
-          if(!$controller) throw new InvalidCallException(sprintf('Unable to locale the view "%s": no active controller.', $name));
-          $file=$controller->module->viewPath.'/'.ltrim($name, '/');
-        }
-        else {
-          $viewPath=($controller ? $controller->viewPath : \Yii::$app->viewPath);
-          $file=\Yii::getAlias("$viewPath/$name");
-        }
-
-        $view=\Yii::$app->view;
-        if($view && $view->theme) $file=$view->theme->applyTo($file);
-        if(!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file.='.'.($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
-
-        $path=FileHelper::localize($file);
-        if(!is_file($path)) throw new InvalidCallException(sprintf('The view file "%s" does not exist.', $file));
+        $path=FileHelper::localize($this->findViewFile($name));
+        if(!is_file($path)) throw new InvalidCallException(sprintf('The view file "%s" does not exist.', $path));
 
         $output=@file_get_contents($path);
         if($cache) $cache->set($key, $output, $this->renderer->cachingDuration);
@@ -90,5 +73,32 @@ class Loader extends Object implements \Mustache_Loader {
     }
 
     return $this->views[$name];
+  }
+
+  /**
+   * Finds the view file based on the given view name.
+   * @param string $name The view name.
+   * @return string The view file path.
+   * @throws yii::base::InvalidCallException Unable to locate the view file.
+   * @throws yii::base::InvalidParamException The view name is empty.
+   */
+  private function findViewFile($name) {
+    if(!mb_strlen($name)) throw new InvalidParamException('The view name is empty.');
+    $controller=\Yii::$app->controller;
+
+    if(mb_substr($name, 0, 2)=='//') $file=\Yii::$app->viewPath.'/'.ltrim($name, '/');
+    else if($name[0]=='/') {
+      if(!$controller) throw new InvalidCallException(sprintf('Unable to locale the view "%s": no active controller.', $name));
+      $file=$controller->module->viewPath.'/'.ltrim($name, '/');
+    }
+    else {
+      $viewPath=($controller ? $controller->viewPath : \Yii::$app->viewPath);
+      $file=\Yii::getAlias("$viewPath/$name");
+    }
+
+    $view=\Yii::$app->view;
+    if($view && $view->theme) $file=$view->theme->applyTo($file);
+    if(!mb_strlen(pathinfo($file, PATHINFO_EXTENSION))) $file.='.'.($view ? $view->defaultExtension : static::DEFAULT_EXTENSION);
+    return $file;
   }
 }

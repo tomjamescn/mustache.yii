@@ -19,8 +19,6 @@ class Url extends Helper {
    */
   public function getBase() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      \Yii::trace($value, 'aquafadas\UrlHelper');
-      // TODO
       return UrlHelper::base($helper->render($value) ?: false);
     };
   }
@@ -39,8 +37,6 @@ class Url extends Helper {
    */
   public function getCurrent() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      \Yii::trace($value, 'aquafadas\UrlHelper');
-      // TODO
       $args=$this->parseArguments($helper->render($value), 'params', [ 'scheme'=>false ]);
       return UrlHelper::current($args['params'], $args['scheme']);
     };
@@ -52,8 +48,6 @@ class Url extends Helper {
    */
   public function getHome() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      \Yii::trace($value, 'aquafadas\UrlHelper');
-      // TODO
       return UrlHelper::home($helper->render($value) ?: false);
     };
   }
@@ -64,8 +58,6 @@ class Url extends Helper {
    */
   public function getPrevious() {
     return function($value, \Mustache_LambdaHelper $helper) {
-      \Yii::trace($value, 'aquafadas\UrlHelper');
-      // TODO
       return UrlHelper::previous($helper->render($value) ?: null);
     };
   }

@@ -28,11 +28,6 @@
     "mustache/mustache": "^2.8.0",
     "yiisoft/yii2": "^2.0.6"
   },
-  "require-dev": {
-    "phing/phing": "^2.12.0",
-    "phpmd/phpmd": "^2.2.3",
-    "phpunit/phpunit": "^4.8.6"
-  },
   "support": {
     "issues": "https://github.com/cedx/mustache.yii/issues"
   }
