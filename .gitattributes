@@ -1,5 +1,6 @@
 * text=auto
 
+.editorconfig text
 .gitattributes text
 .gitignore text
 
@@ -9,7 +10,9 @@
 *.json text
 *.md text
 *.php text diff=php
+*.properties text
 *.txt text
+*.xml text
 
 *.gif binary
 *.ico binary

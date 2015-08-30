@@ -1,6 +1,6 @@
 {
   "description": "Mustache templating for Yii Framework.",
-  "homepage": "https://bitbucket.org/cedx/mustache.yii",
+  "homepage": "https://github.com/cedx/mustache.yii",
   "license": "MIT",
   "minimum-stability": "dev",
   "name": "cedx/yii2-mustache",
@@ -29,10 +29,11 @@
     "yiisoft/yii2": "^2.0.6"
   },
   "require-dev": {
-    "phing/phing": "^2.11.0",
-    "phpunit/phpunit": "^4.8.2"
+    "phing/phing": "^2.12.0",
+    "phpmd/phpmd": "^2.2.3",
+    "phpunit/phpunit": "^4.8.6"
   },
   "support": {
-    "issues": "https://bitbucket.org/cedx/mustache.yii/issues"
+    "issues": "https://github.com/cedx/mustache.yii/issues"
   }
 }

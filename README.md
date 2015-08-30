@@ -3,8 +3,18 @@
 
 This package provides a view renderer, the `yii\mustache\ViewRenderer` class. This renderer allows to use [Mustache syntax](http://mustache.github.io/mustache.5.html) in view templates.
 
+## Requirements
+The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.
+If you plan to play with the sources, you will also need the latest versions of the following products:
+
+- [Doxygen](http://www.doxygen.org)
+- [Phing](https://www.phing.info)
+- [PHP Mess Detector](http://phpmd.org)
+- [PHPUnit](https://phpunit.de)
+
 ## Documentation
 - [API Reference](http://api.belin.io/mustache.yii)
+- [Code Analysis](http://src.belin.io/dashboard/index/mustache.yii)
 
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
