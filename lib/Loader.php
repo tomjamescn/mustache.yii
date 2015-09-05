@@ -82,7 +82,7 @@ class Loader extends Object implements \Mustache_Loader {
    * @throws yii::base::InvalidCallException Unable to locate the view file.
    * @throws yii::base::InvalidParamException The view name is empty.
    */
-  private function findViewFile($name) {
+  protected function findViewFile($name) {
     if(!mb_strlen($name)) throw new InvalidParamException('The view name is empty.');
     $controller=\Yii::$app->controller;
 
