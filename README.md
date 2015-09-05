@@ -1,7 +1,8 @@
 # Mustache.yii
 [Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), high-performance [PHP](https://php.net) framework.
 
-This package provides a view renderer, the `yii\mustache\ViewRenderer` class. This renderer allows to use [Mustache syntax](http://mustache.github.io/mustache.5.html) in view templates.
+This package provides a view renderer, the `yii\mustache\ViewRenderer` class.
+This renderer allows to use [Mustache syntax](http://mustache.github.io/mustache.5.html) in view templates.
 
 ## Requirements
 The latest [PHP](http://php.net) and [Composer](https://getcomposer.org) versions.

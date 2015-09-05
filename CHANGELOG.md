@@ -1,6 +1,10 @@
 # Changelog
 This file contains highlights of what changes on each version of the [Mustache.yii](https://packagist.org/packages/cedx/yii2-mustache) library.
 
+#### Version 0.4.2
+- Added code coverage.
+- Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+
 #### Version 0.4.1
 - Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
 - Replaced the custom build scripts by [Phing](https://www.phing.info).
