@@ -20,17 +20,17 @@ class HtmlTest extends \PHPUnit_Framework_TestCase {
   private $helper;
 
   /**
-   * Tests the `markdown` property.
+   * Tests the `getMarkdown` property.
    */
-  public function testMarkdown() {
+  public function testGetMarkdown() {
     $closure=(new Html())->getMarkdown();
     $this->assertEquals("<h1>title</h1>\n", $closure("# title", $this->helper));
   }
 
   /**
-   * Tests the `spaceless` property.
+   * Tests the `getSpaceless` property.
    */
-  public function testSpaceless() {
+  public function testGetSpaceless() {
     $closure=(new Html())->getSpaceless();
     $this->assertEquals('<strong>label</strong><em>label</em>', $closure("<strong>label</strong>  \r\n  <em>label</em>", $this->helper));
     $this->assertEquals('<strong> label </strong><em> label </em>', $closure('<strong> label </strong>  <em> label </em>', $this->helper));

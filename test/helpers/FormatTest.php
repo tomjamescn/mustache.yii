@@ -48,14 +48,6 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
   }
 
   /**
-   * Tests the `getDateTime` method.
-   */
-  public function testGetDateTime() {
-    $closure=(new Format())->getDateTime();
-    $this->assertEquals('Nov 5, 1994, 2:15:30 PM', $closure('1994-11-05T13:15:30Z', $this->helper));
-  }
-
-  /**
    * Tests the `getDecimal` method.
    */
   public function testGetDecimal() {
@@ -89,14 +81,6 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
     $closure=(new Format())->getPercent();
     $this->assertEquals('10%', $closure('0.1', $this->helper));
     $this->assertEquals('123%', $closure('1.23', $this->helper));
-  }
-
-  /**
-   * Tests the `getTime` method.
-   */
-  public function testGetTime() {
-    $closure=(new Format())->getTime();
-    $this->assertEquals('2:15:30 PM', $closure('1994-11-05T13:15:30Z', $this->helper));
   }
 
   /**
