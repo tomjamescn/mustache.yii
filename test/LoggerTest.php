@@ -24,7 +24,8 @@ class LoggerTest extends \PHPUnit_Framework_TestCase {
    * Tests the `log` method.
    */
   public function testLog() {
-    // TODO
+    $this->setExpectedException('yii\base\InvalidParamException');
+    $this->model->log('dummy', 'Hello World!');
   }
 
   /**
