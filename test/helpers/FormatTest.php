@@ -44,7 +44,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
    */
   public function testGetDate() {
     $closure=(new Format())->getDate();
-    $this->assertEquals('Jan 1, 2015', $closure('2015-01-01 12:00:00', $this->helper));
+    $this->assertEquals('Nov 5, 1994', $closure('1994-11-05T13:15:30Z', $this->helper));
   }
 
   /**
@@ -52,7 +52,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
    */
   public function testGetDateTime() {
     $closure=(new Format())->getDateTime();
-    $this->assertEquals('Jan 1, 2015, 1:00:00 PM', $closure('2015-01-01 12:00:00', $this->helper));
+    $this->assertEquals('Nov 5, 1994, 2:15:30 PM', $closure('1994-11-05T13:15:30Z', $this->helper));
   }
 
   /**
@@ -96,7 +96,7 @@ class FormatTest extends \PHPUnit_Framework_TestCase {
    */
   public function testGetTime() {
     $closure=(new Format())->getTime();
-    $this->assertEquals('1:00:00 PM', $closure('2015-01-01 12:00:00', $this->helper));
+    $this->assertEquals('2:15:30 PM', $closure('1994-11-05T13:15:30Z', $this->helper));
   }
 
   /**

@@ -14,6 +14,15 @@ use yii\mustache\helpers\Helper;
 class HelperStub extends Helper {
 
   /**
+   * Returns the output sent by the call of the specified function.
+   * @param callable $callback The function to invoke.
+   * @return string The captured output.
+   */
+  public function captureOutput($callback) {
+    return parent::captureOutput($callback);
+  }
+
+  /**
    * Parses the arguments of a parametrized helper.
    * Arguments can be specified as a single value, or as a string in JSON format.
    * @param string $text The section content specifying the helper arguments.
@@ -30,6 +39,16 @@ class HelperStub extends Helper {
  * Tests the features of the `yii\mustache\helpers\Helper` class.
  */
 class HelperTest extends \PHPUnit_Framework_TestCase {
+
+  /**
+   * Tests the `captureOutput` method.
+   */
+  public function testCaptureOutput() {
+    $model=new HelperStub();
+    $this->assertEquals('Hello World!', $model->captureOutput(function() {
+      echo 'Hello World!';
+    }));
+  }
 
   /**
    * Tests the `parseArguments` method.
