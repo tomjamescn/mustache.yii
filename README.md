@@ -1,4 +1,6 @@
 # Mustache.yii
+![Release](http://img.shields.io/packagist/v/cedx/yii2-mustache.svg) ![License](http://img.shields.io/packagist/l/cedx/yii2-mustache.svg) ![Downloads](http://img.shields.io/packagist/dt/cedx/yii2-mustache.svg) ![Build](http://img.shields.io/travis/cedx/mustache.yii.svg)
+
 [Mustache](http://mustache.github.io) templating for [Yii](http://www.yiiframework.com), high-performance [PHP](https://php.net) framework.
 
 This package provides a view renderer, the `yii\mustache\ViewRenderer` class.
@@ -15,7 +17,7 @@ If you plan to play with the sources, you will also need the latest versions of 
 
 ## Documentation
 - [API Reference](http://api.belin.io/mustache.yii)
-- [Code Analysis](http://sonarqube.belin.io/dashboard/index/mustache.yii)
+- [Code Analysis](http://src.belin.io/dashboard/index/mustache.yii)
 
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
