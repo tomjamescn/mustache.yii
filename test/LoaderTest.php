@@ -30,7 +30,7 @@ class LoaderStub extends Loader {
 class LoaderTest extends \PHPUnit_Framework_TestCase {
 
   /**
-   * @var yii::mustache::Loader $model
+   * @var yii::test::mustache::LoaderStub $model
    * The data context of the tests.
    */
   private $model;
@@ -39,20 +39,25 @@ class LoaderTest extends \PHPUnit_Framework_TestCase {
    * Tests the `findViewFile` method.
    */
   public function testFindViewFile() {
-    // TODO
+    $expected=str_replace('/', DIRECTORY_SEPARATOR, \Yii::$app->viewPath.'/view.php');
+    $this->assertEquals($expected, $this->model->findViewFile('//view'));
+
+    $this->setExpectedException('yii\base\InvalidCallException');
+    $this->model->findViewFile('/view');
   }
 
   /**
    * Tests the `load` method.
    */
   public function testLoad() {
-    // TODO
+    $this->setExpectedException('yii\base\InvalidCallException');
+    $this->model->load('view');
   }
 
   /**
    * Performs a common set of tasks just before each test method is called.
    */
   protected function setUp() {
-    $this->model=new Loader(new ViewRenderer());
+    $this->model=new LoaderStub(new ViewRenderer());
   }
 }

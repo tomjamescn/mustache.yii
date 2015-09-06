@@ -3,6 +3,7 @@ This file contains highlights of what changes on each version of the [Mustache.y
 
 #### Version 0.4.2
 - Added code coverage.
+- Added support for [Travis CI](https://travis-ci.org) continuous integration.
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 
 #### Version 0.4.1
