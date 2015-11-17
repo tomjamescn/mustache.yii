@@ -28,19 +28,6 @@ class Html extends Helper {
   }
 
   /**
-   * Returns the tag marking the beginning of an HTML page.
-   * @return string The tag marking the beginning of an HTML page.
-   */
-  public function getBeginPage() {
-    $view=\Yii::$app->view;
-    if(!$view || !$view->hasMethod('beginPage')) return '';
-
-    return $this->captureOutput(function() use($view) {
-      $view->beginPage();
-    });
-  }
-
-  /**
    * Returns the tag marking the ending of an HTML body section.
    * @return string The tag marking the ending of an HTML body section.
    */
@@ -50,19 +37,6 @@ class Html extends Helper {
 
     return $this->captureOutput(function() use($view) {
       $view->endBody();
-    });
-  }
-
-  /**
-   * Returns the tag marking the ending of an HTML page.
-   * @return string The tag marking the ending of an HTML page.
-   */
-  public function getEndPage() {
-    $view=\Yii::$app->view;
-    if(!$view || !$view->hasMethod('endPage')) return '';
-
-    return $this->captureOutput(function() use($view) {
-      $view->endPage();
     });
   }
 
