@@ -16,7 +16,7 @@ If you plan to play with the sources, you will also need the latest versions of 
 - [PHPUnit](https://phpunit.de)
 
 ## Documentation
-- [API Reference](http://api.belin.io/mustache.yii)
+- [API Reference](http://www.belin.io/mustache.yii/api)
 - [Code Analysis](http://src.belin.io/dashboard/index/mustache.yii)
 
 ## Installing via [Composer](https://getcomposer.org)
@@ -80,4 +80,4 @@ that means these will be searched in the same directory as the currently rendere
 In the second case we're using path aliases. All the Yii aliases such as `@app` are available by default.
 
 ## License
-[Mustache.yii](https://packagist.org/packages/cedx/yii2-mustache) is distributed under the Apache License, version 2.0.
+[Mustache.yii](https://github.com/cedx/mustache.yii) is distributed under the Apache License, version 2.0.

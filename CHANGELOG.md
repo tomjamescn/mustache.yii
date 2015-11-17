@@ -1,10 +1,11 @@
 # Changelog
-This file contains highlights of what changes on each version of the [Mustache.yii](https://packagist.org/packages/cedx/yii2-mustache) library.
+This file contains highlights of what changes on each version of the [Mustache.yii](https://github.com/cedx/mustache.yii) library.
 
 #### Version 0.4.2
 - Added code coverage.
 - Added support for [Travis CI](https://travis-ci.org) continuous integration.
 - Changed licensing for the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+- Upgraded the package dependencies.
 
 #### Version 0.4.1
 - Added support for [SonarQube](http://www.sonarqube.org) code analyzer.
