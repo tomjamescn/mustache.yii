@@ -42,10 +42,14 @@ abstract class Helper extends Object {
    * @return array The parsed arguments as an associative array.
    */
   protected function parseArguments($text, $defaultArgument, array $defaultValues=[]) {
-    try { if(is_array($json=Json::decode($text))) return ArrayHelper::merge($defaultValues, $json); }
-    catch(InvalidParamException $e) {}
+    try {
+      if(is_array($json=Json::decode($text))) return ArrayHelper::merge($defaultValues, $json);
+      throw new InvalidParamException();
+    }
 
-    $defaultValues[$defaultArgument]=$text;
-    return $defaultValues;
+    catch(InvalidParamException $e) {
+      $defaultValues[$defaultArgument]=$text;
+      return $defaultValues;
+    }
   }
 }
