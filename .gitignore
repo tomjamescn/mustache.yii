@@ -1,0 +1,7 @@
+/.idea/
+/.sonar/
+/*.iml
+/bin/
+/composer.lock
+/var/
+/vendor/
