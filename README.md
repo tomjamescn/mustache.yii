@@ -15,10 +15,6 @@ If you plan to play with the sources, you will also need the latest versions of 
 - [PHP Mess Detector](http://phpmd.org)
 - [PHPUnit](https://phpunit.de)
 
-## Documentation
-- [API Reference](http://www.belin.io/mustache.yii/api)
-- [Code Analysis](http://src.belin.io/dashboard/index/mustache.yii)
-
 ## Installing via [Composer](https://getcomposer.org)
 From a command prompt, run:
 
@@ -78,6 +74,11 @@ In the first case the view will be searched relatively to the current view path.
 that means these will be searched in the same directory as the currently rendered template.
 
 In the second case we're using path aliases. All the Yii aliases such as `@app` are available by default.
+
+## See Also
+- [API Reference](http://www.belin.io/mustache.yii/api)
+- [Code Analysis](http://src.belin.io/dashboard/index/mustache.yii)
+- [Continuous Integration](https://travis-ci.org/cedx/mustache.yii)
 
 ## License
 [Mustache.yii](https://github.com/cedx/mustache.yii) is distributed under the Apache License, version 2.0.
